@@ -164,6 +164,7 @@ SECTIONS.append(("router", "🧭", "ตัวนำทาง (Router)",
 for tid, icon, title, folder, nbs in TOPICS:
     SECTIONS.append((tid, icon, title, topic_section(folder, nbs)))
 SECTIONS.append(("sota", "🚀", "SOTA อัปเดต", md2html(read("ADVANCED_SOTA.md"))))
+SECTIONS.append(("libs", "🧰", "Library เจ๋ง ๆ", md2html(read("LIBRARIES.md"))))
 SECTIONS.append(("verify", "✅", "Verify (ตรวจแล้ว)", md2html(read("VERIFY.md"))))
 SECTIONS.append(("deploy", "🚂", "Deploy / GitHub", md2html(deploy_md)))
 

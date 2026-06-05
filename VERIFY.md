@@ -1,5 +1,12 @@
 # สิ่งที่ทดสอบแล้วจริง (Verification)
 
+## รอบ SOTA refresh กลางปี 2026 (final)
+- รีเฟรช `ADVANCED_SOTA.md` ให้ตรงกลางปี 2026 (verify id กับ HF/PyPI ผ่าน research agent 6 ตัว): CV `YOLO26`/`SAM3`/`PE-Core`/`DEIMv2`/`DINOv3` ; NLP `mmBERT`/`SetFit`/Typhoon 2.5/SEA-LION v4.5/`typhoon-translate-4b` ; MM `Qwen3-VL`/`InternVL3.5`/Typhoon OCR V1.5 ; Tabular AutoGluon 1.5 `extreme`/`TabICLv2`/TabPFN-3/`cleanlab` ; TS `Chronos-2`/`Toto-2.0`/`TiRex`/`aeon`/`CBraMod` ; Audio `CLAP`/`CED`/`Dasheng`/Typhoon-Whisper
+- เพิ่ม `LIBRARIES.md` (catalog library เจ๋ง ๆ ต่อหัวข้อ)
+- ใส่ library เข้าโน้ตบุ๊ก: Audio วิธีที่ 1.5 (CLAP zero-shot), NLP text_classification วิธีที่ 3 (SetFit), Tabular cleanlab cell ; อัปเดต id YOLO26/Qwen3-VL/Typhoon-OCR
+- ทดสอบซ้ำ: 15 notebooks syntax 0, simulation 13/13, router 37/37, logic ผ่าน
+
+
 อัปเดต: 2026-06-05 | ทดสอบบน numpy 2.0.2 / scikit-learn 1.6.1 / lightgbm 4.6.0 / scipy 1.13.1
 (เวอร์ชันใกล้เคียง Google Colab / Kaggle ปัจจุบัน)
 

@@ -154,7 +154,8 @@ def comp_multiclass():
 SKIP = ["get_data(", "kaggle competitions submit", "kaggle competitions submissions",
         "AutoModelForSequenceClassification", "Seq2SeqTrainer", "AutoModelForSeq2SeqLM",
         "pipeline(", "PaliGemma", "BlipForConditional", "AutoModel.from_pretrained", "AutoModel,",
-        "TabPFN", "from ultralytics", "YOLO(", "pycrfsuite", "Qwen", "load_refs("]
+        "TabPFN", "from ultralytics", "YOLO(", "pycrfsuite", "Qwen", "load_refs(",
+        "from setfit", "SetFitModel"]
 def strip_magics(src):
     return "\n".join("pass  # magic" if l.lstrip().startswith(("!", "%")) else l for l in src.split("\n"))
 

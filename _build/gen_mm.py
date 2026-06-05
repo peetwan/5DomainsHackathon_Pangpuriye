@@ -174,20 +174,25 @@ out=sample.copy(); out[ANS_COL]=ans
 out.to_csv("submission.csv",index=False,encoding="utf-8-sig")
 print("บันทึก submission.csv"); display(out.head())"""))
 
-c.append(md(r"""## ทางเลือก — Qwen2.5-VL (รองรับไทย + OCR ดีกว่า, ต้อง GPU)
+c.append(md(r"""## ทางเลือก — Qwen3-VL / Typhoon OCR (ของแรงปี 2026 รองรับไทย + OCR ดีกว่า, ต้อง GPU)
 
-ปลดคอมเมนต์ถ้าต้องการคำตอบภาษาไทยหรืออ่านตัวอักษรในรูป"""))
-c.append(code(r"""# from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
-# mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained("Qwen/Qwen2.5-VL-3B-Instruct",
-#         torch_dtype="auto", device_map="auto")
-# proc = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-3B-Instruct")
+ปลดคอมเมนต์ถ้าต้องการคำตอบไทย/อ่านตัวอักษร -- ต้อง `transformers>=4.57` (เซลล์ติดตั้งด้านบนใช้ -U อยู่แล้ว)
+ถ้าเป็น "อ่านเอกสารไทย (OCR)" โดยเฉพาะ แนะนำ Typhoon OCR V1.5: `!pip install typhoon-ocr` (เก่งเอกสารไทยสุด)"""))
+c.append(code(r"""# from transformers import Qwen3VLForConditionalGeneration, AutoProcessor   # ต้อง transformers>=4.57
+# from qwen_vl_utils import process_vision_info     # !pip install qwen-vl-utils==0.0.14
+# MODEL = "Qwen/Qwen3-VL-4B-Instruct"               # free-tier ใช้ "Qwen/Qwen3-VL-2B-Instruct"
+# mdl = Qwen3VLForConditionalGeneration.from_pretrained(MODEL, torch_dtype="auto", device_map="auto")
+# proc = AutoProcessor.from_pretrained(MODEL)
 # def ask(img_path, question):
 #     msgs=[{"role":"user","content":[{"type":"image","image":img_path},{"type":"text","text":question}]}]
 #     text=proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
-#     inputs=proc(text=[text], images=[Image.open(img_path).convert("RGB")], return_tensors="pt").to(mdl.device)
+#     imgs,_=process_vision_info(msgs)
+#     inputs=proc(text=[text], images=imgs, return_tensors="pt").to(mdl.device)
 #     out=mdl.generate(**inputs, max_new_tokens=64)
 #     return proc.batch_decode(out[:, inputs.input_ids.shape[1]:], skip_special_tokens=True)[0].strip()
-print("ปลดคอมเมนต์เซลล์นี้ถ้าจะใช้ Qwen2.5-VL (ภาษาไทย/OCR)")"""))
+# ans=[ask(os.path.join(TEST_IMG,str(r[IMG_ID_COL])), str(r[Q_COL]) if Q_COL else "อธิบายรูปนี้") for _,r in test.iterrows()]
+# out=sample.copy(); out[ANS_COL]=ans; out.to_csv("submission.csv",index=False,encoding="utf-8-sig")
+print("ปลดคอมเมนต์เซลล์นี้ถ้าจะใช้ Qwen3-VL (ภาษาไทย/OCR) -- เติม loop ส่ง submission แล้ว")"""))
 
 c.append(submit_md()); c.append(submit_cell("blip vqa zero-shot"))
 write_nb("03_Multimodal_VisionLanguage/visual_qa.ipynb", c)

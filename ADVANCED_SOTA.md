@@ -1,254 +1,166 @@
-# SOTA อัปเดต + วิธีดันคะแนน (2025–2026)
+# SOTA อัปเดต + วิธีดันคะแนน (รีเฟรชกลางปี 2026)
 
-ไฟล์นี้รวม "ท่ายาก / ของใหม่" สำหรับแต่ละหัวข้อใหญ่ ถ้าทำ `วิธีที่ 1 (ง่ายสุด)` ในโน้ตบุ๊กได้ submission แล้ว และอยากดันคะแนนต่อ ให้มาดูตรงนี้
-ทุกหัวข้อบอกชัดว่า: ใช้โมเดล/เทคนิคอะไร, id ไหน, ช่วยยังไง, เหนื่อยแค่ไหน, และ `แก้ไฟล์ไหน ตัวแปรไหน`
+ไฟล์นี้รวม "ของแรง/ท่ายาก" ล่าสุด (verify id กับ HuggingFace/PyPI กลางปี 2026 แล้ว) ถ้าทำ `วิธีที่ 1 (ง่ายสุด)` ในโน้ตบุ๊กได้ submission แล้ว อยากดันคะแนนต่อ มาดูตรงนี้
+ดู library เจ๋ง ๆ ที่ทำให้ชีวิตง่ายขึ้นต่อหัวข้อ -> `LIBRARIES.md`
 
-วิธีใช้: หาหัวข้อใหญ่ของคุณ -> ดู "ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้" ท้ายแต่ละหัวข้อ -> ทำจากบนลงล่าง (ผลตอบแทนต่อแรงมากสุดอยู่บน)
-
-> หมายเหตุ: id ทั้งหมดตรวจกับ HuggingFace/เอกสารทางการแล้ว แต่ของหนัก (VLM/foundation model) ต้องรันบน Colab/Kaggle ที่มี GPU เสมอ
+> id ทั้งหมดตรวจแล้วว่ามีจริงกลางปี 2026 แต่ของหนัก (VLM/foundation model) ต้องรันบน Colab/Kaggle ที่มี GPU เสมอ
 
 ---
 
-## Computer Vision — Advanced / SOTA (อัปเดต)
+## Computer Vision — SOTA refresh (mid-2026)
 
-หมายเหตุ: ทุกอย่างด้านล่างคือ "ของจริงที่ใช้ได้ปี 2025–2026" และเลือกเฉพาะที่ plug เข้ากับ notebook เดิมได้เร็ว ตัวเลข top-1 อ้างอิงจาก timm/HF model cards และ COCO benchmark ของผู้พัฒนา
+แกนเดิม (timm backbone, zero-shot encoder) ยังใช้ได้ แต่ detection/segmentation ขยับไปอีกเจน
 
-### (a) Image Classification — `image_classification.ipynb`
+### Image classification (timm) — ยังใช่ + เพิ่มของใหม่
+- `EVA-02-Large @448` ยังเป็น backbone fine-tune ที่ดีสุดใน timm: `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` (top-1 ~90%) -> ใส่ใน `MODEL_NAME` (image_classification วิธีที่ 2)
+- `DINOv3` (ของใหม่ ดีสุดสาย self-supervised/frozen feature): `timm/vit_large_patch16_dinov3.lvd1689m` หรือ `facebook/dinov3-vitl16-pretrain-lvd1689m` ; มีตัว ConvNeXt distilled `timm/convnext_large.dinov3_lvd1689m` (frozen + linear head ดีตอน data น้อย/โดเมนแปลก)
+- `ConvNeXt-V2` ยังเป็น CNN ที่เทรนง่าย/เสถียร
+- zero-shot (ไม่ต้องเทรน): `google/siglip2-so400m-patch16-512` (multilingual, ผ่าน pipeline `zero-shot-image-classification`) ; ของใหม่แรงกว่า `facebook/PE-Core-G14-448` (Meta Perception Encoder, ชนะ SigLIP2 บน 0-shot)
+- เพดาน ImageNet-1k กลางปี 2026 ยังราว ~91%
 
-จุดที่แก้ง่ายสุดคือ `วิธีที่ 2` (timm) แค่เปลี่ยน `MODEL_NAME` (ปัจจุบัน `"tf_efficientnetv2_s.in21k_ft_in1k"`) + ปรับ `IMG_SIZE` ให้ตรงกับโมเดล timm จะ auto-download น้ำหนักให้เอง
+### Object detection — เปลี่ยน! (YOLO11/12 -> YOLO26 / DETR family)
+- `YOLO26` (Ultralytics) = default ใหม่: NMS-free, เร็วบน CPU/edge -> `pip install ultralytics` แล้ว `YOLO("yolo26n.pt")` (n/s/m/l/x) -- ใช้แทน yolo11/12 ใน object_detection.ipynb
+- `RF-DETR` (Roboflow, NAS family Nano..2x-Large) = real-time detector ตัวแรกที่ >60 mAP บน COCO + transfer ข้ามโดเมนเก่งสุด -> `pip install rfdetr` ; มี `RF-DETR-Seg` ด้วย
+- `D-FINE` / `DEIMv2` = DETR family ใหม่ (DEIMv2 เสียบ DINOv3 เป็น backbone) -> `Intellindust/DEIMv2_DINOv3_{S,M,L,X}_COCO` ; D-FINE มีใน transformers (`DFineForObjectDetection`)
+- `RT-DETRv2` ตอนนี้ตามหลังแล้ว เก็บไว้เป็น baseline ใน transformers
 
-| เทคนิค/โมเดล | id (ใส่ใน `MODEL_NAME`) | ทำไมช่วย | effort | แก้ตรงไหน |
-|---|---|---|---|---|
-| `ConvNeXt-V2-Large` | `convnextv2_large.fcmae_ft_in22k_in1k` (ใช้ `_384` ถ้า GPU ไหว → top-1 88.2%) | อัปจาก EfficientNetV2-S ทันที, top-1 ~87–88% สาย CNN เทรนง่าย เสถียร | ต่ำ | `MODEL_NAME` ใน `วิธีที่ 2`; ถ้าใช้ `_384` ตั้ง `IMG_SIZE = 384` |
-| `EVA-02-Large @448` (แชมป์ accuracy) | `eva02_large_patch14_448.mim_m38m_ft_in22k_in1k` (top-1 90.05%) | จุดสูงสุด accuracy ที่ใช้ได้จริงบน timm | กลาง (กิน VRAM, `IMG_SIZE=448`, batch เล็ก) | `MODEL_NAME` + `IMG_SIZE = 448` |
-| `DINOv3` backbone (ใหม่สุด ส.ค. 2025) | `vit_large_patch16_dinov3.lvd1689m` (ต้อง `timm>=1.0.20`) | ฟีเจอร์ self-supervised เทพ; เก่งมากตอน data น้อย/โดเมนแปลก (frozen + linear head ก็ได้) | ต่ำ–กลาง | `MODEL_NAME` ใน `วิธีที่ 2` |
-| `SigLIP2` (zero-shot ไม่ต้องเทรน) | `google/siglip2-so400m-patch14-384` (zero-shot ImageNet 84.1%) | ได้ baseline แบบ 0 epoch ด้วย text labels; ดีตอนเวลาน้อย/label น้อย | ต่ำ | เพิ่ม cell ใช้ `pipeline("zero-shot-image-classification", model=...)` |
+### Segmentation — เปลี่ยน! (SAM2.1 -> SAM3 / SAM3.1)
+- `SAM3` (Meta, พ.ย. 2025) = default ใหม่: prompt ด้วย "ข้อความ" ได้ (open-vocabulary เช่น "รถโรงเรียนสีเหลืองทุกคัน") + detect+segment+track ในตัวเดียว -> `facebook/sam3` (ใน transformers)
+- `SAM3.1` (มี.ค. 2026) = ติดตามหลายวัตถุเร็วขึ้น -> `facebook/sam3.1`
+- `YOLO26-seg` / `RF-DETR-Seg` = real-time trainable masks ; `Mask2Former` = panoptic/semantic reference
 
-เทคนิคเทรน (เปิดใน `วิธีที่ 2` ได้): `MixUp + CutMix` (timm.data.Mixup) กัน overfit +0.5–1.5%, `EMA` (timm.utils.ModelEmaV3) +0.3–0.8%, `TTA` ตอน inference +0.3–1%, `label smoothing 0.1` + cosine LR
-
-### (b) Object Detection — `object_detection.ipynb`
-
-ของเดิม `YOLO("yolov8n.pt")`. ลำดับอัป: เปลี่ยนรุ่น YOLO (effort เกือบ 0) → ขยายไซซ์ → RF-DETR ถ้าต้องการ accuracy สูงสุด
-
-| เทคนิค/โมเดล | id | ทำไมช่วย | effort | แก้ตรงไหน |
-|---|---|---|---|---|
-| `YOLO11` | `model = YOLO("yolo11n.pt")` (n/s/m/l/x) | ใหม่กว่า v8, mAP สูงขึ้นที่พารามิเตอร์ใกล้กัน, API เหมือนเป๊ะ | แทบ 0 | เปลี่ยน `YOLO("yolov8n.pt")` → `YOLO("yolo11n.pt")` |
-| `YOLO12` (attention-centric) | `model = YOLO("yolo12n.pt")` | เพิ่ม attention ดัน accuracy ต่อ | แทบ 0 | เปลี่ยนชื่อรุ่นใน `YOLO(...)` |
-| ขยาย scale + `imgsz` | `YOLO("yolo11m.pt")` + `train(imgsz=1024)` | ขยับ `n→s→m` + เพิ่ม `imgsz` คือวิธีดันคะแนนที่ชัวร์สุด | ต่ำ | args ใน `model.train(...)` |
-| `RF-DETR` (SOTA บน COCO, real-time) | `pip install rfdetr` → `from rfdetr import RFDETRNano` | transformer detector ชนะ YOLO ด้าน accuracy; รับ dataset YOLO/COCO; Apache-2.0 | กลาง | สร้าง cell ใหม่แทน block ultralytics |
-| `RT-DETRv2` | `from ultralytics import RTDETR; RTDETR("rtdetr-l.pt")` | NMS-free, แม่นกว่าที่ฉากซับซ้อน, API เดิม | ต่ำ–กลาง | ใช้ `RTDETR` แทน `YOLO` |
-
-ทริค: เทรนยาว + `imgsz` ใหญ่, เปิด `augment=True` ตอน predict (TTA), ensemble หลาย scale รวมกล่องด้วย `WBF` (`pip install ensemble-boxes`)
-
-### (c) Segmentation — `segmentation.ipynb`
-
-| เทคนิค/โมเดล | id | ทำไมช่วย | effort | แก้ตรงไหน |
-|---|---|---|---|---|
-| `YOLO11-seg` / `YOLO12-seg` | `YOLO("yolo11n-seg.pt")` | drop-in แทน v8-seg, mask แม่นขึ้น | แทบ 0 | เปลี่ยน `YOLO("yolov8n-seg.pt")` → `YOLO("yolo11n-seg.pt")` |
-| ขยาย scale + imgsz | `YOLO("yolo11m-seg.pt")` + `imgsz=1024` | ดัน mask mAP ตรง ๆ | ต่ำ | args `model.train(...)` |
-| `SAM2` (promptable, zero-shot) | `from ultralytics import SAM; SAM("sam2.1_b.pt")` | mask คุณภาพสูงสุดไม่ต้องเทรน; ใช้ box จาก detector เป็น prompt | ต่ำ–กลาง | เพิ่ม cell: box จาก YOLO → prompt ให้ SAM2 |
-
-ทริค: TTA flip/multi-scale, `copy_paste=0.3` ใน ultralytics, pipeline `detector → SAM2 refine mask`
-
-### ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (CV)
-
-1. เปลี่ยนรุ่นฟรี ๆ ก่อน: detection/seg `yolov8*` → `yolo11*`/`yolo12*`; classification `MODEL_NAME` → `convnextv2_large.fcmae_ft_in22k_in1k`
-2. ขยาย scale + เพิ่ม `IMG_SIZE`/`imgsz` เท่าที่ GPU ไหว
-3. เปิดทริคเทรน: `MixUp/CutMix + EMA + label smoothing` (cls); `augment/copy_paste` (det/seg)
-4. `TTA` ตอน inference ทุก task
-5. อัปตัวสุด: cls → `eva02_large_patch14_448...` (90%) หรือ frozen `DINOv3`; det → `RF-DETR`; seg → `detector → SAM2`
-6. `Ensemble` ปิดท้าย: cls เฉลี่ย logits หลายโมเดล; det รวมกล่องด้วย `WBF`
+### ถ้าอยากได้คะแนนเพิ่ม (CV) ทำตามลำดับ
+1. เปลี่ยนรุ่นฟรี ๆ: detection `yolo11/12` -> `yolo26` ; classification `MODEL_NAME` -> `eva02_large_patch14_448...` หรือ frozen `DINOv3`
+2. ขยาย scale + เพิ่ม imgsz/IMG_SIZE เท่าที่ GPU ไหว
+3. เปิด augment/TTA (cls: MixUp/CutMix/EMA ; det/seg: copy_paste) + ใช้ `sahi` ถ้าวัตถุเล็ก
+4. อัปตัวสุด: det -> `RF-DETR`/`DEIMv2` ; seg -> `detector -> SAM3` ; zero-shot cls -> `PE-Core`/`SigLIP2`
+5. ensemble หลายโมเดล (`supervision` ช่วยรวม/วาดผล, `WBF` รวมกล่อง)
 
 ---
 
-## NLP — Advanced / SOTA (อัปเดต)
+## NLP — SOTA refresh (mid-2026)
 
-หมายเหตุ: ทุก id ตรวจบน HuggingFace แล้ว (2025–2026) วางทับของเดิมได้ แก้แค่ตัวแปรตามที่ระบุ
+### Encoder (ตัวฐาน fine-tune)
+- ใหม่: `jhu-clsp/mmBERT-base` (307M, 8K ctx, MIT, เร็วกว่า ชนะ XLM-R บน XTREME, รองรับไทย) = default multilingual ใหม่ -> ใส่แทน `xlm-roberta-large`/`mdeberta-v3-base` ใน text_classification วิธีที่ 2 / word_seg วิธีที่ 3
+- ไทยโดยเฉพาะ: `clicknext/phayathaibert` ยังแรงสุดสาย monolingual (เก็บเป็น co-favorite, ensemble กับ mmBERT)
 
-### (a) ตัดคำ / NER / POS — `thai_word_segmentation.ipynb`
+### ตัดคำ / NER / POS
+- `PyThaiNLP 5.3.4` (import เบาลง 62x, มี offline mode `PYTHAINLP_OFFLINE=1`, มี `pythainlp.benchmarks` วัด BLEU/ROUGE/WER/CER)
+- ตัดคำ: engine `nlpo3`/`deepcut`/`newmm`/`attacut` ยังใช้ได้
+- NER: `pythainlp.tag.NER(engine="thainer-v2")` (default ใหม่) หรือ `engine="thai-nner"` (nested NER 104 ชนิด) ; zero-shot label เอง -> `gliner`
 
-ตัดคำ:
-- `nlpo3` engine (`pip install nlpo3`) — newmm เขียนใหม่ด้วย Rust เร็วกว่า ~2.5x ผลตัดเหมือน newmm — แก้ที่ `to_labels(text, engine="deepcut")` วิธีที่ 1 เปลี่ยนเป็น `engine="nlpo3"` (ถ้าต้องการแม่นสุดคง `deepcut`)
-- ensemble ง่าย: รัน `deepcut` + `attacut` + CRF แล้ว vote ขอบคำต่อตัวอักษร
+### Text classification
+- quick-win ของใหม่ (สำคัญ!): `SetFit` (few-shot ~8 ตัวอย่าง/คลาส สู้ fine-tune เต็มได้ ไม่ต้อง prompt) -> `pip install setfit` ใช้ body `BAAI/bge-m3` หรือ `google/embeddinggemma-300m` (เร็ว) -- เพิ่มเป็นวิธีที่ 3 ในโน้ตบุ๊กให้แล้ว
+- LLM zero/few-shot ceiling (id ใหม่): `typhoon-ai/typhoon2.5-qwen3-4b` (edge) / `typhoon2.5-qwen3-30b-a3b` (MoE) ; `aisingapore/Qwen-SEA-LION-v4-32B-IT` / `Gemma-SEA-LION-v4.5-27B-IT`
+- embeddings: `BAAI/bge-m3` (ยังดี), `Qwen/Qwen3-Embedding-0.6B` (8B นำ MTEB), `google/embeddinggemma-300m` (เล็กบนเครื่อง)
 
-NER/POS (token classification, วิธีที่ 3):
-- `clicknext/phayathaibert` — WangchanBERTa ที่ขยาย vocab + เทรนต่อ ชนะเกือบทุกงาน โดยเฉพาะข้อความปนอังกฤษ (drop-in แทนได้ สถาปัตยกรรม camembert เหมือนกัน) — แก้ที่ค่า `MODEL` วิธีที่ 3
-- NER สำเร็จรูป: `Pavarissy/phayathaibert-thainer`; POS สำเร็จรูป: `lunarlist/pos_thai_phayathai` (zero-train predict ได้เลย)
-- multilingual: `microsoft/mdeberta-v3-base` (Thai XNLI 76.4 > xlm-roberta-base 74.6) หรือ `FacebookAI/xlm-roberta-large`
+### Text generation / แปล / สรุป
+- แปล TH<->EN ของใหม่: `typhoon-ai/typhoon-translate-4b` (เก่งไทยกว่า NLLB ทั่วไป, ต้อง GPU) ; ไม่มี GPU ใช้ `facebook/nllb-200-distilled-600M`
+- สรุปไทย: `thanathorn/mt5-cpe-kmutt-thai-sentence-sum` (ยังดี)
+- LLM ceiling: Typhoon 2.5 / SEA-LION v4.5 (id ด้านบน)
 
-### (b) จำแนกข้อความ — `text_classification.ipynb`
+### Outdated ที่ปรับ
+- `typhoon2.1-gemma3-12b` -> `typhoon2.5-qwen3-*` | `Gemma-SEA-LION-v3-9B-IT` -> `v4/v4.5` | เพิ่ม `mmBERT` | เพิ่ม `SetFit`, `typhoon-translate-4b`
 
-วิธีที่ 2 ของเดิม `MODEL="airesearch/wangchanberta-base-att-spm-uncased"` → level-up:
-- `clicknext/phayathaibert` — monolingual ไทยที่แรงสุดสำหรับ fine-tune ตอนนี้ — `เปลี่ยน MODEL = "clicknext/phayathaibert"`
-- `microsoft/mdeberta-v3-base` — ถ้าข้อความปนอังกฤษ/เป็นข้อความแปลเยอะ
-- `FacebookAI/xlm-roberta-large` — พารามิเตอร์เยอะ มักดันคะแนนสุด (ลด batch=8 กัน OOM)
-- LLM zero/few-shot (เพิ่มวิธีที่ 3): prompt `typhoon-ai/typhoon2.1-gemma3-12b` / `Qwen/Qwen2.5-7B-Instruct` / `aisingapore/Gemma-SEA-LION-v3-9B-IT` ให้แปะ label — ดีตอน train เล็ก
-- ฟรีคะแนน (วิธีที่ 1): เปลี่ยน `engine="newmm"` → `"nlpo3"` ใน `th_tokenize`, ลอง `LinearSVC` แทน LogReg
-- งานจับคู่ประโยค/semantic: `kornwtp/SCT-model-phayathaibert` หรือ `BAAI/bge-m3` (multilingual, ไทยดีมาก)
-
-### (c) สร้าง/แปลงข้อความ Seq2Seq — `text_generation.ipynb`
-
-วิธีที่ 1 (pipeline) เปลี่ยน `MODEL` ตามงาน:
-- แปลภาษา: `facebook/nllb-200-distilled-600M` (เบา) / `facebook/nllb-200-3.3B` (แม่นสุด) — SOTA แปล low-resource รวมไทย ต้องตั้ง `src_lang="tha_Thai"`, `tgt_lang="eng_Latn"`
-- สรุปไทย: `thanathorn/mt5-cpe-kmutt-thai-sentence-sum` (fine-tune ไทยแล้ว) หรือ `csebuetnlp/mT5_multilingual_XLSum` (เดิม)
-- prompt LLM (มักได้สูงสุดถ้าวัด generative): `typhoon-ai/typhoon2.1-gemma3-12b` / `aisingapore/Gemma-SEA-LION-v3-9B-IT` / `Qwen/Qwen2.5-7B-Instruct`
-
-วิธีที่ 2 (fine-tune) `MODEL="google/mt5-small"` → `google/mt5-base` (แม่นกว่า); งานแปลใช้ `facebook/nllb-200-distilled-600M` (ใส่ `forced_bos_token_id`); ภาษาไม่มีเว้นวรรค/สะกดผิด ลอง `google/byt5-small`
-
-### ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (NLP)
-
-1. เปลี่ยน backbone เป็น `clicknext/phayathaibert` ทุกที่ที่ใช้ WangchanBERTa (text_classification วิธีที่ 2, word_segmentation วิธีที่ 3)
-2. งานแปล: pipeline `facebook/nllb-200-distilled-600M` + ตั้ง `src_lang/tgt_lang`
-3. งานสรุป: `thanathorn/mt5-cpe-kmutt-thai-sentence-sum`
-4. จูน: `num_train_epochs` 3→4–5, `learning_rate` 1e-5/2e-5/3e-5, `max_length` 256→384
-5. GPU ใหญ่: ดันเป็น `mt5-base` / `xlm-roberta-large` (ลด batch)
-6. LLM zero/few-shot (Typhoon 2.1 / SEA-LION v3 / Qwen2.5) เป็นตัวเทียบเพดาน + ใช้จริงงาน generative
-7. Ensemble: เฉลี่ย/โหวต 2–3 โมเดล (phayathaibert + mdeberta-v3; deepcut + nlpo3 + CRF)
+### ถ้าอยากได้คะแนนเพิ่ม (NLP)
+1. backbone -> `clicknext/phayathaibert` (ไทยล้วน) หรือ `jhu-clsp/mmBERT-base` (ปนอังกฤษ)
+2. text-cls data น้อย -> `SetFit` (วิธีที่ 3) | แปล -> `typhoon-translate-4b`
+3. จูน epoch/lr/max_length | GPU ใหญ่ -> LLM few-shot (Typhoon 2.5 / SEA-LION v4) ผ่าน `vllm` เร็ว ๆ
+4. fine-tune LLM เร็ว/VRAM น้อย -> `unsloth`
+5. ensemble หลายโมเดล
 
 ---
 
-## Multimodal (Vision-Language) — Advanced / SOTA (อัปเดต)
+## Multimodal (Vision-Language) — SOTA refresh (mid-2026)
 
-กฎเหล็กการวัด: BLEU ไทยต้องตัดคำ `newmm` ก่อนเสมอ (`thai_bleu()` ในโน้ตบุ๊กทำถูกแล้ว) cross-check ด้วย `pythainlp.benchmarks.bleu_score(refs, hyps, tokenize="newmm")` วัดในเครื่องก่อนส่งทุกครั้ง
+กฎเหล็ก: BLEU ไทยต้องตัดคำ `newmm` ก่อนเสมอ (cross-check `pythainlp.benchmarks.bleu_score`)
 
-### A. Image Captioning ไทย — `thai_image_captioning.ipynb`
+### VLM (captioning/VQA) — ต้อง transformers>=4.57
+- `Qwen3-VL` = default ใหม่: `Qwen/Qwen3-VL-4B-Instruct` (16GB GPU) / `Qwen/Qwen3-VL-2B-Instruct` (free-tier) -> `Qwen3VLForConditionalGeneration` ; OCR 32 ภาษารวมไทย -- ใช้แทน Qwen2.5-VL ใน visual_qa/captioning
+- `OpenGVLab/InternVL3_5-8B(-HF)` = generalist VQA/doc reasoning แรงสุดคลาส 8B (แทน InternVL3)
+- `google/gemma-3-4b-it` / `gemma-3-12b-it` = multilingual VLM ดี
+- scale-up: `meta-llama/Llama-4-Scout-17B-16E-Instruct` (รองรับไทย แต่ใหญ่ MoE 109B)
+- เก่า (demote เป็น baseline): Florence-2, Molmo, Llama-3.2-Vision
 
-ลำดับความแรง: วิธีที่ 1 (pretrained) < BLIP < PaliGemma2+LoRA < `Qwen2.5-VL / Qwen3-VL` fine-tune
+### OCR ไทย / เอกสาร — เปลี่ยนเยอะ
+- `Typhoon OCR V1.5` (2B, ฐาน Qwen3-VL) = Thai-doc SOTA (เคลมชนะ GPT-5/Gemini บนเอกสารไทย) -> `pip install typhoon-ocr` ; id โมเดลย้ายเป็น `typhoon-ai/typhoon-ocr-7b` (ของเดิม scb10x/ redirect)
+- OCR generalist ใหม่: `deepseek-ai/DeepSeek-OCR` (3.3B, MIT), `rednote-hilab/dots.ocr` (layout/table/formula), `PaddlePaddle/PaddleOCR-VL` (0.96B เล็ก), `nanonets/Nanonets-OCR2-3B`, `ibm-granite/granite-docling-258M` (CPU/edge)
+- CPU baseline: `EasyOCR(['th','en'])`, `PaddleOCR`
 
-1. `Qwen/Qwen2.5-VL-7B-Instruct` (เบา `-3B-`) — VLM แรง รองรับไทย OCR ดี สั่งเป็นไทยได้ "อธิบายภาพนี้เป็นไทยสั้น ๆ 1 ประโยค" zero-shot แข็งกว่าวิธีที่ 1 — แก้ที่ วิธีที่ 1 เปลี่ยนเป็น chat template แบบ Qwen ใน `visual_qa.ipynb` แล้วเก็บผลใส่ `pred[...]` → `write_submission(pred)`
-2. `Qwen/Qwen3-VL-4B-Instruct` (มี `-2B-`/`-8B-`) — ใหม่สุดปลายปี 2025 ดีขึ้นทุกด้าน `2B` รัน free-tier ได้ — โหลดด้วย `Qwen3VLForConditionalGeneration`
-3. PaliGemma2 (วิธีที่ 3): ใช้ `google/paligemma2-3b-mix-448` (instruction-tuned แล้ว zero-shot ได้) หรือ `-pt-448` (คมขึ้น) prompt `"caption th\n"`
-4. QLoRA 4-bit fine-tune (`peft` + `bitsandbytes`, `r=8-16, alpha=16-32`) — ปรับ VLM 3B-8B บน GPU 16GB, เทรน <1% params ได้ BLEU ขยับ
-5. เสริม: `florence-community/Florence-2-large` (ไม่ต้อง trust_remote_code, caption อังกฤษ แปลทีหลัง), vision encoder `google/siglip2-so400m-patch14-384`
-
-### B. Visual QA / OCR ไทย — `visual_qa.ipynb`
-
-1. เลื่อน `Qwen2.5-VL` เป็นวิธีหลัก: ปลดคอมเมนต์บล็อก Qwen (ทางเลือก) เปลี่ยนเป็น `-7B-` ถ้าไหว — BLIP-VQA ตอบไทยไม่ได้/OCR อ่อน, Qwen ตอบไทย + อ่านตัวอักษรได้
-2. `Qwen/Qwen3-VL-4B-Instruct` (`-2B-`) — DocVQA/ChartVQA ไทยดีขึ้น
-3. OCR ไทยเฉพาะทาง:
-   - `scb10x/typhoon-ocr-7b` (`pip install typhoon-ocr`) — document parsing ไทย-อังกฤษ ออก Markdown/HTML รักษาเลย์เอาต์ ตัวท็อปสำหรับเอกสารไทย
-   - `stepfun-ai/GOT-OCR-2.0-hf` — OCR generalist เล็ก เร็ว (716M) ไม่ต้อง trust_remote_code
-   - `scb10x/typhoon2-qwen2vl-7b-vision-instruct` — VQA ไทยที่ต้องเข้าใจบริบท
-   - `EasyOCR` (`['th','en']`) / `PaddleOCR` — baseline CPU เร็ว
-4. VLM open อื่น: `OpenGVLab/InternVL3-8B`, `meta-llama/Llama-3.2-11B-Vision-Instruct` (รองรับ th), `allenai/Molmo-7B-D-0924`
-
-### ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (Multimodal)
-
-1. วัดให้ถูก: ยืนยัน `thai_bleu()` (newmm) cross-check `pythainlp.benchmarks.bleu_score(..., tokenize="newmm")`
-2. รัน วิธีที่ 1 เดิมให้ได้ baseline 1 ไฟล์
-3. Captioning อัปง่าย: `Qwen/Qwen2.5-VL-3B-Instruct` zero-shot สั่งเป็นไทย วัด BLEU เทียบ
-4. VQA/OCR อัปง่าย: ปลดคอมเมนต์ Qwen ใน `visual_qa.ipynb` ใช้แทน BLIP-VQA
-5. OCR เอกสารไทย: เสียบ `scb10x/typhoon-ocr-7b` (จุดที่คะแนนกระโดดเยอะสุด)
-6. ดันสุด (GPU 16GB + train JSON): QLoRA fine-tune `Qwen2.5-VL-7B` / `PaliGemma2-3b-pt-448`
-7. ของใหม่สุด: `Qwen/Qwen3-VL-4B-Instruct` (`2B` บนเครื่องเล็ก)
-8. รีดท้าย: ensemble (Typhoon OCR + Qwen3-VL) หรือ few-shot แล้วเลือกไฟล์ `thai_bleu()` สูงสุด
+### ถ้าอยากได้คะแนนเพิ่ม (Multimodal)
+1. วัด `thai_bleu()` (newmm) ให้ถูกก่อน
+2. captioning/VQA อัปง่าย -> `Qwen/Qwen3-VL-4B-Instruct` zero-shot (ใช้ `qwen-vl-utils` เตรียม input)
+3. OCR เอกสารไทย -> `Typhoon OCR V1.5` (จุดคะแนนกระโดดสุด)
+4. fine-tune VLM เร็ว/VRAM น้อย -> `unsloth` (FastVisionModel) + QLoRA 4-bit
+5. inference เยอะ ๆ เร็ว ๆ -> `vllm` / `lmdeploy` ; เอกสาร PDF -> `docling`/`marker-pdf`/`surya-ocr`
 
 ---
 
-## Tabular — Advanced / SOTA (อัปเดต)
+## Tabular — SOTA refresh (mid-2026)
 
-ภาพรวม 2025-2026 (TabArena, NeurIPS 2025): tabular foundation models (in-context learning) มาแรงสุดสำหรับข้อมูลเล็ก-กลาง — `TabPFNv2`, `TabPFN-2.5` (~50k แถว), `TabICL` (classification, ~500k), `Mitra`; GBDT (`CatBoost` นำ) ยังเป็นกระดูกสันหลัง; และ `weighted ensemble` ของหลายตระกูลชนะโมเดลเดี่ยวเสมอ
+### AutoGluon = AutoML ตัวหลัก (bump version)
+- `pip install autogluon` -> `1.5.x` ; preset `extreme` ยังแรงสุด (รื้อใหม่ใน 1.5: portfolio = `TabPFNv2 + TabICL + Mitra + TabDPT + TabM + RealMLP + CatBoost/LightGBM/XGBoost + TabPrep-LightGBM`, win-rate 70% เหนือ 1.4)
+- `extreme` ต้อง GPU ~20GB+ และ `pip install autogluon.tabular[tabarena]` ; ไม่มี GPU ใช้ preset ใหม่ `best_v150`/`high_v150` (เร็วกว่า, CPU ได้)
 
-### Level-up 1 — AutoGluon preset `extreme` (ฟรีเกือบทุกอย่างในคำสั่งเดียว)
-AutoGluon 1.4+ preset `extreme` รวม `TabPFNv2 + TabICL + Mitra + TabM + RealMLP + CatBoost/LightGBM/XGBoost` แล้ว ensemble ให้ (1.5 เพิ่ม `TabPFN-2.5` + `TabDPT`) — `pip install -U "autogluon.tabular[all]"` — แก้ที่ cell-9 ทั้ง classification/regression เปลี่ยน `presets="best_quality"` → `presets="extreme"` (ถ้าเวอร์ชันเก่าไม่รู้จัก ให้อัปก่อน หรือ fallback `"best_quality"`)
+### Tabular foundation models
+- `TabICLv2` (ICML 2026, ของใหม่ที่ควรเพิ่ม): tuning-free, Apache/permissive, sklearn API, สเกลถึงล้านแถว, ชนะ XGB/CatBoost/LGBM ~80% ของชุด -> `pip install tabicl` (`from tabicl import TabICLClassifier`)
+- `TabPFN` -> `pip install tabpfn` (8.x, default = `TabPFN-3`) ; limit แก้ใหม่: v2 = 10K แถว (permissive license), 2.5/2.6 = ~50-100K, TabPFN-3 = สูงสุด ~1M (rows/feature trade-off) -- หมายเหตุ: 2.5/2.6/3  license ห้ามใช้เชิงพาณิชย์, v2 ใช้ได้
+- `Mitra` (autogluon/mitra-classifier, Apache-2.0): เก่งสุดบน data เล็ก (<5K)
 
-### Level-up 2 — เพิ่ม `TabPFN v2` แล้ว blend (จุดทองสำหรับ heart disease n<10k)
-`pip install tabpfn` (รีดเพิ่ม `pip install "tabpfn-extensions[post_hoc_ensembles]"`) — SOTA ตารางเล็ก (≤10k แถว, ≤500 ฟีเจอร์) มักเก่งคนละทางกับ GBDT blend แล้ว +0.5-2 จุด — เพิ่มเป็นเซลล์ใหม่ต่อท้ายวิธีที่ 2 ใน `classification.ipynb`:
+### Cool: cleanlab (จุดคะแนนกระโดดที่มือใหม่ลืม)
+- `pip install cleanlab` -> หา "label ผิด/แถวเสีย" ด้วย `find_label_issues` แล้วลบ/แก้ก่อนเทรน มักดันคะแนนเยอะสุดในงานตาราง
 
-```python
-# === เซลล์ใหม่: TabPFN v2 (OOF) + blend ===  (classification.ipynb วิธีที่ 2)
-# !pip -q install tabpfn
-import numpy as np
-from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import roc_auc_score
-from tabpfn import TabPFNClassifier
-Xn  = X.apply(lambda c: c.cat.codes if str(c.dtype)=="category" else c).astype("float32")
-Xten= Xte.apply(lambda c: c.cat.codes if str(c.dtype)=="category" else c).astype("float32")
-oof_tp=np.zeros(len(y)); pred_tp=np.zeros(len(Xten))
-for tr,va in StratifiedKFold(5,shuffle=True,random_state=42).split(Xn,y):
-    clf=TabPFNClassifier(device="cuda" if __import__("torch").cuda.is_available() else "cpu")
-    clf.fit(Xn.iloc[tr],y[tr])
-    oof_tp[va]=clf.predict_proba(Xn.iloc[va])[:,1]; pred_tp+=clf.predict_proba(Xten)[:,1]/5
-print("TabPFN OOF AUC =", round(roc_auc_score(y,oof_tp),4))
-best_w,best=0.5,0
-for w in np.linspace(0,1,21):
-    s=roc_auc_score(y, w*oof_tp+(1-w)*oof)   # oof = LightGBM OOF (หรือ predictor.predict_proba_oof() ของ AutoGluon)
-    if s>best: best,best_w=s,w
-print(f"best blend w(TabPFN)={best_w:.2f} OOF AUC={best:.4f}")
-out=sample.copy(); out[TARGET]=best_w*pred_tp+(1-best_w)*pred   # AUC ส่ง prob
-out.to_csv("submission_blend.csv",index=False)
-```
-blend กับ AutoGluon ตรง ๆ: ดึง OOF ด้วย `predictor.predict_proba_oof()` (ต้อง fit ด้วย preset ที่ทำ bagging) แล้วใช้แทน `oof`
-
-### Level-up 3 — `TabICL` (classification ตารางใหญ่ n หลายหมื่น-แสน)
-`pip install tabicl` — foundation model classification สเกล ~500k แถว เร็วกว่า TabPFNv2 ~10x และชนะบนชุด >10k — drop-in แทน `TabPFNClassifier` (`from tabicl import TabICLClassifier`) (regression ใช้ไม่ได้)
-
-### Level-up 4 — `RealMLP` / `TabM` (deep tabular เพิ่ม diversity)
-`pip install pytabkit` (`RealMLP_TD_Classifier`/`Regressor`) — ต่างทางจาก GBDT/TabPFN, blend แล้วช่วย, ใช้ได้ทั้ง cls/reg — หรือได้มาฟรีใน AutoGluon `extreme`
-
-### Level-up 5 — เพิ่ม `CatBoost` + `XGBoost` แล้ว blend
-`pip install catboost xgboost` — CatBoost เก่งสุดกลุ่ม default จัดการ categorical native; 3 ตระกูล GBDT error คนละทาง blend แล้วได้เพิ่ม — ก็อปลูป KFold เดิม เก็บ `oof_cat/oof_xgb` ไป blend
-
-### Level-up 6 — จูน GBDT ด้วย `Optuna` (50+ trials)
-`pip install optuna` — ครอบ `LGBMClassifier` ด้วย study หา `num_leaves, learning_rate, min_child_samples, reg_lambda, feature_fraction` โดยใช้ OOF เป็น objective
-
-### Level-up 7 — `Hill climbing` / `Stacking` (เทคนิคชนะ Kaggle 2025)
-รวบ OOF ทุกตัว (`oof, oof_tp, oof_cat, oof_ag`) → (ก) hill climbing เติมโมเดลทีละตัวพร้อม weight เก็บเฉพาะที่ทำ OOF ดีขึ้น, หรือ (ข) `Ridge().fit(oof_matrix, y)` เป็น meta-model
-
-ข้อควรระวัง: blend/stacking ต้องทำบน OOF เดียวกัน (fold/seed เดียว) ไม่งั้น leak; fit Imputer/Scaler/SMOTE ในแต่ละ fold; เลือก submission จาก CV OOF ไม่ใช่ public LB; TabPFNv2 จำกัด ≤10k แถว (เกินใช้ TabPFN-2.5 / TabICL)
-
-### ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (Tabular)
-
-1. `presets="best_quality"` → `presets="extreme"` (cell-9 ทั้งสองไฟล์) — ผลตอบแทนต่อแรงสูงสุด
-2. เพิ่ม `TabPFN v2` blend OOF (heart disease n<10k คือจุดแข็ง)
-3. เพิ่ม `CatBoost` (+ `XGBoost`) เพื่อ diversity
-4. เปลี่ยนเฉลี่ยตรง ๆ เป็น `hill climbing` / `Ridge stacking` บน OOF
-5. จูน GBDT ด้วย `Optuna` 50+ trials
-6. ข้อมูลใหญ่ (>10k): TabPFN → `TabICL`; เพิ่ม `RealMLP`
-7. regression/imbalanced: ตรวจ metric, multi-seed averaging ก่อน stacking หลายชั้น
+### ถ้าอยากได้คะแนนเพิ่ม (Tabular)
+1. `presets="best_quality"` -> `presets="extreme"` (มี GPU) ; ไม่มี GPU -> `best_v150`
+2. รัน `cleanlab` ลบ label ผิดก่อนเทรน
+3. เพิ่ม `TabICLv2` + `TabPFN` (v2 หรือ 2.5) แล้ว blend OOF
+4. เพิ่ม `CatBoost`/`XGBoost` เพื่อ diversity ; จูนด้วย `optuna`
+5. stacking/hill-climbing บน OOF
 
 ---
 
-## Time-Series / Signal — Advanced / SOTA (อัปเดต)
+## Time-Series / Signal — SOTA refresh (mid-2026)
 
-### A) Signal / Time-Series Classification
+### Forecasting foundation models (top tier ใหม่)
+- `amazon/chronos-2` = default zero-shot (univariate+multivariate+covariates, นำ win-rate บน fev-bench/GIFT-Eval) -> ผ่าน AutoGluon-TS `presets="chronos2"` หรือ pip `chronos-forecasting`
+- `google/timesfm-2.5-200m-pytorch` (และ `-transformers`) -> `pip install timesfm`
+- `NX-AI/TiRex` (xLSTM ~35M, เล็กแต่แรง, #2 fev-bench) -> `pip install tirex` (license ระวังเชิงพาณิชย์)
+- `Datadog/Toto-2.0-*` family (แทน Toto-Open-Base-1.0; `-313m` default, `-2.5B` แม่นสุด) -> `pip install toto-ts`
+- `Salesforce/moirai-2.0-R-small`, `thuml/sundial-base-128m`, `tabpfn-time-series` (ซีรีส์สั้น)
+- AutoGluon-TS `1.5` : `presets="best_quality"` (auto-ensemble) หรือ `"chronos2"` (zero-shot)
 
-`MiniRocket` — easy big win
-- `pip install sktime` — `from sktime.classification.kernel_based import RocketClassifier` (หรือ `MiniRocket` transformer)
-- แปลง raw window เป็นฟีเจอร์ด้วย convolution สุ่มตายตัว เร็วมาก (CPU ไหว) แล้วต่อ `RidgeClassifierCV` แม่นระดับ near-SOTA บน UCR ดีกว่าฟีเจอร์ spectral เดิมเกือบทุกครั้ง
-- แก้ที่ `signal_classification.ipynb` cell `[9]`: ป้อน raw window เข้า `MiniRocket().fit_transform(X)` แล้วเสียบเป็น `Xtr` ของ cell `[11]` (AutoGluon) หรือ `[13]` (LightGBM + GroupKFold) — โครง CV เดิมไม่ต้องแก้
-- ตัวพี่: `MultiRocket`, `HYDRA`
+### Classification / biosignal
+- ฟีเจอร์เร็ว: `MiniRocket`/`MultiRocket`/`HYDRA` ตอนนี้อยู่ใน `aeon` (มาตรฐานใหม่ของ TSC) -> `from aeon.classification.convolution_based import MiniRocketClassifier`
+- TS foundation: `paris-noah/MantisV2`/`MantisPlus` (แทน Mantis-8M), `AutonLab/MOMENT-1-large`
+- EEG FM ใหม่ (ผ่าน `braindecode[hub]` API เดียว): `CBraMod` (`braindecode/cbramod-pretrained`), `REVE` (pretrain 25,000 คน) -- แทน LaBraM/EEGPT/BIOT ที่เริ่มเก่า
+- ECG FM: `PKUDigitalHealth/ECGFounder` (วินิจฉัย 150 label out-of-the-box)
+- sleep: `yasa` 0.7.0 (zero-shot staging) ; ECG/PPG: `neurokit2`
 
-`Catch22 / tsfresh` (feature-based เสริม): `pip install pycatch22` (22 ฟีเจอร์เด็ด เร็ว) หรือ `tsfresh` (+`select_features`) — เติมต่อท้ายฟีเจอร์ spectral ใน cell `[9]`
+### ถ้าอยากได้คะแนนเพิ่ม (Time-Series)
+1. classification: `MiniRocket` (aeon) แทนฟีเจอร์ spectral -> ต่อ AutoGluon/LightGBM
+2. forecasting: `Chronos-2` ผ่าน AutoGluon-TS `presets="chronos2"` (zero-shot)
+3. เติม `tsfresh`/`pycatch22` ฟีเจอร์ ; sleep ลอง `yasa` ก่อน
+4. EEG มี GPU -> `CBraMod`/`REVE` (braindecode) ; ECG -> `ECGFounder`
+5. ensemble FM + LightGBM
 
-`Mantis-8M` (TS classification foundation model): `pip install mantis-tsfm` / HF `paris-noah/Mantis-8M` — ViT-based 8M เบา ดึง embedding zero-shot หรือ fine-tune — เพิ่ม "วิธีที่ 4" ใต้ cell `[13]`
+---
 
-`MOMENT` (general TS foundation model): `pip install momentfm` / HF `AutonLab/MOMENT-1-large` — embedding zero-shot/linear-probe (univariate, กิน VRAM)
+## Audio / Speech — SOTA refresh (mid-2026)
 
-EEG เฉพาะทาง (ถ้าโจทย์ EEG/sleep): `LaBraM` (HF `braindecode/labram-pretrained`), `EEGPT`, `BIOT`, และทางลัด `YASA` (`pip install yasa`, sleep staging สำเร็จรูป ~87% ไม่ต้องเทรน) — ใช้แทน 1D-CNN (วิธีที่ 3)
+### จำแนกเสียง — วิธีง่ายแต่แรง (ใส่เป็น วิธีที่ 1.5 ในโน้ตบุ๊กแล้ว)
+- zero-shot ไม่ต้องเทรน: `laion/clap-htsat-fused` (CLAP) -> `pipeline("zero-shot-audio-classification")` ใส่ชื่อคลาสเป็นข้อความ
+- embeddings + classifier ง่าย ๆ (แรงกว่า MFCC เยอะ): `mispeech/ced-base` (AudioSet tagger), `mispeech/dasheng-base` (general), `laion/larger_clap_general` -> ดึง embedding แล้วต่อ LightGBM/AutoGluon
+- baseline เดิม: `MIT/ast-finetuned-audioset-...` (AST), PANNs (`panns-inference`)
 
-baseline academic: `HIVECOTEV2` (sktime) แม่นสุด UCR แต่ช้า; backbone สมัยใหม่ `InceptionTime`, `PatchTST`
+### Thai ASR (ถอดเสียงไทย)
+- `typhoon-ai/typhoon-whisper-turbo` = สมดุลสุด (เร็ว+แม่น) ; `typhoon-ai/typhoon-whisper-large-v3` = แม่นสุด
+- `typhoon-ai/typhoon-asr-realtime` = streaming/CPU (115M, ถูกกว่า ~45x)
+- `nectec/Pathumma-whisper-th-large-v3`, `biodatlab/whisper-th-large-v3-combined` = Thai baseline ดี
+- เร็วขึ้น: `faster-whisper` ; วัด CER/WER ด้วย `jiwer`/pythainlp
+- หมายเหตุ: NVIDIA `parakeet`/`canary` แรงแต่ไม่รองรับไทย (ใช้กับอังกฤษ/EU)
 
-### B) Forecasting
-
-`Chronos-Bolt` / `Chronos-2` — zero-shot upgrade (แนะนำสุด)
-- ผ่าน AutoGluon: `pip install -U "autogluon.timeseries>=1.5"` / HF `amazon/chronos-bolt-base`, `amazon/chronos-2`
-- Chronos-Bolt zero-shot แม่น เร็วกว่า Chronos ~250x (CPU ได้); Chronos-2 (Dec 2025) รองรับ covariates นำ leaderboard
-- แก้ที่ `forecasting.ipynb` cell `[11]`: `TimeSeriesPredictor(...).fit(tsdf, presets="chronos2")` (หรือ `"bolt_base"`) + อัป AG `>=1.5` ที่ cell `[3]`
-
-`TimesFM 2.5` (Google): `pip install timesfm` / HF `google/timesfm-2.5-200m-transformers` — decoder-only forecasting zero-shot แข็ง long-horizon — เพิ่ม "วิธีที่ 3" ใต้ cell `[11]`, ensemble กับ LightGBM
-
-`TabPFN-TS` (ซีรีส์สั้น/น้อย): `pip install tabpfn-time-series` — แปลง forecasting เป็น tabular regression + TabPFN-v2 zero-shot
-
-`AutoGluon-TimeSeries 1.5` (ตัวรวมร่าง): รวม Chronos-2/Toto/stack ensembling/covariate regressor — เปลี่ยน preset อย่างเดียวได้คะแนนเพิ่ม
-
-### ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (Time-Series)
-
-1. `MiniRocket` แทนฟีเจอร์ spectral ใน `signal_classification.ipynb` cell `[9]` → ต่อ `[11]`/`[13]` (classification คะแนนเด้งสุด)
-2. `Chronos-Bolt`/`Chronos-2` ใน `forecasting.ipynb` cell `[11]` ผ่าน AutoGluon `presets="chronos2"` (อัป AG `>=1.5`)
-3. เติม `pycatch22` + `tsfresh` เข้าฟีเจอร์ cell `[9]` รวมกับ MiniRocket
-4. sleep โดยตรง: ลอง `YASA` zero-shot เทียบก่อน
-5. `Mantis-8M` / `MOMENT` เป็นวิธีที่ 4 (embedding + classifier เดิม, มี GPU)
-6. Forecasting เสริม: `TimesFM 2.5` / `TabPFN-TS` แล้ว ensemble กับ LightGBM + Chronos
-7. ensemble หลายโมเดลปิดท้ายทั้งสอง notebook (มักได้อีก 1-2%)
-8. EEG ที่มี GPU/เวลา: fine-tune `LaBraM`/`EEGPT`/`BIOT` แทน 1D-CNN
+### ถ้าอยากได้คะแนนเพิ่ม (Audio)
+1. แทน MFCC -> `CLAP zero-shot` หรือ `CED/Dasheng embeddings` + LightGBM/AutoGluon (วิธีที่ 1.5)
+2. augment ด้วย `audiomentations` (กัน overfit)
+3. มี GPU -> fine-tune หัว AST/CED ; ASR ไทย -> Typhoon Whisper
+4. ensemble หลาย embedder
