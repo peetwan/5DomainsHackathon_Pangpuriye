@@ -1,6 +1,6 @@
 import sys; sys.path.insert(0, "_build")
 from _nbutil import md, code, write_nb
-from _common import kaggle_md, kaggle_cell, submit_md, submit_cell
+from _common import kaggle_md, kaggle_cell, submit_md, submit_cell, inspect_md, inspect_cell
 
 c = []
 c.append(md(r"""# Multimodal (Vision-Language) — โจทย์แบบ "รูป -> ข้อความ"
@@ -57,6 +57,7 @@ def write_submission(pred_dict, out="submission.csv"):
     if n_fb: print("เตือน: เติม fallback", n_fb, "แถว (ถ้าเยอะแปลว่า id ไม่ตรง -> เช็ค ID_COL/นามสกุลไฟล์)")
     o.to_csv(out,index=False,encoding="utf-8-sig"); print("บันทึก",out,o.shape); return o"""))
 
+c.append(inspect_md()); c.append(inspect_cell())
 c.append(md(r"""## วิธีที่ 1 — โมเดล Thai-COCO สำเร็จรูป (ง่ายสุด ไม่ต้องเทรน)
 
 ใช้โมเดลที่เคยเทรนกับคลังข้อมูลเดียวกัน generate คำบรรยายได้เลยใน <1 ชม."""))
@@ -155,6 +156,7 @@ print("test คอลัมน์:",list(test.columns)); display(test.head()); d
 assert IMG_ID_COL in test.columns, f'ไม่มีคอลัมน์ {IMG_ID_COL} -- เลือกจาก {list(test.columns)}'
 assert (Q_COL is None) or (Q_COL in test.columns), f'ไม่มีคอลัมน์ {Q_COL} -- เลือกจาก {list(test.columns)}'"""))
 
+c.append(inspect_md()); c.append(inspect_cell())
 c.append(md(r"""## วิธีที่ 1 — BLIP-VQA สำเร็จรูป (ง่ายสุด ไม่ต้องเทรน)
 
 ตอบคำถามจากรูปแบบ zero-shot สำหรับภาษาไทยที่ซับซ้อนแนะนำเปลี่ยนเป็น Qwen2.5-VL (ดูคอมเมนต์)"""))

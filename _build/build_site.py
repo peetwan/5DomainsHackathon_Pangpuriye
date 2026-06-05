@@ -154,6 +154,7 @@ SECTIONS.append(("auto", "🪄", "AUTO SOLVER (ปุ่มเดียว)",
                  + nb2html("00_AUTO_SOLVER.ipynb")))
 SECTIONS.append(("start", "🏁", "เริ่มที่นี่", md2html(read("START_HERE.md"))))
 SECTIONS.append(("colab", "🖥️", "คู่มือ Colab", md2html(read("COLAB_GUIDE.md"))))
+SECTIONS.append(("ptypes", "🗺️", "แผนที่โจทย์ทั้งหมด", md2html(read("PROBLEM_TYPES.md"))))
 SECTIONS.append(("router", "🧭", "ตัวนำทาง (Router)",
                  router_widget + md2html(read("README.md"))))
 for tid, icon, title, folder, nbs in TOPICS:

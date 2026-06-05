@@ -138,6 +138,18 @@ def comp_image():
     pd.DataFrame({"id": range(10), "answer": 0}).to_csv(f"{d}/sample_submission.csv", index=False)
     return d
 
+def comp_multiclass():
+    d = mk_dir(); n = 200
+    X = pd.DataFrame(rng.normal(size=(n, 4)), columns=[f"f{i}" for i in range(4)])
+    X["target"] = rng.integers(0, 3, n)
+    tr = X.iloc[:150].copy(); tr.insert(0, "id", range(150))
+    te = X.iloc[150:].drop(columns=["target"]).reset_index(drop=True); te.insert(0, "id", range(50))
+    tr.to_csv(f"{d}/train.csv", index=False); te.to_csv(f"{d}/test.csv", index=False)
+    s = pd.DataFrame({"id": range(50)})
+    for cc in [0, 1, 2]: s[f"class_{cc}"] = 0.0
+    s.to_csv(f"{d}/sample_submission.csv", index=False)
+    return d
+
 # ---------------- notebook runner ----------------
 SKIP = ["get_data(", "kaggle competitions submit", "kaggle competitions submissions",
         "AutoModelForSequenceClassification", "Seq2SeqTrainer", "AutoModelForSeq2SeqLM",
@@ -240,6 +252,7 @@ trial("auto_tabclf", lambda: sim_auto("tabular clf", comp_tabular_clf, "tabular"
 trial("auto_tabreg", lambda: sim_auto("tabular reg", comp_tabular_reg, "regression", 50, ["id", "SalePrice"]))
 trial("auto_text",   lambda: sim_auto("text clf", comp_text_clf, "text", 20, ["id", "label"]))
 trial("auto_image",  lambda: sim_auto("image clf", comp_image, "image", 10, ["id", "answer"]))
+trial("auto_multicol", lambda: sim_auto("multiclass-proba", comp_multiclass, "tabular", 50, ["id", "class_0", "class_1", "class_2"]))
 
 print(f"\n==== สรุป: {sum(1 for r in results if r)}/{len(results)} ผ่าน ====")
 sys.exit(0 if all(results) else 1)

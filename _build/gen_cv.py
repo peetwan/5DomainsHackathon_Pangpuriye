@@ -1,6 +1,6 @@
 import sys; sys.path.insert(0, "_build")
 from _nbutil import md, code, write_nb
-from _common import kaggle_md, kaggle_cell, submit_md, submit_cell
+from _common import kaggle_md, kaggle_cell, submit_md, submit_cell, inspect_md, inspect_cell
 
 # ============================================================
 # โน้ตบุ๊ก 1: Image Classification
@@ -57,6 +57,7 @@ TEST_EXT   = ".jpg"              # << แก้ถ้านามสกุลไ
 NUM_CLASSES = int(df[LABEL_COL].nunique())
 print("จำนวนคลาส =", NUM_CLASSES)"""))
 
+c.append(inspect_md()); c.append(inspect_cell())
 c.append(md(r"""## วิธีที่ 1 — AutoGluon (ง่ายสุด มือใหม่ทำแค่นี้ก็ได้คะแนนดี)
 
 แค่ทำตารางที่มี path รูป + ป้าย แล้วสั่ง fit เดี๋ยว AutoGluon เลือกโมเดล + เทรน + รวมโมเดลให้เอง

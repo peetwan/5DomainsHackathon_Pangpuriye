@@ -63,6 +63,40 @@ for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)'''
     return code(src.replace("__COMP__", comp))
 
+def inspect_md():
+    return md(r"""## 🔎 โจทย์นี้ต้องส่งอะไร + วัดด้วยอะไร (รันก่อนทำ submission)
+
+เซลล์นี้ตอบ 3 คำถามที่มือใหม่มักไม่รู้:
+- ต้องเติม "คอลัมน์อะไร" ลง submission และเป็น "ชนิดไหน" (ดูจาก sample_submission)
+- โจทย์วัดด้วย "metric อะไร" (ดึงจาก Kaggle ให้อัตโนมัติ)
+- ต้องส่งเป็น "ป้าย / ความน่าจะเป็น / ตัวเลข" แบบไหน""")
+
+def inspect_cell():
+    src = (
+        '# บอกว่าต้องเติมอะไรลง submission + ตัวอย่างค่าที่ sample ให้มา\n'
+        'print("ไฟล์ส่งต้องมีคอลัมน์:", list(sample.columns), "| จำนวนแถว:", len(sample))\n'
+        'for _c in list(sample.columns)[1:]:\n'
+        '    print(f"  - เติม \'{_c}\': ชนิด {sample[_c].dtype}, ตัวอย่างค่าใน sample = {list(sample[_c].dropna().unique()[:3])}")\n'
+        '# ดึง metric จาก Kaggle อัตโนมัติ (ถ้าต่อ API ได้)\n'
+        '_metric = None\n'
+        'try:\n'
+        '    from kaggle.api.kaggle_api_extended import KaggleApi\n'
+        '    _api = KaggleApi(); _api.authenticate()\n'
+        '    for _co in _api.competitions_list(search=COMP):\n'
+        '        if str(getattr(_co, "ref", "")).rstrip("/").split("/")[-1] == COMP:\n'
+        '            _metric = getattr(_co, "evaluationMetric", None) or getattr(_co, "evaluation_metric", None); break\n'
+        'except Exception:\n'
+        '    pass\n'
+        'def _how_to_send(m):\n'
+        '    m = (m or "").lower()\n'
+        '    if any(k in m for k in ["auc","roc","log loss","logloss","brier","probab"]): return "ความน่าจะเป็น (เลข 0-1)"\n'
+        '    if any(k in m for k in ["rmse","mae","mse","r2","rmsle","error","mape","smape"]): return "ตัวเลขต่อเนื่อง"\n'
+        '    return "ป้าย/คลาส (เช่น 0/1 หรือชื่อคลาส)"\n'
+        'print("\\nMetric (ดึงจาก Kaggle):", _metric or "ดึงไม่ได้ -> เปิด tab Evaluation บนหน้า Kaggle อ่านเอง")\n'
+        'print("=> ปกติต้องส่งเป็น:", _how_to_send(_metric), "(เช็คกับ tab Evaluation อีกที)")'
+    )
+    return code(src)
+
 def submit_md():
     return md(r"""## ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle
 

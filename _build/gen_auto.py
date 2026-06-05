@@ -44,6 +44,24 @@ train = pd.read_csv(_find("train.csv")) if _find("train.csv") else None
 test  = pd.read_csv(_find("test.csv"))  if _find("test.csv")  else None
 train_img, test_img = _img_dir("train"), _img_dir("test")
 print("ไฟล์ส่งต้องมีคอลัมน์:", list(sample.columns), "| id =", ID_COL, "| คำตอบ =", ANS_COL)
+for _c in list(sample.columns)[1:]:
+    print(f"  - เติม '{_c}': ชนิด {sample[_c].dtype}, ตัวอย่างค่าใน sample = {list(sample[_c].dropna().unique()[:3])}")
+
+# ดึง metric จาก Kaggle เพื่อรู้ว่าต้องส่ง ป้าย/ความน่าจะเป็น/ตัวเลข (ถ้าดึงไม่ได้ -> เดาจากข้อมูล)
+_metric = None
+try:
+    from kaggle.api.kaggle_api_extended import KaggleApi
+    _api = KaggleApi(); _api.authenticate()
+    for _co in _api.competitions_list(search=COMP):
+        if str(getattr(_co, "ref", "")).rstrip("/").split("/")[-1] == COMP:
+            _metric = getattr(_co, "evaluationMetric", None) or getattr(_co, "evaluation_metric", None); break
+except Exception:
+    pass
+_ml = (_metric or "").lower()
+WANT_PROB = (METRIC in ("roc_auc","auc")) or any(k in _ml for k in ["auc","roc","log loss","logloss","brier","probab"])
+MULTICOL  = len(sample.columns) > 2   # submission หลายคอลัมน์ = ส่งความน่าจะเป็นต่อคลาส
+print("Metric (จาก Kaggle):", _metric or "ดึงไม่ได้ (เปิด tab Evaluation อ่านเอง)",
+      "| auto จะส่งเป็น:", "ความน่าจะเป็น" if (WANT_PROB or MULTICOL) else "ป้าย/ตัวเลข")
 
 assert train is not None, "หา train.csv ไม่เจอ -> เช็ค path/ใช้โน้ตบุ๊กเฉพาะ"
 
@@ -108,15 +126,24 @@ else:  # tabular / regression
     te = test.drop(columns=[c for c in [ID_COL] if c in test.columns])
     p = TabularPredictor(label=LABEL_COL, problem_type=("regression" if is_reg else None),
                          path="ag_auto").fit(tr, presets="best_quality", time_limit=600)
-    if (not is_reg) and METRIC in ("roc_auc","auc") and getattr(p, "positive_class", None) is not None:
-        out[ANS_COL] = p.predict_proba(te)[p.positive_class].values   # ส่งความน่าจะเป็น (AUC)
+    if is_reg:
+        out[ANS_COL] = p.predict(te).values
+    elif MULTICOL:
+        # submission หลายคอลัมน์ = ความน่าจะเป็นต่อคลาส -> เติมแต่ละคอลัมน์ให้ตรงชื่อคลาส
+        proba = p.predict_proba(te); name_map = {str(cc): cc for cc in proba.columns}
+        for col in list(sample.columns[1:]):
+            key = name_map.get(str(col)) or name_map.get(str(col).split("_")[-1])
+            out[col] = proba[key].values if key is not None else 0.0
+        print("  (เติมความน่าจะเป็นต่อคลาส", len(sample.columns)-1, "คอลัมน์)")
+    elif WANT_PROB and getattr(p, "positive_class", None) is not None:
+        out[ANS_COL] = p.predict_proba(te)[p.positive_class].values   # ส่งความน่าจะเป็น (AUC/log-loss)
     else:
         out[ANS_COL] = p.predict(te).values
         # งานจำแนก 2 คลาส: เซฟไฟล์ความน่าจะเป็นไว้ด้วย เผื่อ metric เป็น AUC
-        if (not is_reg) and getattr(p, "positive_class", None) is not None and train[LABEL_COL].nunique() == 2:
+        if getattr(p, "positive_class", None) is not None and train[LABEL_COL].nunique() == 2:
             o2 = sample.copy(); o2[ANS_COL] = p.predict_proba(te)[p.positive_class].values
             o2.to_csv("submission_proba.csv", index=False)
-            print("  (เซฟ submission_proba.csv ไว้ด้วย เผื่อโจทย์วัดด้วย AUC)")
+            print("  (เซฟ submission_proba.csv ไว้ด้วย เผื่อ metric เป็น AUC)")
 
 out.to_csv("submission.csv", index=False)
 print("\nเสร็จ! บันทึก submission.csv", out.shape);
