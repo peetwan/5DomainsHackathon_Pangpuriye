@@ -42,7 +42,8 @@
 ตั้งแต่โหลดข้อมูล -> เทรน -> สร้าง submission แล้วตรวจว่า submission ตรงรูปแบบ sample_submission
 (ไลบรารีหนัก autogluon/timm/pythainlp ถูก mock เพราะหนัก/ต้องเน็ต ; lightgbm/sklearn/scipy/torch รันจริง)
 
-ผลลัพธ์: ผ่าน 8/8 หัวข้อ ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN
+ผลลัพธ์: ผ่าน 12/12 (8 หัวข้อ + AUTO SOLVER 4 แบบ) ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN
+- `00_AUTO_SOLVER.ipynb` (ปุ่มเดียวจบ) เดาประเภทงานถูกทั้ง 4: tabular-clf, regression, text, image แล้วสร้าง submission ถูกฟอร์แมต
 - Tabular classification (ทั้ง accuracy และ AUC->ส่ง prob), Tabular regression
 - Text classification, Word segmentation (1 แถวต่อตัวอักษร 34 แถวถูกต้อง)
 - Signal classification (แบ่ง CV ตาม subject), Forecasting (recursive ไม่มี NaN), Image classification

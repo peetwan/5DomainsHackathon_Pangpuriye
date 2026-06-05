@@ -63,9 +63,195 @@ details.nb>*:not(summary){padding:0 14px}
  header h1{font-size:14px}
  body{font-size:15px}
 }
-</style></head><body><header><button id="burger" aria-label="menu">☰</button><div><h1>5 Domains Hackathon · Pangpuriye</h1><div class="sub">คู่มือสอบ AI 5 หัวข้อใหญ่ · เปิดที่ไหนก็ได้ ทั้งคอมและมือถือ</div></div></header><div class="wrap"><nav id="sidebar"><a class="navlink" data-t="start" href="#start">🏁 <span>เริ่มที่นี่</span></a><a class="navlink" data-t="colab" href="#colab">🖥️ <span>คู่มือ Colab</span></a><a class="navlink" data-t="router" href="#router">🧭 <span>ตัวนำทาง (Router)</span></a><a class="navlink" data-t="cv" href="#cv">🖼️ <span>Computer Vision</span></a><a class="navlink" data-t="nlp" href="#nlp">📝 <span>NLP</span></a><a class="navlink" data-t="mm" href="#mm">🎨 <span>Multimodal</span></a><a class="navlink" data-t="tab" href="#tab">📊 <span>Tabular</span></a><a class="navlink" data-t="ts" href="#ts">📈 <span>Time-Series</span></a><a class="navlink" data-t="sota" href="#sota">🚀 <span>SOTA อัปเดต</span></a><a class="navlink" data-t="verify" href="#verify">✅ <span>Verify (ตรวจแล้ว)</span></a><a class="navlink" data-t="deploy" href="#deploy">🚂 <span>Deploy / GitHub</span></a></nav><div class="scrim" id="scrim"></div><main><section id="start" class="section"><h1>เริ่มอ่านที่นี่ (สำหรับมือใหม่) 👋</h1>
+</style></head><body><header><button id="burger" aria-label="menu">☰</button><div><h1>5 Domains Hackathon · Pangpuriye</h1><div class="sub">คู่มือสอบ AI 5 หัวข้อใหญ่ · เปิดที่ไหนก็ได้ ทั้งคอมและมือถือ</div></div></header><div class="wrap"><nav id="sidebar"><a class="navlink" data-t="auto" href="#auto">🪄 <span>AUTO SOLVER (ปุ่มเดียว)</span></a><a class="navlink" data-t="start" href="#start">🏁 <span>เริ่มที่นี่</span></a><a class="navlink" data-t="colab" href="#colab">🖥️ <span>คู่มือ Colab</span></a><a class="navlink" data-t="router" href="#router">🧭 <span>ตัวนำทาง (Router)</span></a><a class="navlink" data-t="cv" href="#cv">🖼️ <span>Computer Vision</span></a><a class="navlink" data-t="nlp" href="#nlp">📝 <span>NLP</span></a><a class="navlink" data-t="mm" href="#mm">🎨 <span>Multimodal</span></a><a class="navlink" data-t="tab" href="#tab">📊 <span>Tabular</span></a><a class="navlink" data-t="ts" href="#ts">📈 <span>Time-Series</span></a><a class="navlink" data-t="sota" href="#sota">🚀 <span>SOTA อัปเดต</span></a><a class="navlink" data-t="verify" href="#verify">✅ <span>Verify (ตรวจแล้ว)</span></a><a class="navlink" data-t="deploy" href="#deploy">🚂 <span>Deploy / GitHub</span></a></nav><div class="scrim" id="scrim"></div><main><section id="auto" class="section"><h2>🪄 ขี้เกียจสุด? ใช้อันนี้</h2>
+<p>แก้แค่ชื่อ competition (หรืออัปโหลด zip) แล้วกดรัน มันเดาประเภทงานเอง + เทรน + สร้าง submission ให้อัตโนมัติ ครอบคลุม: จำแนกรูป / จำแนกข้อความ / ตาราง (จำแนก/ทำนายตัวเลข) / สัญญาณ-พยากรณ์ (ทำเป็นตาราง)</p>
+<p>เปิดไฟล์ <code>00_AUTO_SOLVER.ipynb</code> โค้ดทุกเซลล์อยู่ข้างล่างนี้ (กดปุ่ม copy ได้):</p><div class="nbmd"><h1>🪄 AUTO SOLVER — ปุ่มเดียวจบ (สำหรับคนที่อยากง่ายที่สุด)</h1>
+<p>โน้ตบุ๊กนี้ "เดาเอง" ว่าโจทย์เป็นงานประเภทไหน แล้วเลือกวิธี + เทรน + สร้าง submission ให้อัตโนมัติ</p>
+<p>คุณแก้แค่ <code>ที่เดียว</code> (ชื่อ competition หรืออัปโหลดไฟล์) แล้วกดรันทีละเซลล์จากบนลงล่าง</p>
+<p>ทำอัตโนมัติให้ได้: จำแนกรูป (image), จำแนกข้อความ (text), ตาราง-จำแนก/ทำนายตัวเลข (tabular/regression), สัญญาณ/พยากรณ์ (ทำเป็นตาราง)</p>
+<p>ทำให้ไม่ได้ (จะบอกให้ไปเปิดโน้ตบุ๊กเฉพาะ): ตัดคำ, segmentation, บรรยายรูป/VQA, detection -- พวกนี้ฟอร์แมตพิเศษ</p>
+<p>ขั้นตอน: (1) ติดตั้ง (2) ใส่ข้อมูล/ชื่อ comp (3) กดรันเซลล์ AUTO (4) ส่ง -- จบ</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง (กดรันรอ ~5-10 นาทีครั้งแรก)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.tabular[all]" "autogluon.multimodal" pandas numpy pillow</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
+<ul>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
+
+def get_data(comp):
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — กดรัน AUTO (เดา+เทรน+สร้าง submission ให้อัตโนมัติ)</h2>
+<p>ปกติไม่ต้องแก้อะไรในเซลล์นี้ มันจะ print ว่าเดาว่าเป็นงานอะไร + คอลัมน์ไหน ให้เช็คได้</p>
+<p>ถ้าเดาผิด ค่อยตั้ง <code>FORCE_TASK</code> / <code>METRIC</code> ที่บรรทัดบนสุดของเซลล์</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, pandas as pd, numpy as np
+IMG_EXT = (".jpg",".jpeg",".png",".bmp")
+
+# ===== ปรับเฉพาะถ้า auto เดาผิด (ปกติปล่อยไว้) =====
+FORCE_TASK = None    # &lt;&lt; ใส่ได้: "image" / "text" / "tabular" / "regression"
+METRIC     = None    # &lt;&lt; ใส่ "roc_auc" ถ้าโจทย์วัด AUC (จะได้ส่งความน่าจะเป็น)
+
+def _find(name):
+    h = glob.glob(os.path.join(DATA_DIR, "**", name), recursive=True); return h[0] if h else None
+def _img_dir(keyword):
+    cand = [d for d,_,fs in os.walk(DATA_DIR) if keyword in d.lower()
+            and any(f.lower().endswith(IMG_EXT) for f in fs)]
+    return max(cand, key=lambda d: len(os.listdir(d))) if cand else None
+
+sample = pd.read_csv(_find("sample_submission.csv"))
+ID_COL, ANS_COL = sample.columns[0], sample.columns[1]
+train = pd.read_csv(_find("train.csv")) if _find("train.csv") else None
+test  = pd.read_csv(_find("test.csv"))  if _find("test.csv")  else None
+train_img, test_img = _img_dir("train"), _img_dir("test")
+print("ไฟล์ส่งต้องมีคอลัมน์:", list(sample.columns), "| id =", ID_COL, "| คำตอบ =", ANS_COL)
+
+assert train is not None, "หา train.csv ไม่เจอ -&gt; เช็ค path/ใช้โน้ตบุ๊กเฉพาะ"
+
+# ----- กันงานฟอร์แมตพิเศษ (submission ไม่ใช่ 1 แถวต่อ 1 ตัวอย่าง test) -----
+if test is not None and len(sample) != len(test) and not (train_img and test_img):
+    raise SystemExit("งานนี้ submission ไม่ใช่ 1 แถวต่อ 1 แถวของ test (น่าจะเป็นตัดคำ/segmentation) "
+                     "-&gt; เปิด 00_MASTER_ROUTER.ipynb พิมพ์โจทย์ แล้วใช้โน้ตบุ๊กเฉพาะ")
+
+# ----- เดาคอลัมน์เป้าหมาย (คอลัมน์ที่อยู่ใน train แต่ไม่อยู่ใน test) -----
+def detect_target():
+    if test is not None:
+        cand = [c for c in train.columns if c not in test.columns and c != ID_COL]
+        if len(cand) == 1: return cand[0]
+    if ANS_COL in train.columns: return ANS_COL
+    return [c for c in train.columns if c != ID_COL][-1]
+
+# ----- เดาประเภทงาน -----
+def detect_task():
+    if FORCE_TASK: return FORCE_TASK
+    if train_img and test_img:
+        imgcols = [c for c in train.columns if train[c].astype(str).str.lower().str.endswith(IMG_EXT).mean() &gt; 0.5]
+        if imgcols: return "image"
+    textcols = [c for c in train.columns if train[c].dtype == object and c != ID_COL
+                and train[c].astype(str).str.len().mean() &gt;= 10]
+    if textcols: return "text"
+    tgt = detect_target()
+    if pd.api.types.is_numeric_dtype(train[tgt]) and train[tgt].nunique() &gt; 20: return "regression"
+    return "tabular"
+
+task = detect_task()
+print("ตรวจพบว่าเป็นงาน:", {"image":"จำแนกรูป","text":"จำแนกข้อความ","tabular":"ตาราง-จำแนกคลาส",
+                          "regression":"ตาราง-ทำนายตัวเลข"}.get(task, task))
+
+out = sample.copy()
+if task == "image":
+    from autogluon.multimodal import MultiModalPredictor
+    IMG_COL = [c for c in train.columns if train[c].astype(str).str.lower().str.endswith(IMG_EXT).mean() &gt; 0.5][0]
+    LABEL_COL = [c for c in train.columns if c not in (IMG_COL, ID_COL)][0]
+    exts = [os.path.splitext(f)[1] for f in os.listdir(test_img) if f.lower().endswith(IMG_EXT)]
+    ext = exts[0] if exts else ".jpg"
+    print("  รูป:", IMG_COL, "| ป้าย:", LABEL_COL, "| นามสกุลไฟล์ test:", ext)
+    tr = train.copy(); tr["image"] = tr[IMG_COL].apply(lambda n: os.path.join(train_img, str(n)))
+    p = MultiModalPredictor(label=LABEL_COL, path="ag_auto").fit(tr[["image", LABEL_COL]], time_limit=900)
+    td = sample.copy(); td["image"] = td[ID_COL].apply(lambda i: os.path.join(test_img, str(i)+ext))
+    out[ANS_COL] = p.predict(td[["image"]]).values
+
+elif task == "text":
+    from autogluon.multimodal import MultiModalPredictor
+    TEXT_COL = [c for c in train.columns if train[c].dtype == object and c != ID_COL
+                and train[c].astype(str).str.len().mean() &gt;= 10][0]
+    LABEL_COL = detect_target()
+    print("  ข้อความ:", TEXT_COL, "| ป้าย:", LABEL_COL)
+    p = MultiModalPredictor(label=LABEL_COL, path="ag_auto").fit(train[[TEXT_COL, LABEL_COL]], time_limit=600)
+    out[ANS_COL] = p.predict(test[[TEXT_COL]]).values
+
+else:  # tabular / regression
+    from autogluon.tabular import TabularPredictor
+    LABEL_COL = detect_target()
+    is_reg = (task == "regression")
+    print("  เป้าหมาย:", LABEL_COL, "| ชนิด:", "ทำนายตัวเลข" if is_reg else "จำแนกคลาส")
+    tr = train.drop(columns=[c for c in [ID_COL] if c in train.columns])
+    te = test.drop(columns=[c for c in [ID_COL] if c in test.columns])
+    p = TabularPredictor(label=LABEL_COL, problem_type=("regression" if is_reg else None),
+                         path="ag_auto").fit(tr, presets="best_quality", time_limit=600)
+    if (not is_reg) and METRIC in ("roc_auc","auc") and getattr(p, "positive_class", None) is not None:
+        out[ANS_COL] = p.predict_proba(te)[p.positive_class].values   # ส่งความน่าจะเป็น (AUC)
+    else:
+        out[ANS_COL] = p.predict(te).values
+        # งานจำแนก 2 คลาส: เซฟไฟล์ความน่าจะเป็นไว้ด้วย เผื่อ metric เป็น AUC
+        if (not is_reg) and getattr(p, "positive_class", None) is not None and train[LABEL_COL].nunique() == 2:
+            o2 = sample.copy(); o2[ANS_COL] = p.predict_proba(te)[p.positive_class].values
+            o2.to_csv("submission_proba.csv", index=False)
+            print("  (เซฟ submission_proba.csv ไว้ด้วย เผื่อโจทย์วัดด้วย AUC)")
+
+out.to_csv("submission.csv", index=False)
+print("\nเสร็จ! บันทึก submission.csv", out.shape);
+try: display(out.head())
+except Exception: print(out.head())</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import pandas as pd, glob, os
+FILE = "submission.csv"   # &lt;&lt; แก้เป็นไฟล์ที่จะส่ง เช่น "submission_lgbm.csv" หรือ "submission_timm.csv"
+# ตรวจรูปแบบก่อนส่งอัตโนมัติ (กันแก้ config ผิดแล้วส่งฟอร์แมตเพี้ยน -&gt; ได้ 0 คะแนน)
+_sub = pd.read_csv(FILE)
+_sam = glob.glob(os.path.join(DATA_DIR, "*ample*ubmission*.csv"))
+if _sam:
+    _s = pd.read_csv(_sam[0])
+    print("คอลัมน์ตรง sample:", list(_sub.columns)==list(_s.columns), "| จำนวนแถวตรง:", len(_sub)==len(_s))
+    assert list(_sub.columns)==list(_s.columns), f"คอลัมน์ไม่ตรง sample! {list(_sub.columns)} != {list(_s.columns)} -&gt; แก้ก่อนส่ง"
+print("พร้อมส่ง:", FILE, _sub.shape)
+!kaggle competitions submit -c {COMP} -f {FILE} -m "auto solver"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></section><section id="start" class="section"><h1>เริ่มอ่านที่นี่ (สำหรับมือใหม่) 👋</h1>
 <p>ชุดนี้ช่วยให้สอบ hackathon ได้ แม้ยังไม่ค่อยมีความรู้ จัดเป็น <code>หัวข้อใหญ่</code> ไว้ให้แล้ว</p>
 <p>แต่ละหัวข้อมีโน้ตบุ๊กที่ <code>รันจากบนลงล่างได้เลย</code> คอมเมนต์ไทยทุกจุด</p>
+<h2>🪄 ขี้เกียจสุด / รีบสุด -&gt; เปิด <code>00_AUTO_SOLVER.ipynb</code></h2>
+<p>แก้แค่ <code>ชื่อ competition</code> (หรืออัปโหลด zip) แล้วกดรันทีละเซลล์ -&gt; มันเดาเองว่าเป็นงานอะไร เทรนให้ สร้าง submission ให้ จบ</p>
+<p>ครอบคลุม: จำแนกรูป / จำแนกข้อความ / ตาราง (จำแนก/ทำนายตัวเลข) / สัญญาณ</p>
+<p>(งานพิเศษ ตัดคำ/segmentation/บรรยายรูป มันจะบอกให้ไปเปิดโน้ตบุ๊กเฉพาะ)</p>
+<p>ถ้าอยากคุมเอง/ได้คะแนนสูงขึ้น ค่อยใช้โน้ตบุ๊กตามหัวข้อด้านล่าง</p>
 <h2>ใช้ยังไง (3 ขั้น)</h2>
 <p>ขั้น 1: เปิด <code>00_MASTER_ROUTER.ipynb</code> -&gt; พิมพ์โจทย์ที่เจอ -&gt; มันบอกว่าใช้ไฟล์ไหน</p>
 <p>ขั้น 2: เปิดไฟล์ที่มันบอก -&gt; แก้จุดที่มีคอมเมนต์ <code># &lt;&lt; แก้</code> (ส่วนใหญ่แค่ชื่อ competition กับชื่อคอลัมน์)</p>
@@ -229,6 +415,8 @@ drive.mount('/content/drive')     # กดยืนยันสิทธิ์</
 <p>ชุดนี้แปลง 5 โจทย์ Kaggle ให้เป็น <code>เทมเพลตหัวข้อใหญ่</code> ที่ใช้ซ้ำกับโจทย์อะไรก็ได้ในหมวดนั้น</p>
 <p>เน้น <code>ง่ายที่สุด</code> สำหรับมือใหม่ ทุกโน้ตบุ๊กรันจากบนลงล่างได้เลย คอมเมนต์ไทยทุกจุด</p>
 <p>อ่านก่อน: <code>START_HERE.md</code> (คู่มือมือใหม่) แล้วเปิด <code>00_MASTER_ROUTER.ipynb</code></p>
+<p>🪄 ขี้เกียจสุด/รีบสุด: เปิด <code>00_AUTO_SOLVER.ipynb</code> แก้แค่ชื่อ competition (หรืออัปโหลด zip) แล้วกดรัน</p>
+<p>มันเดาประเภทงานเอง + เทรน + สร้าง submission ให้อัตโนมัติ (รูป/ข้อความ/ตาราง/ทำนายตัวเลข)</p>
 <h2>โครงสร้าง (จัดตามหัวข้อใหญ่)</h2>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>START_HERE.md                       &lt;- อ่านก่อน (มือใหม่)
 00_MASTER_ROUTER.ipynb              &lt;- เจอโจทย์แบบไหน เปิดไฟล์ไหน (พิมพ์โจทย์แล้วมันบอก)
@@ -2713,8 +2901,9 @@ out.to_csv("submission_blend.csv",index=False)</code></pre></div>
 <p>สร้างชุดข้อมูลปลอมหน้าตาเหมือน Kaggle (train.csv/test.csv/sample_submission.csv + รูป) แล้ว <code>exec โค้ดในโน้ตบุ๊กจริง</code></p>
 <p>ตั้งแต่โหลดข้อมูล -&gt; เทรน -&gt; สร้าง submission แล้วตรวจว่า submission ตรงรูปแบบ sample_submission</p>
 <p>(ไลบรารีหนัก autogluon/timm/pythainlp ถูก mock เพราะหนัก/ต้องเน็ต ; lightgbm/sklearn/scipy/torch รันจริง)</p>
-<p>ผลลัพธ์: ผ่าน 8/8 หัวข้อ ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN</p>
+<p>ผลลัพธ์: ผ่าน 12/12 (8 หัวข้อ + AUTO SOLVER 4 แบบ) ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN</p>
 <ul>
+<li><code>00_AUTO_SOLVER.ipynb</code> (ปุ่มเดียวจบ) เดาประเภทงานถูกทั้ง 4: tabular-clf, regression, text, image แล้วสร้าง submission ถูกฟอร์แมต</li>
 <li>Tabular classification (ทั้ง accuracy และ AUC-&gt;ส่ง prob), Tabular regression</li>
 <li>Text classification, Word segmentation (1 แถวต่อตัวอักษร 34 แถวถูกต้อง)</li>
 <li>Signal classification (แบ่ง CV ตาม subject), Forecasting (recursive ไม่มี NaN), Image classification</li>

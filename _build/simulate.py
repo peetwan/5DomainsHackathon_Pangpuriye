@@ -228,5 +228,18 @@ def sim_image():
     return check("Image classification", sub, f"{d}/sample_submission.csv", 10, {0, 1})
 trial("image", sim_image)
 
+print("\n---- 🪄 AUTO SOLVER (ปุ่มเดียวจบ: เดาประเภทงานเอง) ----")
+AUTO = f"{ROOT}/00_AUTO_SOLVER.ipynb"
+def sim_auto(name, comp_fn, expect_task, rows, cols):
+    d = comp_fn(); d = d[0] if isinstance(d, tuple) else d
+    sub, ns = run_notebook(AUTO, d)
+    ok = ns.get("task") == expect_task and len(sub) == rows and list(sub.columns) == cols
+    print(f"[{'PASS' if ok else 'FAIL'}] {('AUTO -> ' + name):28s} เดาได้ task={ns.get('task')} (คาด {expect_task}) rows={len(sub)}")
+    return ok
+trial("auto_tabclf", lambda: sim_auto("tabular clf", comp_tabular_clf, "tabular", 50, ["id", "target"]))
+trial("auto_tabreg", lambda: sim_auto("tabular reg", comp_tabular_reg, "regression", 50, ["id", "SalePrice"]))
+trial("auto_text",   lambda: sim_auto("text clf", comp_text_clf, "text", 20, ["id", "label"]))
+trial("auto_image",  lambda: sim_auto("image clf", comp_image, "image", 10, ["id", "answer"]))
+
 print(f"\n==== สรุป: {sum(1 for r in results if r)}/{len(results)} ผ่าน ====")
 sys.exit(0 if all(results) else 1)
