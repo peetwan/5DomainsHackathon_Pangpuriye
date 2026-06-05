@@ -1,5 +1,7 @@
 # Domain 3 — Thai Word Segmentation (NLP / Character-Level Sequence Labeling)
 
+> 🔄 SOTA ล่าสุด (กลางปี 2026) + library เจ๋ง ๆ ดู `../ADVANCED_SOTA.md` และ `../LIBRARIES.md` — ไฟล์นี้คือความรู้พื้นฐาน/กับดักที่ยังใช้ได้
+
 Competition: `super-ai-engineer-ss-6-word-segmentation`
 
 Source note: Kaggle page is login-walled. Format below follows the standard Super AI Engineer / BEST-2010 / PyThaiNLP convention. On exam day, read the actual Data + Evaluation tabs first and confirm: column names, label `0/1` vs `B/I`, char-level vs word-level F1.

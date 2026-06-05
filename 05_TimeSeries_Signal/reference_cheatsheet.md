@@ -1,5 +1,7 @@
 # Domain 5 — Sleep Stage Classification (Time-Series / Biosignal / EEG)
 
+> 🔄 SOTA ล่าสุด (กลางปี 2026) + library เจ๋ง ๆ ดู `../ADVANCED_SOTA.md` และ `../LIBRARIES.md` — ไฟล์นี้คือความรู้พื้นฐาน/กับดักที่ยังใช้ได้
+
 Competition: `super-ai-engineer-ss-6-sleep-stage-classification`
 
 Source note: Kaggle page gated (redirects to login). Reconstructed from the Super AI franchise pattern (SS5 ran "IoT Sleep Stage Classification") + Sleep-EDF / AASM literature. Two data formats covered (raw EEG, wearable IoT) so you're robust either way. Confirm metric/label-set/FS/#channels on the live page first.

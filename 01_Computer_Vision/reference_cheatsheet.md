@@ -1,5 +1,7 @@
 # Domain 2 — House Recognition (Computer Vision / Image Classification)
 
+> 🔄 SOTA ล่าสุด (กลางปี 2026) + library เจ๋ง ๆ ดู `../ADVANCED_SOTA.md` และ `../LIBRARIES.md` — ไฟล์นี้คือความรู้พื้นฐาน/กับดักที่ยังใช้ได้
+
 Competition: `super-ai-engineer-season-6-individual-hackathon-house-recognition`
 
 Ground truth confirmed from a participant's public solution repo (`github.com/kullawattana/individual-hackathon-house-recognition-SuperAI-SS6`) since the Kaggle page is login-gated.

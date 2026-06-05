@@ -1,5 +1,7 @@
 # Domain 1 — Thai Language Image Captioning (Multimodal / Vision→Thai Text)
 
+> 🔄 SOTA ล่าสุด (กลางปี 2026) + library เจ๋ง ๆ ดู `../ADVANCED_SOTA.md` และ `../LIBRARIES.md` — ไฟล์นี้คือความรู้พื้นฐาน/กับดักที่ยังใช้ได้
+
 Competition: `super-ai-engineer-ss-6-thai-language-image-captioning`
 
 Source note: the SS6 Kaggle page is login-gated. Task/metric/format below come from the public predecessor (`image-processing-thai-language-image-captioning`, SS5) + the dataset cards (COCO-Thai + NECTEC IPU24) + PyThaiNLP docs. Verify the exact `sample_submission.csv` columns and JSON field names the moment you get dataset access.

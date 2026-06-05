@@ -1,5 +1,7 @@
 # Domain 4 — Heart Disease Prediction (Tabular ML / Classification)
 
+> 🔄 SOTA ล่าสุด (กลางปี 2026) + library เจ๋ง ๆ ดู `../ADVANCED_SOTA.md` และ `../LIBRARIES.md` — ไฟล์นี้คือความรู้พื้นฐาน/กับดักที่ยังใช้ได้
+
 Competition: `super-ai-engineer-ss-6-heart-disease-prediction`
 
 Source note: Kaggle page is invitation-only / login-walled. Reconstructed from the UCI Heart Disease schema (canonical source), SS5 precedent, and sibling Kaggle heart comps. Confirm the metric on the Evaluation tab before optimizing.
