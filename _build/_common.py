@@ -49,7 +49,18 @@ def submit_md():
 - บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)""")
 
 def submit_cell(msg):
-    src = ('FILE = "submission.csv"   # << แก้เป็นชื่อไฟล์ที่คะแนนดีสุด\n'
-           '!kaggle competitions submit -c {COMP} -f {FILE} -m "__MSG__"\n'
-           '!kaggle competitions submissions -c {COMP} | head')
+    src = (
+        'import pandas as pd, glob, os\n'
+        'FILE = "submission.csv"   # << แก้เป็นไฟล์ที่จะส่ง เช่น "submission_lgbm.csv" หรือ "submission_timm.csv"\n'
+        '# ตรวจรูปแบบก่อนส่งอัตโนมัติ (กันแก้ config ผิดแล้วส่งฟอร์แมตเพี้ยน -> ได้ 0 คะแนน)\n'
+        '_sub = pd.read_csv(FILE)\n'
+        '_sam = glob.glob(os.path.join(DATA_DIR, "*ample*ubmission*.csv"))\n'
+        'if _sam:\n'
+        '    _s = pd.read_csv(_sam[0])\n'
+        '    print("คอลัมน์ตรง sample:", list(_sub.columns)==list(_s.columns), "| จำนวนแถวตรง:", len(_sub)==len(_s))\n'
+        '    assert list(_sub.columns)==list(_s.columns), f"คอลัมน์ไม่ตรง sample! {list(_sub.columns)} != {list(_s.columns)} -> แก้ก่อนส่ง"\n'
+        'print("พร้อมส่ง:", FILE, _sub.shape)\n'
+        '!kaggle competitions submit -c {COMP} -f {FILE} -m "__MSG__"\n'
+        '!kaggle competitions submissions -c {COMP} | head'
+    )
     return code(src.replace("__MSG__", msg))

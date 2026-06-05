@@ -36,6 +36,31 @@
   โค้ดเตรียมโครงให้ + คอมเมนต์จุดที่ต้องปรับ (`# << แก้`, `# TODO`) ตามรูปแบบจริงของ comp
 - `transformers` ถ้าเวอร์ชันเก่ากว่า 4.46 ให้เปลี่ยน `eval_strategy` -> `evaluation_strategy` (มีคอมเมนต์เตือนในเซลล์แล้ว)
 
+## จำลองสอบจริง End-to-End (สำคัญสุด) — `python _build/simulate.py`
+
+สร้างชุดข้อมูลปลอมหน้าตาเหมือน Kaggle (train.csv/test.csv/sample_submission.csv + รูป) แล้ว `exec โค้ดในโน้ตบุ๊กจริง`
+ตั้งแต่โหลดข้อมูล -> เทรน -> สร้าง submission แล้วตรวจว่า submission ตรงรูปแบบ sample_submission
+(ไลบรารีหนัก autogluon/timm/pythainlp ถูก mock เพราะหนัก/ต้องเน็ต ; lightgbm/sklearn/scipy/torch รันจริง)
+
+ผลลัพธ์: ผ่าน 8/8 หัวข้อ ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN
+- Tabular classification (ทั้ง accuracy และ AUC->ส่ง prob), Tabular regression
+- Text classification, Word segmentation (1 แถวต่อตัวอักษร 34 แถวถูกต้อง)
+- Signal classification (แบ่ง CV ตาม subject), Forecasting (recursive ไม่มี NaN), Image classification
+
+แปลว่า "เจอข้อสอบแล้วเปิดโน้ตบุ๊ก แก้ config แล้วได้ submission ส่งได้จริง" สำหรับทุกแนวที่ submission เป็นตาราง
+
+## ความพร้อม + ข้อจำกัดที่เหลือ (ตรงไปตรงมา)
+
+พร้อมใช้สอบจริง:
+- 8 หัวข้อหลักรันจบ end-to-end ได้ submission ถูกฟอร์แมต
+- เพิ่ม "ตรวจฟอร์แมตก่อนส่งอัตโนมัติ" ในทุกโน้ตบุ๊ก (เทียบคอลัมน์/จำนวนแถวกับ sample แล้ว assert กันส่งผิดได้ 0)
+
+ยังต้องปรับตามโจทย์จริง (เป็นธรรมชาติของงาน มีคำเตือน+ตัวอย่างให้แล้ว):
+- detection / segmentation: ต้องแปลงข้อมูลเป็นรูปแบบ YOLO เอง + submission (box/RLE) ต่างกันทุก comp -> ยากสุด
+- captioning / VQA: รันได้แต่ต้องโหลดโมเดลใหญ่ + GPU (เปิด GPU บน Colab/Kaggle)
+- AutoGluon ครั้งแรกติดตั้ง ~5-10 นาทีบน Colab -> ปกติ รอได้
+- โน้ตบุ๊กเดาชื่อไฟล์/คอลัมน์ให้อัตโนมัติ ถ้า layout แปลกต้องแก้ `# << แก้` เอง (มีตัวอย่างค่าที่ต้องใส่ให้ทุกจุด)
+
 ## รอบ Recheck ละเอียด (แก้บั๊ก + เพิ่มตัวอย่างทุกบรรทัด)
 
 ใช้ review agent อ่านทุกโน้ตบุ๊กทีละบรรทัด เจอและแก้แล้ว:

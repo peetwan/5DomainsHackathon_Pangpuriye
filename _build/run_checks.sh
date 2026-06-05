@@ -25,4 +25,7 @@ for nb in nbs:
 print(f"notebooks={len(nbs)} syntax_problems={bad}")
 PY
 echo ""
+echo "==== end-to-end exam simulation ===="
+python3 _build/simulate.py 2>&1 | grep -E "^\[(PASS|FAIL|ERROR)|สรุป"
+echo ""
 echo "ALL CHECKS DONE"
