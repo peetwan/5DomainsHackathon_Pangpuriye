@@ -36,6 +36,22 @@
   โค้ดเตรียมโครงให้ + คอมเมนต์จุดที่ต้องปรับ (`# << แก้`, `# TODO`) ตามรูปแบบจริงของ comp
 - `transformers` ถ้าเวอร์ชันเก่ากว่า 4.46 ให้เปลี่ยน `eval_strategy` -> `evaluation_strategy` (มีคอมเมนต์เตือนในเซลล์แล้ว)
 
+## รอบ Recheck ละเอียด (แก้บั๊ก + เพิ่มตัวอย่างทุกบรรทัด)
+
+ใช้ review agent อ่านทุกโน้ตบุ๊กทีละบรรทัด เจอและแก้แล้ว:
+- forecasting: เดิมเติม lag ของ test เป็น NaN -> คะแนนพังเงียบ ๆ ; แก้เป็น recursive forecasting (เติม lag จากประวัติจริง) -- ทดสอบแล้วได้ค่าจริง ไม่มี NaN
+- signal_classification: `StratifiedGroupKFold` crash เมื่อ `GROUP_COL=None` (มี 1 group) ; แก้ให้ fallback ไป `StratifiedKFold` อัตโนมัติ
+- tabular classification: AUC เดิมต้องแก้มือ + `iloc[:,1]` เปราะ ; แก้ให้เลือกแบบส่งอัตโนมัติตาม metric + ใช้ `predictor.positive_class`
+- tabular regression: รองรับชื่อ metric ที่ Kaggle เขียนสั้น (RMSE/MAE/R2) -> แปลงเป็นชื่อ AutoGluon ให้
+- NLP word_seg: `labels[0]=1` crash เมื่อข้อความว่าง -> ใส่ guard `if labels:` ; เปลี่ยน id จาก `r.get('id',_)` (เงียบ ๆ ใช้เลขแถว) เป็น `ID_COL` ชัดเจน + ตัวอย่างรูปแบบ id
+- NLP transformers: `Trainer/Seq2SeqTrainer(tokenizer=)` ถูกถอดใน v5 -> เปลี่ยนเป็น `processing_class=` ; แยก `TGT_COL` (train) กับ `ANS_COL` (submission)
+- CV image_classification: `torch.cuda.amp` (deprecated) -> `torch.amp` ; `.astype(int)` ที่ crash กับป้ายข้อความ -> เอาออก
+- CV detection/segmentation: ไล่เลขขั้นตอนใหม่ (เดิม "ขั้นที่ 2" ซ้ำ) ; เพิ่มรุ่น `yolo11` ; เพิ่มคำเตือน `No labels found` ; segmentation เปลี่ยน placeholder เป็น RLE encode จริง + resize mask กลับขนาดรูป
+- Multimodal: เพิ่มเซลล์วัด `thai_bleu()` ในเครื่องก่อนส่ง ; `write_submission` เพิ่มการจับคู่ id + เตือนถ้า fallback เยอะ (กันส่งแล้วได้ 0) ; visual_qa เพิ่ม assert ชื่อคอลัมน์ + เตือน BLIP ตอบอังกฤษ + แถบ progress
+- ทุกบรรทัด `# << แก้` เพิ่ม "ตัวอย่างค่าที่ต้องใส่" (เช่น `COMP` -> "titanic", `METRIC` -> "f1"/"roc_auc", `FS` -> EEG=100/accelerometer=50)
+
+ทดสอบซ้ำหลังแก้: 13 notebooks syntax ผ่าน, logic test ผ่าน (รวม recursive forecasting + CV fallback), router 34/34, JS router ใน HTML 10/10
+
 ## รันการตรวจทั้งหมดอีกครั้ง
 ```bash
 cd 5Domains

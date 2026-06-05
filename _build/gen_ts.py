@@ -32,9 +32,9 @@ c.append(md(r"""## ขั้นที่ 3 — โหลดข้อมูล + 
 
 รองรับ CSV ที่แต่ละแถว = 1 หน้าต่าง คอลัมน์เป็นค่าสัญญาณ (เช่น s0..s2999) + คอลัมน์ label"""))
 c.append(code(r"""import os, pandas as pd, numpy as np
-FS        = 100      # << แก้: sampling rate (Hz) เช่น EEG=100
-LABEL_COL = "label"  # << แก้: คอลัมน์คลาส
-GROUP_COL = None     # << แก้: คอลัมน์ subject เช่น "subject" ถ้าไม่มีใส่ None
+FS        = 100      # << แก้: จำนวนค่าต่อวินาที (Hz) -- EEG มัก 100, ECG มัก 250-500, accelerometer มือถือมัก 50 (ดูจากคำอธิบายข้อมูล)
+LABEL_COL = "label"  # << แก้: ชื่อคอลัมน์คลาส -- ดูจาก display(tr.head()) แล้วเลือกคอลัมน์คำตอบ เช่น "stage", "target", "y"
+GROUP_COL = None     # << แก้: คอลัมน์ที่บอกว่าแถวนี้มาจากคนไหน/อุปกรณ์ไหน เช่น "subject", "patient_id" -- ถ้ามีควรใส่ (กันคะแนนหลอก), ถ้าไม่มีใส่ None
 TRAIN_CSV = os.path.join(DATA_DIR,"train.csv"); TEST_CSV=os.path.join(DATA_DIR,"test.csv")
 SAMPLE_SUB= os.path.join(DATA_DIR,"sample_submission.csv")
 tr=pd.read_csv(TRAIN_CSV); te=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
@@ -74,7 +74,7 @@ c.append(md(r"""## วิธีที่ 1 — ฟีเจอร์ + AutoGluon
 c.append(code(r"""from autogluon.tabular import TabularPredictor
 ag=Xtr.copy(); ag[LABEL_COL]=y
 pred=TabularPredictor(label=LABEL_COL,eval_metric="f1_macro",path="ag_sig").fit(
-    ag, presets="best_quality", time_limit=600)   # << แก้ time_limit
+    ag, presets="best_quality", time_limit=600)   # << แก้ time_limit: วินาที (600=10นาที) ลอง 120 ก่อนให้รันผ่าน แล้วค่อยเพิ่มเป็น 1800-3600 ตอนส่งจริง
 yhat=pred.predict(Xte).values
 out=sample.copy(); out[ANS_COL]=[i2c[int(v)] for v in yhat]
 out.to_csv("submission.csv",index=False); print("บันทึก submission.csv"); display(out.head())"""))
@@ -90,7 +90,15 @@ sw=np.array([cw[v] for v in y])
 params=dict(objective="multiclass",num_class=N_CLASSES,learning_rate=0.03,num_leaves=64,
             min_child_samples=40,n_jobs=-1,verbosity=-1)
 oof=np.zeros((len(y),N_CLASSES)); tp=np.zeros((len(Xte),N_CLASSES))
-for tr_i,va_i in StratifiedGroupKFold(5,shuffle=True,random_state=42).split(Xtr,y,groups):
+# ถ้ามี subject หลายคน (>=5) แบ่ง CV ตาม subject (กันข้อมูลรั่ว) ; ถ้าไม่มี (GROUP_COL=None) ใช้ StratifiedKFold ปกติ ไม่งั้นจะ error
+from sklearn.model_selection import StratifiedKFold
+n_groups = len(np.unique(groups))
+if n_groups >= 5:
+    splitter = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42).split(Xtr, y, groups)
+else:
+    print("ไม่มีคอลัมน์ subject (หรือ subject น้อยกว่า 5) -> ใช้ StratifiedKFold ธรรมดาแทน")
+    splitter = StratifiedKFold(n_splits=5, shuffle=True, random_state=42).split(Xtr, y)
+for tr_i,va_i in splitter:
     d=lgb.Dataset(Xtr.iloc[tr_i],y[tr_i],weight=sw[tr_i]); dv=lgb.Dataset(Xtr.iloc[va_i],y[va_i])
     m=lgb.train(params,d,2000,valid_sets=[dv],callbacks=[lgb.early_stopping(100),lgb.log_evaluation(0)])
     oof[va_i]=m.predict(Xtr.iloc[va_i]); tp+=m.predict(Xte)/5
@@ -132,38 +140,55 @@ c.append(code(r"""import os, pandas as pd, numpy as np
 TRAIN_CSV=os.path.join(DATA_DIR,"train.csv"); TEST_CSV=os.path.join(DATA_DIR,"test.csv")
 SAMPLE_SUB=os.path.join(DATA_DIR,"sample_submission.csv")
 train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
-TIME_COL  = "date"      # << แก้: คอลัมน์วันที่/เวลา
-TARGET    = sample.columns[1]   # << แก้ถ้าผิด: คอลัมน์ค่าที่ทำนาย
-SERIES_COL= None        # << แก้: ถ้ามีหลายซีรีส์ (เช่น "store_id") ใส่ชื่อ, ถ้าซีรีส์เดียวใส่ None
+TIME_COL  = "date"      # << แก้: ชื่อคอลัมน์วันที่/เวลา -- ดูจาก list(train.columns) เช่น "date", "timestamp", "datetime"
+TARGET    = "sales"     # << แก้: ชื่อคอลัมน์ค่าที่ทำนาย "ในไฟล์ train" -- ดูจาก train.head() เช่น "sales", "value", "y"
+SUB_TARGET= sample.columns[1]   # ชื่อคอลัมน์คำตอบ "ในไฟล์ submission" (มักไม่ต้องแก้ -- ชื่ออาจไม่เหมือน TARGET ของ train)
+SERIES_COL= None        # << แก้: ถ้ามีหลายซีรีส์ใส่ชื่อคอลัมน์ เช่น "store_id", ถ้าซีรีส์เดียวใส่ None
 ID_COL=sample.columns[0]
 print("คอลัมน์:",list(train.columns)); display(train.head()); display(sample.head())"""))
 
 c.append(md(r"""## วิธีที่ 1 — ฟีเจอร์วันที่ + lag + LightGBM (ง่ายสุด ใช้ได้จริง)
 
-หลักคิด: เปลี่ยนปัญหา forecasting ให้เป็น regression ธรรมดา โดยทำฟีเจอร์จากวันที่ (ปี/เดือน/วัน/วันในสัปดาห์)
-+ ค่าย้อนหลัง (lag) แล้วให้ LightGBM เรียนรู้"""))
+หลักคิด: เปลี่ยนปัญหา forecasting ให้เป็น regression ธรรมดา โดยทำฟีเจอร์จากวันที่ + ค่าย้อนหลัง (lag) แล้วให้ LightGBM เรียนรู้
+
+จุดที่มือใหม่พลาดบ่อยสุด (อ่านให้เข้าใจ):
+- `lag` = ค่าย้อนหลัง เช่น `lag_1` = ยอดของเมื่อวาน, `lag_7` = ยอดของ 7 วันก่อน (เป็นฟีเจอร์ที่สำคัญที่สุด)
+- ตอนเทรนเรามีค่าจริงในอดีตให้ทำ lag ได้ แต่ตอนทำนายอนาคต (test) เรา "ยังไม่รู้" ค่าอนาคต
+- ถ้าปล่อย lag ของ test เป็นค่าว่าง (NaN) โมเดลจะเดามั่ว คะแนนพังแบบเงียบ ๆ (ไม่ error แต่ได้คะแนนแย่)
+- วิธีที่ถูก: ทำนายทีละแถวเรียงตามเวลา พอได้ค่าทำนายแล้วเอาไปเป็น "ประวัติ" ของแถวถัดไป (เรียกว่า recursive forecasting)"""))
 c.append(code(r"""import lightgbm as lgb
+LAGS = (1,7,14,28)   # << แก้ค่า lag ให้เข้ากับความถี่ข้อมูล: รายวัน -> (1,7,14,28); รายชั่วโมง -> (1,24,168); รายเดือน -> (1,12)
 def add_time_features(df):
     df=df.copy(); df[TIME_COL]=pd.to_datetime(df[TIME_COL])
     df["year"]=df[TIME_COL].dt.year; df["month"]=df[TIME_COL].dt.month
     df["day"]=df[TIME_COL].dt.day; df["dow"]=df[TIME_COL].dt.dayofweek
     df["doy"]=df[TIME_COL].dt.dayofyear
     return df
-def add_lags(df, lags=(1,7,14,28)):   # << แก้ค่า lag ตามความถี่ข้อมูล (รายวัน/รายชั่วโมง)
+def add_lags(df):
     df=df.sort_values(TIME_COL).copy()
     g=df.groupby(SERIES_COL)[TARGET] if SERIES_COL else df[TARGET]
-    for L in lags:
+    for L in LAGS:
         df[f"lag_{L}"]= (g.shift(L) if SERIES_COL else df[TARGET].shift(L))
     return df
+
+# 1) เทรนบนข้อมูล train ที่มี lag จริง
 tr=add_lags(add_time_features(train)).dropna()
 feat_cols=[c for c in tr.columns if c not in [TARGET,TIME_COL,ID_COL] and pd.api.types.is_numeric_dtype(tr[c])]
 m=lgb.LGBMRegressor(n_estimators=2000,learning_rate=0.02,num_leaves=63,random_state=42,verbose=-1)
 m.fit(tr[feat_cols], tr[TARGET])
-# เตรียม test: ต้องมีฟีเจอร์เดียวกัน (ถ้า test ไม่มี lag ต้องต่อ history จาก train ก่อน) -- ปรับตามรูปแบบจริง
-te=add_time_features(test)
-for col in feat_cols:
-    if col not in te.columns: te[col]=np.nan   # << แก้: เติม lag ของ test จาก history จริงถ้าจำเป็น
-out=sample.copy(); out[TARGET]=m.predict(te[feat_cols])
+
+# 2) ทำนาย test แบบ recursive: เติม lag จากประวัติจริง แล้วใช้ค่าที่ทำนายเป็นประวัติของแถวถัดไป
+#    (ตัวอย่างนี้ทำกรณีซีรีส์เดียว; ถ้ามีหลายซีรีส์ต้องวนแยกตาม SERIES_COL)
+test2=add_time_features(test).sort_values(TIME_COL).reset_index(drop=True)
+series=list(add_time_features(train).sort_values(TIME_COL)[TARGET].values)  # ประวัติค่าจริงจาก train
+preds=[]
+for _,row in test2.iterrows():
+    fr={c: row[c] for c in ["year","month","day","dow","doy"]}
+    for L in LAGS:
+        fr[f"lag_{L}"]= series[-L] if len(series)>=L else np.nan
+    yhat=float(m.predict(pd.DataFrame([fr])[feat_cols])[0])
+    preds.append(yhat); series.append(yhat)   # ใช้ค่าที่ทำนายต่อเป็นประวัติ
+out=sample.copy(); out[SUB_TARGET]=preds
 out.to_csv("submission.csv",index=False); print("บันทึก submission.csv"); display(out.head())"""))
 
 c.append(md(r"""## วิธีที่ 2 — AutoGluon TimeSeries (ไม่บังคับ เฉพาะทาง forecasting)

@@ -14,9 +14,9 @@ def kaggle_md():
 def kaggle_cell(comp):
     src = r'''import os, glob, subprocess
 
-COMP = "__COMP__"      # << แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
-KAGGLE_USERNAME = ""   # << แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
-KAGGLE_KEY      = ""   # << แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+COMP = "__COMP__"      # << แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -> ใส่ "titanic"
+KAGGLE_USERNAME = ""   # << แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # << แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
 
 def get_data(comp):
     # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว

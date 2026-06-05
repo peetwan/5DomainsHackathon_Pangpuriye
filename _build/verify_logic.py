@@ -99,6 +99,38 @@ clf=Pipeline([("tfidf",TfidfVectorizer(ngram_range=(1,2),min_df=1)),
               ("lr",LogisticRegression(max_iter=1000,class_weight="balanced"))])
 print("OK 7 text-clf TF-IDF+LogReg | cv acc=", round(cross_val_score(clf,texts,ylab,cv=3).mean(),3))
 
+# 6b) Recursive forecasting (the fixed forecasting วิธี1) — must run + use real lags (no NaN)
+LAGS=(1,7); TIME_COL="date"; TARGET="target"; SERIES_COL=None
+def add_tf(d):
+    d=d.copy(); d[TIME_COL]=pd.to_datetime(d[TIME_COL])
+    d["year"]=d[TIME_COL].dt.year; d["month"]=d[TIME_COL].dt.month; d["day"]=d[TIME_COL].dt.day
+    d["dow"]=d[TIME_COL].dt.dayofweek; d["doy"]=d[TIME_COL].dt.dayofyear; return d
+def add_lg(d):
+    d=d.sort_values(TIME_COL).copy()
+    for L in LAGS: d[f"lag_{L}"]=d[TARGET].shift(L)
+    return d
+tr=add_lg(add_tf(df)).dropna()  # df from test 6 (date+target)
+fc6=[c for c in tr.columns if c not in [TARGET,TIME_COL] and pd.api.types.is_numeric_dtype(tr[c])]
+mf=lgb.LGBMRegressor(n_estimators=80,random_state=0,verbose=-1); mf.fit(tr[fc6],tr[TARGET])
+test_df=pd.DataFrame({"date":pd.date_range("2024-04-10",periods=10,freq="D")})
+test2=add_tf(test_df).sort_values(TIME_COL).reset_index(drop=True)
+series=list(add_tf(df).sort_values(TIME_COL)[TARGET].values); preds=[]
+for _,row in test2.iterrows():
+    fr={c:row[c] for c in ["year","month","day","dow","doy"]}
+    for L in LAGS: fr[f"lag_{L}"]=series[-L] if len(series)>=L else np.nan
+    yh=float(mf.predict(pd.DataFrame([fr])[fc6])[0]); preds.append(yh); series.append(yh)
+assert len(preds)==10 and not any(np.isnan(preds))
+print("OK 6b recursive forecasting | 10 preds, no NaN")
+
+# 6c) StratifiedGroupKFold fallback when only 1 group (signal วิธี2 fix)
+from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
+g1=np.zeros(60)  # 1 group -> must fall back
+n_groups=len(np.unique(g1))
+splitter = (StratifiedGroupKFold(5,shuffle=True,random_state=0).split(Xf,y,g1) if n_groups>=5
+            else StratifiedKFold(5,shuffle=True,random_state=0).split(Xf,y))
+nf=sum(1 for _ in splitter); assert nf==5
+print("OK 6c StratifiedGroupKFold->StratifiedKFold fallback works (5 folds)")
+
 # 8) timm model builds + forward (image classification วิธี 2)
 try:
     import torch, timm
