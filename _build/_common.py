@@ -3,27 +3,49 @@ import sys; sys.path.insert(0, "_build")
 from _nbutil import md, code
 
 def kaggle_md():
-    return md(r"""## ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล
+    return md(r"""## ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU
 
-ต้องมีไฟล์ `kaggle.json` ก่อน วิธีได้มา: เข้า kaggle.com -> กดรูปโปรไฟล์ -> Settings -> Account -> Create New Token
-จะได้ไฟล์ `kaggle.json` หน้าตา `{"username":"...","key":"..."}`
+เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:
 
-- ถ้ารันบน `Kaggle Notebook`: ข้อมูลอยู่ที่ `/kaggle/input/...` แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย
-- ถ้ารันบน `Google Colab / เครื่องตัวเอง`: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด `# << แก้`)""")
+วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี `kaggle.json` (kaggle.com -> รูปโปรไฟล์ -> Settings -> Account -> Create New Token)
+- บน `Kaggle Notebook`: ข้อมูลต่อไว้ที่ `/kaggle/input/...` แล้ว ไม่ต้องใส่ token
+- บน `Colab/เครื่อง`: ใส่ `KAGGLE_USERNAME` + `KAGGLE_KEY`
+
+วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น `data.zip`) ไปวางในแถบ Files ซ้ายมือของ Colab
+แล้วตั้ง `DATA_DIR = "/content"` (หรือโฟลเดอร์ที่วาง) -> เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token
+
+วิธี C ต่อ Google Drive: รัน `from google.colab import drive; drive.mount('/content/drive')` ก่อน แล้วตั้ง `DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"`
+
+เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู `Runtime > Change runtime type > T4 GPU`""")
 
 def kaggle_cell(comp):
     src = r'''import os, glob, subprocess
 
-COMP = "__COMP__"      # << แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -> ใส่ "titanic"
-KAGGLE_USERNAME = ""   # << แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # << แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "__COMP__"      # << แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -> "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # << แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # << แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # << แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -> เปิดที่เมนู Runtime > Change runtime type > T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -36,7 +58,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)'''
     return code(src.replace("__COMP__", comp))

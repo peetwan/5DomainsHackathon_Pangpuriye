@@ -19,6 +19,14 @@
 
 วิธีจับหมวดเร็ว ๆ: ถามตัวเอง 2 ข้อ -> "input เป็นอะไร" และ "output เป็นอะไร"
 
+## รันบน Google Colab (อ่าน `COLAB_GUIDE.md`)
+
+เรื่อง GPU / เอาข้อมูลเข้า 3 วิธี (Kaggle/อัปโหลดเอง/Drive) / submission หลายรูปแบบ / สิ่งที่ควรกังวล
+อ่านละเอียดใน `COLAB_GUIDE.md` สรุปสั้น:
+- เปิด GPU: เมนู `Runtime > Change runtime type > T4 GPU` (โค้ดเลือก GPU/CPU ให้เองแล้ว) — เปิดเฉพาะงาน deep learning
+- อัปโหลดข้อมูลเอง: ลาก zip ไปวางในแถบ Files ของ Colab แล้วตั้ง `DATA_DIR = "/content"` (เซลล์แตก zip ให้เอง)
+- submission: เริ่มจาก sample เสมอ + มี assert ตรวจฟอร์แมตให้ก่อนส่ง
+
 ## ต้องเตรียมอะไรก่อน
 
 1. มีบัญชี Kaggle และเข้าร่วม competition แล้ว

@@ -63,7 +63,7 @@ details.nb>*:not(summary){padding:0 14px}
  header h1{font-size:14px}
  body{font-size:15px}
 }
-</style></head><body><header><button id="burger" aria-label="menu">☰</button><div><h1>5 Domains Hackathon · Pangpuriye</h1><div class="sub">คู่มือสอบ AI 5 หัวข้อใหญ่ · เปิดที่ไหนก็ได้ ทั้งคอมและมือถือ</div></div></header><div class="wrap"><nav id="sidebar"><a class="navlink" data-t="start" href="#start">🏁 <span>เริ่มที่นี่</span></a><a class="navlink" data-t="router" href="#router">🧭 <span>ตัวนำทาง (Router)</span></a><a class="navlink" data-t="cv" href="#cv">🖼️ <span>Computer Vision</span></a><a class="navlink" data-t="nlp" href="#nlp">📝 <span>NLP</span></a><a class="navlink" data-t="mm" href="#mm">🎨 <span>Multimodal</span></a><a class="navlink" data-t="tab" href="#tab">📊 <span>Tabular</span></a><a class="navlink" data-t="ts" href="#ts">📈 <span>Time-Series</span></a><a class="navlink" data-t="sota" href="#sota">🚀 <span>SOTA อัปเดต</span></a><a class="navlink" data-t="verify" href="#verify">✅ <span>Verify (ตรวจแล้ว)</span></a><a class="navlink" data-t="deploy" href="#deploy">🚂 <span>Deploy / GitHub</span></a></nav><div class="scrim" id="scrim"></div><main><section id="start" class="section"><h1>เริ่มอ่านที่นี่ (สำหรับมือใหม่) 👋</h1>
+</style></head><body><header><button id="burger" aria-label="menu">☰</button><div><h1>5 Domains Hackathon · Pangpuriye</h1><div class="sub">คู่มือสอบ AI 5 หัวข้อใหญ่ · เปิดที่ไหนก็ได้ ทั้งคอมและมือถือ</div></div></header><div class="wrap"><nav id="sidebar"><a class="navlink" data-t="start" href="#start">🏁 <span>เริ่มที่นี่</span></a><a class="navlink" data-t="colab" href="#colab">🖥️ <span>คู่มือ Colab</span></a><a class="navlink" data-t="router" href="#router">🧭 <span>ตัวนำทาง (Router)</span></a><a class="navlink" data-t="cv" href="#cv">🖼️ <span>Computer Vision</span></a><a class="navlink" data-t="nlp" href="#nlp">📝 <span>NLP</span></a><a class="navlink" data-t="mm" href="#mm">🎨 <span>Multimodal</span></a><a class="navlink" data-t="tab" href="#tab">📊 <span>Tabular</span></a><a class="navlink" data-t="ts" href="#ts">📈 <span>Time-Series</span></a><a class="navlink" data-t="sota" href="#sota">🚀 <span>SOTA อัปเดต</span></a><a class="navlink" data-t="verify" href="#verify">✅ <span>Verify (ตรวจแล้ว)</span></a><a class="navlink" data-t="deploy" href="#deploy">🚂 <span>Deploy / GitHub</span></a></nav><div class="scrim" id="scrim"></div><main><section id="start" class="section"><h1>เริ่มอ่านที่นี่ (สำหรับมือใหม่) 👋</h1>
 <p>ชุดนี้ช่วยให้สอบ hackathon ได้ แม้ยังไม่ค่อยมีความรู้ จัดเป็น <code>หัวข้อใหญ่</code> ไว้ให้แล้ว</p>
 <p>แต่ละหัวข้อมีโน้ตบุ๊กที่ <code>รันจากบนลงล่างได้เลย</code> คอมเมนต์ไทยทุกจุด</p>
 <h2>ใช้ยังไง (3 ขั้น)</h2>
@@ -79,6 +79,14 @@ details.nb>*:not(summary){padding:0 14px}
 <li><code>05_TimeSeries_Signal/</code> — สัญญาณตามเวลา (จำแนกสัญญาณ / พยากรณ์)</li>
 </ul>
 <p>วิธีจับหมวดเร็ว ๆ: ถามตัวเอง 2 ข้อ -&gt; "input เป็นอะไร" และ "output เป็นอะไร"</p>
+<h2>รันบน Google Colab (อ่าน <code>COLAB_GUIDE.md</code>)</h2>
+<p>เรื่อง GPU / เอาข้อมูลเข้า 3 วิธี (Kaggle/อัปโหลดเอง/Drive) / submission หลายรูปแบบ / สิ่งที่ควรกังวล</p>
+<p>อ่านละเอียดใน <code>COLAB_GUIDE.md</code> สรุปสั้น:</p>
+<ul>
+<li>เปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code> (โค้ดเลือก GPU/CPU ให้เองแล้ว) — เปิดเฉพาะงาน deep learning</li>
+<li>อัปโหลดข้อมูลเอง: ลาก zip ไปวางในแถบ Files ของ Colab แล้วตั้ง <code>DATA_DIR = "/content"</code> (เซลล์แตก zip ให้เอง)</li>
+<li>submission: เริ่มจาก sample เสมอ + มี assert ตรวจฟอร์แมตให้ก่อนส่ง</li>
+</ul>
 <h2>ต้องเตรียมอะไรก่อน</h2>
 <ol>
 <li>มีบัญชี Kaggle และเข้าร่วม competition แล้ว</li>
@@ -113,7 +121,111 @@ details.nb>*:not(summary){padding:0 14px}
 <p>โจทย์ให้ข้อความไทย -&gt; ตัดคำ?  -&gt;  <code>02_NLP/thai_word_segmentation.ipynb</code></p>
 <p>โจทย์ให้รูป -&gt; บรรยายเป็นไทย?  -&gt;  <code>03_Multimodal_VisionLanguage/thai_image_captioning.ipynb</code></p>
 <p>โจทย์ให้สัญญาณ/EEG -&gt; ตอบคลาส?  -&gt;  <code>05_TimeSeries_Signal/signal_classification.ipynb</code></p>
-<p>โชคดีนะครับ 💪</p></section><section id="router" class="section"><div class="router"><h2>🧭 ถามตัวช่วย: เจอโจทย์แบบไหน เปิดไฟล์ไหน</h2><p>พิมพ์คำอธิบายโจทย์ (ไทยหรืออังกฤษ) แล้วกดปุ่ม</p><div class="rrow"><input id="q" placeholder="เช่น ทำนายระยะการนอนจาก EEG / classify movie reviews" onkeydown="if(event.key==='Enter')doRoute()"><button onclick="doRoute()">หา</button></div><div class="chips" id="chips"></div><div id="rout"></div></div><h1>Super AI Engineer SS6 — ชุดเตรียมสอบ (จัดตามหัวข้อใหญ่)</h1>
+<p>โชคดีนะครับ 💪</p></section><section id="colab" class="section"><h1>คู่มือใช้บน Google Colab (อ่านก่อนสอบจริง)</h1>
+<p>รวมทุกเรื่องที่ต้องรู้ตอนรันบน Colab + เรื่องที่ควรกังวล (ตอบคำถาม Peet แบบ proactive)</p>
+<hr>
+<h2>1) GPU — เมื่อไหร่ต้องใช้ + เปิดยังไง + ต้องเขียนโค้ดเพิ่มไหม</h2>
+<p>ต้องเขียนโค้ดเพิ่มไหม: <code>ไม่ต้อง</code> โน้ตบุ๊กเช็ค + เลือก GPU/CPU ให้อัตโนมัติแล้ว (<code>DEVICE = "cuda" if torch.cuda.is_available() else "cpu"</code>)</p>
+<p>สิ่งเดียวที่ต้องทำเองคือ "เปิด GPU runtime" จากเมนู (ไม่ใช่โค้ด):</p>
+<p>วิธีเปิด GPU: เมนู <code>Runtime</code> -&gt; <code>Change runtime type</code> -&gt; เลือก <code>T4 GPU</code> -&gt; <code>Save</code> (ฟรี)</p>
+<p>เซลล์ตั้งค่าข้อมูลจะ print ให้เห็นว่ามี GPU ไหม เช่น <code>GPU: Tesla T4</code></p>
+<p>งานไหนต้องใช้ GPU (เปิดก่อนรัน):</p>
+<ul>
+<li>ต้องใช้ GPU: captioning, VQA, timm (วิธี 2 ของ image), 1D-CNN, WangchanBERTa/mT5 (วิธีขั้นสูงของ NLP), YOLO (detection/segmentation)</li>
+<li>ไม่ต้องใช้ GPU ก็ได้: Tabular (AutoGluon/LightGBM), Word segmentation (PyThaiNLP/CRF), Text classification (TF-IDF), Signal features+LightGBM, Forecasting</li>
+</ul>
+<p>เคล็ดลับ: เปิด GPU เฉพาะตอนจะใช้ deep learning เพราะโควต้า GPU ฟรีมีจำกัด ถ้าทำงานตารางไม่ต้องเปิด (ประหยัดโควต้า)</p>
+<p>ถ้าขึ้น <code>CUDA out of memory</code>: ลด <code>BATCH</code> (เช่น 32 -&gt; 16 -&gt; 8) หรือลด <code>IMG_SIZE</code>/<code>max_length</code></p>
+<hr>
+<h2>2) เอาข้อมูลเข้า Colab — 3 วิธี (เลือก 1)</h2>
+<p>เซลล์ "ขั้นที่ 2" ในทุกโน้ตบุ๊กรองรับครบ 3 วิธีแล้ว แก้แค่ตัวแปรบนสุด</p>
+<h3>วิธี A — ดาวน์โหลดจาก Kaggle อัตโนมัติ (แนะนำ ถ้าโจทย์อยู่บน Kaggle)</h3>
+<ol>
+<li>เอา token: kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token (ได้ไฟล์ <code>kaggle.json</code>)</li>
+<li>เปิด <code>kaggle.json</code> คัดลอก username กับ key มาใส่:</li>
+</ol>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>COMP = "ชื่อ-competition"
+KAGGLE_USERNAME = "ของคุณ"
+KAGGLE_KEY      = "คีย์ยาว ๆ"
+DATA_DIR = ""     # ปล่อยว่าง</code></pre></div>
+<p>หมายเหตุ: ต้องกด <code>Join Competition</code> / ยอมรับ rules บนหน้า Kaggle ก่อน ไม่งั้นดาวน์โหลดไม่ได้ (403)</p>
+<h3>วิธี B — โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง (ตอบคำถามข้อนี้โดยตรง)</h3>
+<p>ต้องเปลี่ยนโค้ดอะไรไหม: <code>แค่ตั้ง DATA_DIR</code> บรรทัดเดียว ไม่ต้องแตะอย่างอื่น</p>
+<ol>
+<li>ในเครื่องตัวเอง ดาวน์โหลดไฟล์จาก Kaggle (ปุ่ม Download Data) จะได้ <code>xxx.zip</code></li>
+<li>บน Colab: เปิดแถบ <code>Files</code> (ไอคอนโฟลเดอร์ ซ้ายมือ) แล้ว <code>ลากไฟล์ zip ไปวาง</code> (รอจนอัปโหลดเสร็จ จะอยู่ที่ <code>/content/xxx.zip</code>)</li>
+<li>ตั้งในเซลล์:</li>
+</ol>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>DATA_DIR = "/content"     # &lt;&lt; โฟลเดอร์ที่วาง zip ไว้ -- เซลล์จะแตก zip ให้เอง
+# COMP / KAGGLE_* ไม่ต้องใส่</code></pre></div>
+<ol>
+<li>รันเซลล์ -&gt; มันจะแตก zip ในโฟลเดอร์นั้น แล้ว print รายชื่อไฟล์ออกมา (เอาไปแก้ path ในเซลล์ถัดไปให้ตรง)</li>
+</ol>
+<p>ข้อควรระวังวิธี B: ไฟล์ใหญ่ (รูปเยอะ) อัปโหลดผ่านเบราว์เซอร์ช้ามาก -&gt; ใช้วิธี A หรือ C ดีกว่าถ้าข้อมูลใหญ่</p>
+<h3>วิธี C — ต่อ Google Drive (เหมาะกับข้อมูลใหญ่/ใช้ซ้ำหลายรอบ)</h3>
+<ol>
+<li>เอา zip ไปวางใน Google Drive ก่อน (เช่น MyDrive/data/)</li>
+<li>บน Colab รัน:</li>
+</ol>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from google.colab import drive
+drive.mount('/content/drive')     # กดยืนยันสิทธิ์</code></pre></div>
+<ol>
+<li>ตั้ง:</li>
+</ol>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>DATA_DIR = "/content/drive/MyDrive/data"   # &lt;&lt; โฟลเดอร์ใน Drive ที่มีไฟล์/zip</code></pre></div>
+<p>ข้อดี: ไม่ต้องอัปโหลดซ้ำทุกครั้งที่ Colab หลุด</p>
+<hr>
+<h2>3) Submission มีหลายรูปแบบ เปลี่ยนไป ต้องทำยังไง</h2>
+<p>หลักการทอง: <code>เริ่มจาก sample_submission.csv เสมอ</code> โน้ตบุ๊กทำให้แล้ว (<code>out = sample.copy()</code> แล้วเติมคำตอบ)</p>
+<p>และมี "ตรวจฟอร์แมตก่อนส่งอัตโนมัติ" (เทียบคอลัมน์/จำนวนแถว + assert) -&gt; ถ้าผิดจะเตือนทันที ไม่ส่งมั่ว</p>
+<p>วิธีดูว่าโจทย์ต้องการรูปแบบไหน: เปิด <code>sample_submission.csv</code> (โน้ตบุ๊ก print หัวตารางให้) + อ่าน tab <code>Evaluation</code> บน Kaggle</p>
+<p>รูปแบบที่เจอบ่อย + วิธีรับมือ (แก้ตรงบรรทัดสร้าง submission):</p>
+<div class="tablewrap"><table><thead><tr><th>รูปแบบ sample</th><th>หมายความว่า</th><th>ทำยังไง</th></tr></thead><tbody><tr><td><code>id,label</code> ค่าเป็น 0/1</td><td>ส่งป้าย</td><td><code>out[col] = preds</code> (ป้าย) — ค่าเริ่มต้นของโน้ตบุ๊ก</td></tr><tr><td><code>id,target</code> ค่าเป็นทศนิยม 0-1</td><td>ส่งความน่าจะเป็น (AUC)</td><td><code>out[col] = proba</code> (โน้ตบุ๊ก tabular สลับให้อัตโนมัติตาม METRIC)</td></tr><tr><td>หลายคอลัมน์ (เช่น <code>id,class_0,class_1,..</code>)</td><td>ส่ง prob ทุกคลาส</td><td><code>proba_df = predictor.predict_proba(...); out[คอลัมน์คลาส] = proba_df.values</code></td></tr><tr><td>1 แถวต่อ "ตัวอักษร/พิกเซล"</td><td>per-unit (ตัดคำ/segmentation)</td><td>สร้าง row ต่อหน่วย (โน้ตบุ๊กตัดคำทำให้แล้ว) เช็ค id เช่น <code>5_0,5_1</code></td></tr><tr><td>คอลัมน์ <code>rle</code>/<code>EncodedPixels</code></td><td>segmentation แบบ RLE</td><td>ใช้ <code>rle_encode()</code> ในโน้ตบุ๊ก segmentation</td></tr><tr><td>คอลัมน์กล่อง (<code>xmin,ymin,..</code>) หรือ string</td><td>detection</td><td>เขียนตามที่ Evaluation บอก (1 แถวต่อกล่อง หรือรวมเป็น string)</td></tr></tbody></table></div>
+<p>ถ้าฟอร์แมตแปลกที่โน้ตบุ๊กยังไม่รองรับ: ดู <code>sample.head()</code> แล้วสร้าง DataFrame ให้คอลัมน์ตรงเป๊ะ ตัว assert ก่อนส่งจะช่วยจับว่ายังไม่ตรง</p>
+<p>ถ้า assert ฟ้อง "คอลัมน์ไม่ตรง": ปรับชื่อ/จำนวนคอลัมน์ของ <code>out</code> ให้เท่ากับ sample เช่น <code>out = out.rename(columns={...})</code> หรือเพิ่ม/ลบคอลัมน์</p>
+<hr>
+<h2>4) เรื่องอื่น ๆ ที่ควรกังวล (proactive — สิ่งที่มือใหม่มักลืม)</h2>
+<p>ก่อนเริ่ม:</p>
+<ul>
+<li>กด <code>Join Competition</code> + ยอมรับ rules บน Kaggle ก่อน ไม่งั้นโหลดข้อมูล/ส่งไม่ได้</li>
+<li>บาง competition จำกัดจำนวนส่งต่อวัน (เช่น 5 ครั้ง/วัน) -&gt; อย่าส่งมั่ว เก็บโควต้าไว้</li>
+<li>เปิด GPU ก่อน ถ้างานเป็น deep learning (ดูข้อ 1)</li>
+</ul>
+<p>ระหว่างทำ:</p>
+<ul>
+<li>Colab หลุดเอง: idle ~90 นาที / สูงสุด ~12 ชม. -&gt; อย่าทิ้งไว้นาน, งานยาวให้เซฟผลลง Drive</li>
+<li>ดิสก์/แรมหาย: พอ Colab reconnect ไฟล์ใน <code>/content</code> หายหมด ต้องโหลด/อัปใหม่ (ใช้ Drive กันหาย)</li>
+<li>GPU โควต้าหมด: ขึ้น "cannot connect to GPU" -&gt; รอ/เปลี่ยนบัญชี/ใช้ CPU สำหรับงานตาราง</li>
+<li>Out of memory: ลด <code>BATCH</code>, <code>IMG_SIZE</code>, <code>max_length</code>, หรือจำนวนข้อมูลต่อรอบ</li>
+<li>เวลาเทรนนาน: ตั้ง <code>epochs</code>/<code>time_limit</code> น้อย ๆ ก่อนให้รันผ่าน แล้วค่อยเพิ่ม</li>
+</ul>
+<p>ความถูกต้อง:</p>
+<ul>
+<li>ตั้ง seed แล้ว (random_state=42) เพื่อให้ผลซ้ำได้</li>
+<li>อย่าให้ข้อมูลรั่ว: tabular ใช้ StratifiedKFold, signal แบ่งตาม subject (โน้ตบุ๊กทำให้แล้ว)</li>
+<li>ภาษาไทยใน CSV: เขียนด้วย <code>utf-8-sig</code> (โน้ตบุ๊กงานไทยทำให้แล้ว) กันตัวอักษรเพี้ยน</li>
+<li>path ใน Linux (Colab) ตัวพิมพ์เล็ก/ใหญ่ต่างกัน (<code>Train</code> != <code>train</code>) -&gt; ดูชื่อจริงจาก output แล้วแก้ให้ตรง</li>
+</ul>
+<p>ตอนส่ง:</p>
+<ul>
+<li>เลือกไฟล์ส่งจากคะแนน CV ของเราเอง ไม่ใช่ public LB อย่างเดียว (public น้อย หลอกได้)</li>
+<li>ถ้าส่งได้หลายไฟล์/วัน ส่งทั้งวิธี 1 และ 2 เก็บไว้เทียบ</li>
+<li>อย่า commit/แชร์ <code>kaggle.json</code> (เป็นความลับ) — repo นี้มี .gitignore กันให้แล้ว</li>
+</ul>
+<p>ติดตั้งไลบรารี:</p>
+<ul>
+<li>AutoGluon ครั้งแรกติดตั้ง ~5-10 นาที (ปกติ รอได้) ; ถ้า error เรื่องเวอร์ชัน ลอง <code>Runtime &gt; Restart</code> แล้วรันเซลล์ติดตั้งใหม่</li>
+<li>ถ้า import error หลังติดตั้ง: <code>Runtime &gt; Restart session</code> แล้วรันใหม่ (Colab ต้อง restart หลังลงบางแพ็กเกจ)</li>
+<li>transformers เก่ามาก: ถ้าเจอ error <code>eval_strategy</code>/<code>tokenizer</code> ให้ <code>!pip install -U transformers</code></li>
+</ul>
+<hr>
+<h2>สรุปสั้น (จำแค่นี้พอ)</h2>
+<ol>
+<li>เปิด GPU จากเมนูถ้างานเป็น deep learning (โค้ดเลือกให้เองแล้ว)</li>
+<li>เอาข้อมูลเข้า: Kaggle (วิธี A) / อัปโหลด zip แล้วตั้ง <code>DATA_DIR="/content"</code> (วิธี B) / Drive (วิธี C)</li>
+<li>Submission เริ่มจาก sample เสมอ + มี assert ตรวจให้ ถ้าฟ้องให้ปรับคอลัมน์ให้ตรง</li>
+<li>ระวัง: join comp ก่อน, โควต้าส่ง/วัน, Colab หลุด (เซฟลง Drive), OOM (ลด batch), อย่าแชร์ kaggle.json</li>
+</ol></section><section id="router" class="section"><div class="router"><h2>🧭 ถามตัวช่วย: เจอโจทย์แบบไหน เปิดไฟล์ไหน</h2><p>พิมพ์คำอธิบายโจทย์ (ไทยหรืออังกฤษ) แล้วกดปุ่ม</p><div class="rrow"><input id="q" placeholder="เช่น ทำนายระยะการนอนจาก EEG / classify movie reviews" onkeydown="if(event.key==='Enter')doRoute()"><button onclick="doRoute()">หา</button></div><div class="chips" id="chips"></div><div id="rout"></div></div><h1>Super AI Engineer SS6 — ชุดเตรียมสอบ (จัดตามหัวข้อใหญ่)</h1>
 <p>ชุดนี้แปลง 5 โจทย์ Kaggle ให้เป็น <code>เทมเพลตหัวข้อใหญ่</code> ที่ใช้ซ้ำกับโจทย์อะไรก็ได้ในหมวดนั้น</p>
 <p>เน้น <code>ง่ายที่สุด</code> สำหรับมือใหม่ ทุกโน้ตบุ๊กรันจากบนลงล่างได้เลย คอมเมนต์ไทยทุกจุด</p>
 <p>อ่านก่อน: <code>START_HERE.md</code> (คู่มือมือใหม่) แล้วเปิด <code>00_MASTER_ROUTER.ipynb</code></p>
@@ -217,25 +329,44 @@ details.nb>*:not(summary){padding:0 14px}
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.multimodal"        # วิธีที่ 1
 !pip -q install timm torch torchvision pillow scikit-learn pandas numpy tqdm   # วิธีที่ 2</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "super-ai-engineer-season-6-individual-hackathon-house-recognition"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "super-ai-engineer-season-6-individual-hackathon-house-recognition"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -248,7 +379,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — ตั้งค่า path + CONFIG (ดูจาก output ด้านบนแล้วแก้ให้ตรง)</h2></div>
@@ -381,25 +512,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <p>ถ้าเวลาน้อยและโจทย์เป็น classification ได้ ให้เลือก classification ก่อน</p></div>
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install ultralytics pandas pyyaml</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-detection-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-detection-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -412,7 +562,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — เตรียมข้อมูลแบบ YOLO</h2>
@@ -482,25 +632,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <p>หมายเหตุมือใหม่: segmentation ต้องมี label เป็น mask/polygon (รูปแบบ YOLO-seg) ถ้าเวลาน้อยและทำ classification ได้ ให้เลือก classification</p></div>
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install ultralytics pyyaml numpy</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-segmentation-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-segmentation-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -513,7 +682,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — เตรียม data.yaml (รูปแบบ YOLO-seg)</h2>
@@ -674,25 +843,44 @@ YOLOv8 YOLOv11 RT-DETR detection, segmentation_models_pytorch U-Net DeepLabV3+, 
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install pythainlp deepcut attacut tensorflow python-crfsuite scikit-learn pandas numpy
 !pip -q install transformers datasets torch   # วิธีที่ 3 เท่านั้น</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "super-ai-engineer-ss-6-word-segmentation"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "super-ai-engineer-ss-6-word-segmentation"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -705,7 +893,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ฟังก์ชันหลัก — แปลงไป-กลับระหว่าง "คำ" กับ "ป้ายต่อตัวอักษร"</h2></div>
@@ -817,25 +1005,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install pythainlp scikit-learn pandas numpy
 !pip -q install transformers datasets torch   # วิธีที่ 2 เท่านั้น</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-text-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-text-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -848,7 +1055,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
@@ -943,25 +1150,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U transformers sentencepiece sacremoses pandas torch
 !pip -q install datasets evaluate sacrebleu rouge_score   # วิธีที่ 2 (เทรน/วัดผล)</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-textgen-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-textgen-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -974,7 +1200,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
@@ -1171,25 +1397,44 @@ mT5 seq2seq segmentation, domain adaptation, out-of-domain robustness</code></pr
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U transformers accelerate datasets pillow pandas torch sentencepiece
 !pip -q install pythainlp nltk          # ใช้วัด Thai BLEU
 # !pip -q install peft bitsandbytes     # ปลดคอมเมนต์เฉพาะถ้าจะทำวิธีที่ 3 (PaliGemma2 LoRA) -- มือใหม่ไม่ต้องลง</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "super-ai-engineer-ss-6-thai-language-image-captioning"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "super-ai-engineer-ss-6-thai-language-image-captioning"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -1202,7 +1447,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — path + ตัววัด Thai BLEU (นี่คือ metric จริง)</h2></div>
@@ -1312,25 +1557,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U transformers pillow pandas torch
 !pip -q install pythainlp   # เผื่อวัด/ตัดคำไทย</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-vqa-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-vqa-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -1343,7 +1607,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — path + CONFIG</h2></div>
@@ -1509,25 +1773,44 @@ COCO captions, IPU24, VISTEC-depa NMT, Typhoon LLM, EasyOCR Thai, utf-8-sig, VQA
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.tabular[all]"      # วิธีที่ 1
 !pip -q install lightgbm scikit-learn pandas numpy   # วิธีที่ 2</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "super-ai-engineer-ss-6-heart-disease-prediction"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "super-ai-engineer-ss-6-heart-disease-prediction"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -1540,7 +1823,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
@@ -1629,25 +1912,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.tabular[all]"
 !pip -q install lightgbm scikit-learn pandas numpy</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-regression-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-regression-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -1660,7 +1962,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
@@ -1820,25 +2122,44 @@ quadratic weighted kappa, macro-F1, multiclass log-loss</code></pre></div></deta
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install scipy lightgbm scikit-learn pandas numpy
 !pip -q install -U "autogluon.tabular[all]"   # วิธีที่ 1</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "super-ai-engineer-ss-6-sleep-stage-classification"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "super-ai-engineer-ss-6-sleep-stage-classification"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -1851,7 +2172,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2>
@@ -1958,25 +2279,44 @@ print("พร้อมส่ง:", FILE, _sub.shape)
 <div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install lightgbm scikit-learn pandas numpy
 !pip -q install -U "autogluon.timeseries"   # วิธีที่ 2 เท่านั้น</code></pre></div>
-<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
-<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
-<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<div class="nbmd"><h2>ขั้นที่ 2 — เอาข้อมูลเข้า (เลือก 1 ใน 3 วิธี) + เช็ค GPU</h2>
+<p>เซลล์ล่างรองรับ 3 วิธี แก้แค่ตัวแปรบนสุดให้ตรงกับวิธีที่ใช้:</p>
+<p>วิธี A (แนะนำ) ดาวน์โหลดจาก Kaggle อัตโนมัติ: ต้องมี <code>kaggle.json</code> (kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</p>
 <ul>
-<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
-<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
-</ul></div>
+<li>บน <code>Kaggle Notebook</code>: ข้อมูลต่อไว้ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องใส่ token</li>
+<li>บน <code>Colab/เครื่อง</code>: ใส่ <code>KAGGLE_USERNAME</code> + <code>KAGGLE_KEY</code></li>
+</ul>
+<p>วิธี B โหลดข้อมูลมาเครื่องตัวเองแล้วอัปขึ้น Colab เอง: ลากไฟล์ (เช่น <code>data.zip</code>) ไปวางในแถบ Files ซ้ายมือของ Colab</p>
+<p>แล้วตั้ง <code>DATA_DIR = "/content"</code> (หรือโฟลเดอร์ที่วาง) -&gt; เซลล์จะแตก zip ให้เอง ไม่ต้องใช้ token</p>
+<p>วิธี C ต่อ Google Drive: รัน <code>from google.colab import drive; drive.mount('/content/drive')</code> ก่อน แล้วตั้ง <code>DATA_DIR = "/content/drive/MyDrive/โฟลเดอร์ของคุณ"</code></p>
+<p>เซลล์นี้เช็ค GPU ให้ด้วย ถ้างานเป็น deep learning (รูป/ข้อความ/สัญญาณดิบ) ควรเปิด GPU: เมนู <code>Runtime &gt; Change runtime type &gt; T4 GPU</code></p></div>
 <div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
 
-COMP = "ใส่-slug-ของ-competition-forecasting-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition คือคำท้าย URL เช่น kaggle.com/competitions/titanic -&gt; ใส่ "titanic"
-KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
-KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "0a1b2c3d4e5f6a7b8c9d..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี A: ดาวน์โหลดจาก Kaggle -----
+COMP = "ใส่-slug-ของ-competition-forecasting-ตรงนี้"      # &lt;&lt; แก้: slug ท้าย URL เช่น kaggle.com/competitions/titanic -&gt; "titanic"  (ใช้เฉพาะวิธี A)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "peetwan1"  (บน Kaggle Notebook เว้นว่างได้)
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (วิธี A, เฉพาะ Colab/เครื่อง) เช่น "0a1b2c3d4e5f..." (คีย์ยาว ~32 ตัวจาก kaggle.json)
+# ----- วิธี B/C: อัปโหลดเอง / ต่อ Google Drive -----
+DATA_DIR = ""          # &lt;&lt; แก้: ถ้าอัปโหลดข้อมูลเอง ใส่ path โฟลเดอร์ เช่น "/content" (วิธี B) หรือ "/content/drive/MyDrive/data" (วิธี C) ; ใช้ Kaggle (วิธี A) ปล่อยว่าง
+
+# เช็ค GPU (ถ้าไม่มี + งานเป็น deep learning -&gt; เปิดที่เมนู Runtime &gt; Change runtime type &gt; T4 GPU)
+try:
+    import torch
+    print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "ไม่มี (งาน deep learning จะช้า; งานตาราง/ตัดคำ ไม่ต้องใช้ GPU ก็ได้)")
+except Exception:
+    pass
 
 def get_data(comp):
-    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    # วิธี B/C: ผู้ใช้ตั้ง DATA_DIR เอง (อัปโหลด/ต่อ Drive) -- แตก zip ในโฟลเดอร์นั้นให้ด้วยถ้ามี
+    if DATA_DIR and os.path.isdir(DATA_DIR):
+        for z in glob.glob(os.path.join(DATA_DIR, "*.zip")):
+            subprocess.run(["unzip", "-o", "-q", z, "-d", DATA_DIR])
+        print("ใช้ข้อมูลจากโฟลเดอร์ที่ตั้งเอง:", DATA_DIR); return DATA_DIR
+    # บน Kaggle Notebook ข้อมูลต่อไว้แล้ว
     kpath = f"/kaggle/input/{comp}"
     if os.path.isdir(kpath):
-        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
-    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+        print("อยู่บน Kaggle ข้อมูลอยู่ที่", kpath); return kpath
+    # วิธี A: ดาวน์โหลดด้วย Kaggle API
     if KAGGLE_USERNAME and KAGGLE_KEY:
         os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
         open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
@@ -1989,7 +2329,7 @@ def get_data(comp):
     return "data"
 
 DATA_DIR = get_data(COMP)
-print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+print("\nไฟล์ที่มี (ดูชื่อไฟล์/โฟลเดอร์ แล้วแก้ในเซลล์ถัดไปให้ตรง):")
 for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
     print("  ", p)</code></pre></div>
 <div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
