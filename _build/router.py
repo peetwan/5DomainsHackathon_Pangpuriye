@@ -88,6 +88,13 @@ CATS = {
           "demand forecast","demand","ยอดขายพรุ่งนี้","ราคาล่วงหน้า","next day","next week",
           "time series prediction","ทำนายยอดขาย","predict next","แนวโน้ม","trend prediction",
           "ย้อนหลัง","ข้อมูลย้อนหลัง","historical"]},
+ "audio_classification": {
+   "label": "Audio / Speech — จำแนกเสียง",
+   "path": "06_Audio/audio_classification.ipynb",
+   "first": "วิธีที่ 1 = สกัดฟีเจอร์เสียง (MFCC) + AutoGluon",
+   "kw": ["audio","เสียง","sound","speech","พูด","voice","จำแนกเสียง","sound classification","mfcc",
+          "spectrogram","music","ดนตรี","เพลง","คำสั่งเสียง","keyword spotting","asr","ถอดเสียง","wav","mp3",
+          "speaker","sound event","environmental sound"]},
 }
 
 def _hit(kw, p):

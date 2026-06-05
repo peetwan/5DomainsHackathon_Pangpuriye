@@ -43,6 +43,9 @@ TESTS = [
  ("human activity recognition จาก accelerometer", "ts_signal_classification"),
  ("detect objects and count them", "cv_detection"),
  ("จัดประเภทข้อความว่าเป็นหมวดไหน", "nlp_text_classification"),
+ ("จำแนกเสียงสัตว์จากไฟล์ wav", "audio_classification"),
+ ("audio sound classification of music genre", "audio_classification"),
+ ("speech command keyword spotting", "audio_classification"),
 ]
 
 passed = 0

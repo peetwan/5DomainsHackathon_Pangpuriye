@@ -98,6 +98,7 @@ TOPICS = [
      ["classification", "regression"]),
     ("ts", "📈", "Time-Series", "05_TimeSeries_Signal",
      ["signal_classification", "forecasting"]),
+    ("audio", "🔊", "Audio", "06_Audio", ["audio_classification"]),
 ]
 
 def topic_section(folder, notebooks):
@@ -105,8 +106,9 @@ def topic_section(folder, notebooks):
     for nb in notebooks:
         h.append('<details class="nb"><summary>📓 ' + nb + ".ipynb</summary>"
                  + nb2html(folder + "/" + nb + ".ipynb") + "</details>")
-    h.append('<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary>'
-             + md2html(read(folder + "/reference_cheatsheet.md")) + "</details>")
+    if os.path.exists(os.path.join(ROOT, folder, "reference_cheatsheet.md")):
+        h.append('<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary>'
+                 + md2html(read(folder + "/reference_cheatsheet.md")) + "</details>")
     return "\n".join(h)
 
 # ---- router widget ----
@@ -154,7 +156,9 @@ SECTIONS.append(("auto", "🪄", "AUTO SOLVER (ปุ่มเดียว)",
                  + nb2html("00_AUTO_SOLVER.ipynb")))
 SECTIONS.append(("start", "🏁", "เริ่มที่นี่", md2html(read("START_HERE.md"))))
 SECTIONS.append(("colab", "🖥️", "คู่มือ Colab", md2html(read("COLAB_GUIDE.md"))))
+SECTIONS.append(("playbook", "📋", "Playbook (ทำตามนี้)", md2html(read("PLAYBOOK.md"))))
 SECTIONS.append(("ptypes", "🗺️", "แผนที่โจทย์ทั้งหมด", md2html(read("PROBLEM_TYPES.md"))))
+SECTIONS.append(("trouble", "🔧", "แก้ปัญหา (errors)", md2html(read("TROUBLESHOOTING.md"))))
 SECTIONS.append(("router", "🧭", "ตัวนำทาง (Router)",
                  router_widget + md2html(read("README.md"))))
 for tid, icon, title, folder, nbs in TOPICS:

@@ -6,8 +6,11 @@
 ## 🪄 ขี้เกียจสุด / รีบสุด -> เปิด `00_AUTO_SOLVER.ipynb`
 
 แก้แค่ `ชื่อ competition` (หรืออัปโหลด zip) แล้วกดรันทีละเซลล์ -> มันเดาเองว่าเป็นงานอะไร เทรนให้ สร้าง submission ให้ จบ
-ครอบคลุม: จำแนกรูป / จำแนกข้อความ / ตาราง (จำแนก/ทำนายตัวเลข) / สัญญาณ
-(งานพิเศษ ตัดคำ/segmentation/บรรยายรูป มันจะบอกให้ไปเปิดโน้ตบุ๊กเฉพาะ)
+ครอบคลุม: จำแนกรูป / จำแนกข้อความ / ตาราง (จำแนก/ทำนายตัวเลข/หลายคลาส)
+แถม: ดูข้อมูล (EDA) + ส่ง baseline ก่อน + บอกคะแนนในเครื่อง + รวมไฟล์ (blend) ให้ในตัว
+(งานพิเศษ ตัดคำ/segmentation/บรรยายรูป/เสียง มันจะบอกให้ไปเปิดโน้ตบุ๊กเฉพาะ)
+
+ลำดับทำงานในห้องสอบ -> อ่าน `PLAYBOOK.md` | เจอ error -> `TROUBLESHOOTING.md`
 
 ถ้าอยากคุมเอง/ได้คะแนนสูงขึ้น ค่อยใช้โน้ตบุ๊กตามหัวข้อด้านล่าง
 
@@ -57,6 +60,7 @@
 - Multimodal: thai_image_captioning, visual_qa
 - Tabular: classification, regression
 - Time-Series: signal_classification, forecasting
+- Audio: audio_classification (+ ASR/Whisper note)
 
 อยากรู้ว่าตรวจอะไรไปบ้าง (router/โค้ดทำงานจริงไหม) ดู `VERIFY.md`
 

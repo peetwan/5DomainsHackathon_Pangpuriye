@@ -185,7 +185,7 @@ test2=add_time_features(test).sort_values(TIME_COL).reset_index(drop=True)
 series=list(add_time_features(train).sort_values(TIME_COL)[TARGET].values)  # ประวัติค่าจริงจาก train
 preds=[]
 for _,row in test2.iterrows():
-    fr={c: row[c] for c in ["year","month","day","dow","doy"]}
+    fr={c:(row[c] if c in test2.columns else np.nan) for c in feat_cols}  # เอาค่าฟีเจอร์อื่น ๆ จากแถว test ด้วย (กัน KeyError ถ้ามีฟีเจอร์เพิ่ม)
     for L in LAGS:
         fr[f"lag_{L}"]= series[-L] if len(series)>=L else np.nan
     yhat=float(m.predict(pd.DataFrame([fr])[feat_cols])[0])

@@ -32,8 +32,14 @@ START_HERE.md                       <- อ่านก่อน (มือให
 05_TimeSeries_Signal/               <- สัญญาณ -> คลาส / พยากรณ์
     signal_classification.ipynb
     forecasting.ipynb
+06_Audio/                           <- เสียง -> คลาส (+ หมายเหตุ ASR/Whisper)
+    audio_classification.ipynb
+PLAYBOOK.md                         <- ลำดับทำงานทีละขั้นในห้องสอบ
+TROUBLESHOOTING.md                  <- เจอ error แบบไหน แก้ยังไง
+PROBLEM_TYPES.md                    <- แผนที่ "เจอโจทย์แบบไหน ทำแบบไหน" (รวมโจทย์ยาก)
+COLAB_GUIDE.md                      <- ใช้บน Colab (GPU/ข้อมูล/ฟอร์แมต)
 ```
-(รวม 13 โน้ตบุ๊ก ครอบคลุมทุกแนวของ 5 หัวข้อใหญ่)
+(ครอบคลุม 6 หัวข้อใหญ่ + AUTO_SOLVER ปุ่มเดียวจบ)
 (ทุกโฟลเดอร์มี `README.md` เกร็งโจทย์ + `reference_cheatsheet.md` ความรู้ลึก)
 
 ## 5 หัวข้อใหญ่ + วิธีที่ง่ายที่สุด

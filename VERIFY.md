@@ -42,8 +42,16 @@
 ตั้งแต่โหลดข้อมูล -> เทรน -> สร้าง submission แล้วตรวจว่า submission ตรงรูปแบบ sample_submission
 (ไลบรารีหนัก autogluon/timm/pythainlp ถูก mock เพราะหนัก/ต้องเน็ต ; lightgbm/sklearn/scipy/torch รันจริง)
 
-ผลลัพธ์: ผ่าน 12/12 (8 หัวข้อ + AUTO SOLVER 4 แบบ) ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN
-- `00_AUTO_SOLVER.ipynb` (ปุ่มเดียวจบ) เดาประเภทงานถูกทั้ง 4: tabular-clf, regression, text, image แล้วสร้าง submission ถูกฟอร์แมต
+ผลลัพธ์: ผ่าน 13/13 (8 หัวข้อ + AUTO SOLVER 5 แบบ) ได้ submission ถูกคอลัมน์ + จำนวนแถวตรง + ไม่มี NaN
+- `00_AUTO_SOLVER.ipynb` (ปุ่มเดียวจบ) เดาประเภทงานถูกทั้ง 5: tabular-clf, regression, text, image, multiclass-proba แล้วสร้าง submission ถูกฟอร์แมต
+- forecasting ทดสอบกับข้อมูลที่มีฟีเจอร์เพิ่ม (เทสบั๊ก KeyError ที่ audit เจอ) -> ผ่าน
+
+รอบ audit + polish (All-in-one): แก้บั๊กที่ audit agent เจอ
+- forecasting recursive เคย KeyError ถ้า train มีฟีเจอร์อื่นนอกจาก date/target -> แก้ให้เอาค่าฟีเจอร์จากแถว test
+- AUTO_SOLVER เคย crash ถ้า test.csv ชื่ออื่น -> เพิ่ม assert บอกให้แก้ชื่อ
+- เซลล์ดึง metric: kaggle เวอร์ชันใหม่คืน response ไม่ใช่ list -> แก้ใช้ `.competitions` + ชื่อ attribute `evaluation_metric`
+เพิ่ม (All-in-one): seed_everything, auto-EDA, ส่ง baseline ก่อน, คะแนน validation ในเครื่อง, blend หลายไฟล์, หัวข้อใหม่ Audio,
+`PLAYBOOK.md` (ลำดับทำงาน), `TROUBLESHOOTING.md` (error->แก้)
 - Tabular classification (ทั้ง accuracy และ AUC->ส่ง prob), Tabular regression
 - Text classification, Word segmentation (1 แถวต่อตัวอักษร 34 แถวถูกต้อง)
 - Signal classification (แบ่ง CV ตาม subject), Forecasting (recursive ไม่มี NaN), Image classification

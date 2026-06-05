@@ -58,7 +58,15 @@
 | จำแนกสัญญาณ (EEG/ECG/HAR) | คลาส | macro-F1/kappa | id,label | `signal_classification` (หรือ AUTO ทำเป็นตาราง) | 📓🟢 |
 | พยากรณ์ (forecasting) | ค่าอนาคต | RMSE/MAE/SMAPE | id,value | `forecasting` | 📓 |
 | ตรวจจับความผิดปกติ (anomaly) | ปกติ/ผิดปกติ | F1/AUPRC | id,label | `signal_classification` (binary) | 📓🛠️ |
-| จำแนกเสียง (audio) | คลาส | Accuracy | id,label | 🛠️ แปลงเป็น mel-spectrogram แล้วใช้ `image_classification` | 🛠️ |
+| จำแนกเสียง (audio) | คลาส | Accuracy | id,label | `06_Audio/audio_classification` | 📓 |
+
+## Audio / Speech (เสียง)
+
+| โจทย์ | output | metric | submission | ใช้อะไร | ดัก |
+|---|---|---|---|---|---|
+| จำแนกเสียง (1 คลาส/ไฟล์) | คลาส | Accuracy/F1 | id,label | `06_Audio/audio_classification` | 📓 |
+| ตรวจจับเหตุการณ์เสียง | ป้าย | F1 | หลายคอลัมน์ | 🛠️ ปรับ audio (multi-label) | 🛠️ |
+| ถอดเสียงเป็นข้อความ (ASR ไทย) | ข้อความ | CER/WER | id,text | 🛠️ Whisper (โน้ตin 06_Audio) | 🛠️ |
 
 ---
 

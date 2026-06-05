@@ -118,9 +118,9 @@ def comp_forecasting():
     d = mk_dir()
     dates = pd.date_range("2023-01-01", periods=200, freq="D")
     sales = (np.sin(np.arange(200) / 7) * 50 + 200 + rng.normal(0, 5, 200)).round(1)
-    tr = pd.DataFrame({"id": range(200), "date": dates, "sales": sales})
+    tr = pd.DataFrame({"id": range(200), "date": dates, "promo": rng.integers(0, 2, 200), "sales": sales})
     fut = pd.date_range("2023-07-20", periods=30, freq="D")
-    te = pd.DataFrame({"id": range(30), "date": fut})
+    te = pd.DataFrame({"id": range(30), "date": fut, "promo": rng.integers(0, 2, 30)})  # ฟีเจอร์เพิ่ม (เทสบั๊ก KeyError)
     tr.to_csv(f"{d}/train.csv", index=False); te.to_csv(f"{d}/test.csv", index=False)
     pd.DataFrame({"id": range(30), "sales": 0.0}).to_csv(f"{d}/sample_submission.csv", index=False)
     return d
