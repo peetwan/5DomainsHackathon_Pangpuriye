@@ -1,0 +1,2207 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0f1419"><title>5 Domains Hackathon — Pangpuriye | คู่มือสอบ</title><style>
+:root{--bg:#0f1419;--bg2:#161b22;--card:#1c2330;--bd:#2a3340;--tx:#e6edf3;--mut:#9aa7b4;--ac:#4cc2ff;--ac2:#7ee787;--code:#0b1020}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans Thai","Sarabun",sans-serif;background:var(--bg);color:var(--tx);line-height:1.65;font-size:16px}
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(15,20,25,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
+header h1{font-size:16px;margin:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .sub{color:var(--mut);font-size:12px}
+#burger{display:none;background:var(--card);border:1px solid var(--bd);color:var(--tx);font-size:20px;border-radius:8px;width:40px;height:40px;cursor:pointer}
+.wrap{display:flex;min-height:calc(100vh - 58px)}
+#sidebar{width:270px;flex:0 0 270px;background:var(--bg2);border-right:1px solid var(--bd);padding:14px;overflow-y:auto;position:sticky;top:58px;height:calc(100vh - 58px)}
+.navlink{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;color:var(--tx);text-decoration:none;font-size:15px;margin-bottom:4px;border:1px solid transparent}
+.navlink span{font-size:14px}
+.navlink:hover{background:var(--card)}
+.navlink.active{background:var(--card);border-color:var(--ac);color:var(--ac)}
+main{flex:1;min-width:0;padding:22px 20px 80px;max-width:920px;margin:0 auto;width:100%}
+.section{display:none}
+.section.active{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2,h3,h4{line-height:1.3;margin:1.3em 0 .55em}
+h1{font-size:1.7rem;color:#fff}h2{font-size:1.32rem;color:var(--ac)}h3{font-size:1.12rem;color:var(--ac2)}h4{font-size:1rem}
+p{margin:.6em 0}a{color:var(--ac)}
+ul,ol{padding-left:1.4em;margin:.5em 0}li{margin:.3em 0}
+hr{border:0;border-top:1px solid var(--bd);margin:1.6em 0}
+blockquote{border-left:3px solid var(--ac);background:var(--card);margin:.8em 0;padding:.5em .9em;border-radius:0 8px 8px 0;color:var(--mut)}
+code{background:#232b39;color:#ffd9a0;padding:.12em .4em;border-radius:5px;font-size:.86em;font-family:"SF Mono",Menlo,Consolas,monospace;word-break:break-word}
+.codewrap{position:relative;margin:.8em 0}
+.codewrap pre{background:var(--code);border:1px solid var(--bd);border-radius:10px;padding:14px;overflow-x:auto;font-size:13px}
+.codewrap pre code{background:none;color:#d7e2ee;padding:0;font-size:13px;white-space:pre}
+.copy{position:absolute;top:8px;right:8px;background:var(--card);border:1px solid var(--bd);color:var(--mut);font-size:11px;padding:4px 9px;border-radius:6px;cursor:pointer;z-index:2}
+.copy:hover{color:var(--ac);border-color:var(--ac)}
+.tablewrap{overflow-x:auto;margin:.9em 0;border:1px solid var(--bd);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th,td{border-bottom:1px solid var(--bd);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:var(--card);color:var(--ac);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+details.nb{border:1px solid var(--bd);border-radius:10px;margin:.7em 0;background:var(--bg2);overflow:hidden}
+details.nb>summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none;user-select:none}
+details.nb>summary::-webkit-details-marker{display:none}
+details.nb[open]>summary{border-bottom:1px solid var(--bd);color:var(--ac)}
+details.nb>*:not(summary){padding:0 14px}
+.nbmd{padding-top:6px}
+.router{background:var(--card);border:1px solid var(--ac);border-radius:14px;padding:16px;margin-bottom:20px}
+.router h2{margin-top:0}
+.rrow{display:flex;gap:8px;margin:10px 0}
+.rrow input{flex:1;min-width:0;background:var(--code);border:1px solid var(--bd);color:var(--tx);padding:12px;border-radius:10px;font-size:15px}
+.rrow button{background:var(--ac);color:#001018;border:0;font-weight:700;padding:0 20px;border-radius:10px;cursor:pointer;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0}
+.chip{background:var(--bg2);border:1px solid var(--bd);color:var(--mut);font-size:12px;padding:6px 10px;border-radius:20px;cursor:pointer}
+.chip:hover{color:var(--ac);border-color:var(--ac)}
+#rout{margin-top:12px}
+.hit{background:var(--bg2);border:1px solid var(--ac2);border-radius:10px;padding:12px;margin-top:8px}
+.hit b{color:var(--ac2)}
+.scorebar{font-size:12.5px;color:var(--mut);margin-top:8px}
+.foot{color:var(--mut);font-size:12px;text-align:center;padding:24px 0}
+@media(max-width:860px){
+ #burger{display:block}
+ #sidebar{position:fixed;left:0;top:58px;transform:translateX(-105%);transition:.25s;z-index:40;box-shadow:0 0 40px rgba(0,0,0,.6);height:calc(100vh - 58px)}
+ #sidebar.open{transform:none}
+ .scrim{display:none;position:fixed;inset:58px 0 0;background:rgba(0,0,0,.5);z-index:35}
+ .scrim.open{display:block}
+ main{padding:16px 14px 70px}
+ header h1{font-size:14px}
+ body{font-size:15px}
+}
+</style></head><body><header><button id="burger" aria-label="menu">☰</button><div><h1>5 Domains Hackathon · Pangpuriye</h1><div class="sub">คู่มือสอบ AI 5 หัวข้อใหญ่ · เปิดที่ไหนก็ได้ ทั้งคอมและมือถือ</div></div></header><div class="wrap"><nav id="sidebar"><a class="navlink" data-t="start" href="#start">🏁 <span>เริ่มที่นี่</span></a><a class="navlink" data-t="router" href="#router">🧭 <span>ตัวนำทาง (Router)</span></a><a class="navlink" data-t="cv" href="#cv">🖼️ <span>Computer Vision</span></a><a class="navlink" data-t="nlp" href="#nlp">📝 <span>NLP</span></a><a class="navlink" data-t="mm" href="#mm">🎨 <span>Multimodal</span></a><a class="navlink" data-t="tab" href="#tab">📊 <span>Tabular</span></a><a class="navlink" data-t="ts" href="#ts">📈 <span>Time-Series</span></a><a class="navlink" data-t="sota" href="#sota">🚀 <span>SOTA อัปเดต</span></a><a class="navlink" data-t="verify" href="#verify">✅ <span>Verify (ตรวจแล้ว)</span></a><a class="navlink" data-t="deploy" href="#deploy">🚂 <span>Deploy / GitHub</span></a></nav><div class="scrim" id="scrim"></div><main><section id="start" class="section"><h1>เริ่มอ่านที่นี่ (สำหรับมือใหม่) 👋</h1>
+<p>ชุดนี้ช่วยให้สอบ hackathon ได้ แม้ยังไม่ค่อยมีความรู้ จัดเป็น <code>หัวข้อใหญ่</code> ไว้ให้แล้ว</p>
+<p>แต่ละหัวข้อมีโน้ตบุ๊กที่ <code>รันจากบนลงล่างได้เลย</code> คอมเมนต์ไทยทุกจุด</p>
+<h2>ใช้ยังไง (3 ขั้น)</h2>
+<p>ขั้น 1: เปิด <code>00_MASTER_ROUTER.ipynb</code> -&gt; พิมพ์โจทย์ที่เจอ -&gt; มันบอกว่าใช้ไฟล์ไหน</p>
+<p>ขั้น 2: เปิดไฟล์ที่มันบอก -&gt; แก้จุดที่มีคอมเมนต์ <code># &lt;&lt; แก้</code> (ส่วนใหญ่แค่ชื่อ competition กับชื่อคอลัมน์)</p>
+<p>ขั้น 3: กดรันจากบนลงล่าง -&gt; ทำแค่ <code>วิธีที่ 1 (ง่ายสุด)</code> ก็ได้ไฟล์ submission แล้ว</p>
+<h2>5 หัวข้อใหญ่ (จับให้ถูกหมวด)</h2>
+<ul>
+<li><code>01_Computer_Vision/</code> — input เป็นรูป (จำแนกรูป / หาวัตถุ)</li>
+<li><code>02_NLP/</code> — input เป็นข้อความ (ตัดคำ / จำแนกข้อความ)</li>
+<li><code>03_Multimodal_VisionLanguage/</code> — รูป -&gt; ข้อความ (บรรยายรูป)</li>
+<li><code>04_Tabular/</code> — ข้อมูลตาราง (ทำนายคลาส / ทำนายตัวเลข)</li>
+<li><code>05_TimeSeries_Signal/</code> — สัญญาณตามเวลา (จำแนกสัญญาณ / พยากรณ์)</li>
+</ul>
+<p>วิธีจับหมวดเร็ว ๆ: ถามตัวเอง 2 ข้อ -&gt; "input เป็นอะไร" และ "output เป็นอะไร"</p>
+<h2>ต้องเตรียมอะไรก่อน</h2>
+<ol>
+<li>มีบัญชี Kaggle และเข้าร่วม competition แล้ว</li>
+<li>มีไฟล์ <code>kaggle.json</code> (เข้า kaggle.com -&gt; รูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token)</li>
+</ol>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code> หรือ <code>Google Colab</code> จะง่ายสุด (มี GPU ฟรี)</li>
+</ul>
+<ol>
+<li>ในแต่ละโน้ตบุ๊ก เซลล์ตั้งค่า Kaggle จะบอกว่าต้องใส่ token ตรงไหน</li>
+</ol>
+<h2>เคล็ดลับมือใหม่</h2>
+<ul>
+<li>ทำ <code>วิธีที่ 1 (ง่ายสุด)</code> ให้มีคะแนนขึ้นกระดานก่อนเสมอ แล้วค่อยลองวิธีอื่น</li>
+<li><code>AutoGluon</code> คือเพื่อนซี้ของมือใหม่ -&gt; ใช้ได้กับ ตาราง / รูป / สัญญาณ แทบกดปุ่มเดียวจบ</li>
+<li>รันบน <code>Google Colab</code> หรือ <code>Kaggle Notebook</code> (มี GPU ฟรี + ไลบรารีพร้อม) จะง่ายและเร็วสุด</li>
+<li>ทุกโฟลเดอร์มี <code>README.md</code> (เกร็งโจทย์ว่าออกแบบไหนได้) และ <code>reference_cheatsheet.md</code> (ความรู้ลึก)</li>
+</ul>
+<h2>มีกี่โน้ตบุ๊ก (ครอบคลุมทุกแนว)</h2>
+<p>รวม 13 โน้ตบุ๊ก แต่ละหัวข้อใหญ่มีหลายแบบ:</p>
+<ul>
+<li>CV: image_classification, object_detection, segmentation</li>
+<li>NLP: thai_word_segmentation, text_classification, text_generation</li>
+<li>Multimodal: thai_image_captioning, visual_qa</li>
+<li>Tabular: classification, regression</li>
+<li>Time-Series: signal_classification, forecasting</li>
+</ul>
+<p>อยากรู้ว่าตรวจอะไรไปบ้าง (router/โค้ดทำงานจริงไหม) ดู <code>VERIFY.md</code></p>
+<h2>ถ้างง ให้ดูตามนี้</h2>
+<p>โจทย์ให้รูป -&gt; ตอบคลาส?  -&gt;  <code>01_Computer_Vision/image_classification.ipynb</code></p>
+<p>โจทย์ให้ตาราง -&gt; ทำนายค่า?  -&gt;  <code>04_Tabular/classification.ipynb</code> หรือ <code>regression.ipynb</code></p>
+<p>โจทย์ให้ข้อความไทย -&gt; ตัดคำ?  -&gt;  <code>02_NLP/thai_word_segmentation.ipynb</code></p>
+<p>โจทย์ให้รูป -&gt; บรรยายเป็นไทย?  -&gt;  <code>03_Multimodal_VisionLanguage/thai_image_captioning.ipynb</code></p>
+<p>โจทย์ให้สัญญาณ/EEG -&gt; ตอบคลาส?  -&gt;  <code>05_TimeSeries_Signal/signal_classification.ipynb</code></p>
+<p>โชคดีนะครับ 💪</p></section><section id="router" class="section"><div class="router"><h2>🧭 ถามตัวช่วย: เจอโจทย์แบบไหน เปิดไฟล์ไหน</h2><p>พิมพ์คำอธิบายโจทย์ (ไทยหรืออังกฤษ) แล้วกดปุ่ม</p><div class="rrow"><input id="q" placeholder="เช่น ทำนายระยะการนอนจาก EEG / classify movie reviews" onkeydown="if(event.key==='Enter')doRoute()"><button onclick="doRoute()">หา</button></div><div class="chips" id="chips"></div><div id="rout"></div></div><h1>Super AI Engineer SS6 — ชุดเตรียมสอบ (จัดตามหัวข้อใหญ่)</h1>
+<p>ชุดนี้แปลง 5 โจทย์ Kaggle ให้เป็น <code>เทมเพลตหัวข้อใหญ่</code> ที่ใช้ซ้ำกับโจทย์อะไรก็ได้ในหมวดนั้น</p>
+<p>เน้น <code>ง่ายที่สุด</code> สำหรับมือใหม่ ทุกโน้ตบุ๊กรันจากบนลงล่างได้เลย คอมเมนต์ไทยทุกจุด</p>
+<p>อ่านก่อน: <code>START_HERE.md</code> (คู่มือมือใหม่) แล้วเปิด <code>00_MASTER_ROUTER.ipynb</code></p>
+<h2>โครงสร้าง (จัดตามหัวข้อใหญ่)</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>START_HERE.md                       &lt;- อ่านก่อน (มือใหม่)
+00_MASTER_ROUTER.ipynb              &lt;- เจอโจทย์แบบไหน เปิดไฟล์ไหน (พิมพ์โจทย์แล้วมันบอก)
+01_Computer_Vision/                 &lt;- รูป -&gt; คลาส / กล่อง / mask
+    README.md                       (เกร็งโจทย์: ออกได้กี่แบบ)
+    image_classification.ipynb
+    object_detection.ipynb
+    segmentation.ipynb
+    reference_cheatsheet.md
+02_NLP/                             &lt;- ข้อความ -&gt; ป้าย / ข้อความใหม่
+    thai_word_segmentation.ipynb
+    text_classification.ipynb
+    text_generation.ipynb
+03_Multimodal_VisionLanguage/       &lt;- รูป -&gt; ข้อความ
+    thai_image_captioning.ipynb
+    visual_qa.ipynb
+04_Tabular/                         &lt;- ตาราง -&gt; ค่าทำนาย
+    classification.ipynb
+    regression.ipynb
+05_TimeSeries_Signal/               &lt;- สัญญาณ -&gt; คลาส / พยากรณ์
+    signal_classification.ipynb
+    forecasting.ipynb</code></pre></div>
+<p>(รวม 13 โน้ตบุ๊ก ครอบคลุมทุกแนวของ 5 หัวข้อใหญ่)</p>
+<p>(ทุกโฟลเดอร์มี <code>README.md</code> เกร็งโจทย์ + <code>reference_cheatsheet.md</code> ความรู้ลึก)</p>
+<h2>5 หัวข้อใหญ่ + วิธีที่ง่ายที่สุด</h2>
+<div class="tablewrap"><table><thead><tr><th>หัวข้อใหญ่</th><th>input -&gt; output</th><th>วิธีง่ายสุด (มือใหม่)</th></tr></thead><tbody><tr><td>Computer Vision</td><td>รูป -&gt; คลาส</td><td>AutoGluon MultiModal</td></tr><tr><td>NLP</td><td>ข้อความ -&gt; ป้าย</td><td>PyThaiNLP / TF-IDF + LogReg</td></tr><tr><td>Multimodal</td><td>รูป -&gt; ข้อความ</td><td>โมเดล Thai-COCO สำเร็จรูป</td></tr><tr><td>Tabular</td><td>ตาราง -&gt; ค่าทำนาย</td><td>AutoGluon Tabular</td></tr><tr><td>Time-Series</td><td>สัญญาณ -&gt; คลาส</td><td>สกัดฟีเจอร์ + AutoGluon</td></tr></tbody></table></div>
+<p>แนวคิด: ทุกโน้ตบุ๊กมี <code>วิธีที่ 1 (ง่ายสุด)</code> อยู่บนสุด มือใหม่ทำแค่นี้ก็ได้คะแนนแล้ว</p>
+<p>แล้วมีวิธีที่ 2/3 (ขั้นสูง) ไว้ดันคะแนนถ้ามีเวลา</p>
+<h2>โจทย์ที่คาดว่าจะออก (เกร็งโจทย์ต่อหัวข้อใหญ่)</h2>
+<p>ดูละเอียดในไฟล์ <code>README.md</code> ของแต่ละโฟลเดอร์ สรุปสั้น:</p>
+<ul>
+<li>CV: จำแนกรูป / หาวัตถุ (detection) / segmentation / OCR</li>
+<li>NLP: ตัดคำ / NER / POS / จำแนกข้อความ (sentiment)</li>
+<li>Multimodal: บรรยายรูป / VQA / OCR captioning</li>
+<li>Tabular: จำแนก 2 คลาส / หลายคลาส / regression / imbalanced</li>
+<li>Time-Series: จำแนกสัญญาณ / forecasting / anomaly</li>
+</ul>
+<h2>ลำดับทำงานในห้องสอบ</h2>
+<ol>
+<li>เปิด <code>00_MASTER_ROUTER.ipynb</code> พิมพ์โจทย์ -&gt; รู้ว่าเปิดไฟล์ไหน</li>
+<li>อ่านหน้า Kaggle จริง tab <code>Data</code> + <code>Evaluation</code> จด: คอลัมน์, metric, จำนวนคลาส, รูปแบบ submission</li>
+<li>แก้ CONFIG ตามคอมเมนต์ <code># &lt;&lt; แก้</code></li>
+<li>รัน <code>วิธีที่ 1 (ง่ายสุด)</code> ให้มี submission ก่อน</li>
+<li>เหลือเวลาค่อยทำวิธีที่ 2/3 ดันคะแนน</li>
+</ol>
+<p>หมายเหตุ: หน้า Kaggle SS6 ส่วนใหญ่ login-gated ตอนเตรียมชุดนี้ จึงยืนยันรูปแบบ submission เป๊ะ ๆ ไม่ได้</p>
+<p>แต่โค้ดทุกตัวอ่าน <code>sample_submission.csv</code> มาเป็นแม่แบบ จึงปรับตามจริงให้อัตโนมัติ</p>
+<h2>เว็บคู่มือ (HTML) + เอกสารเพิ่มเติม</h2>
+<ul>
+<li><code>index.html</code> — เว็บคู่มือรวมทุกอย่าง (responsive มือถือ 100%) มี Router แบบพิมพ์โจทย์แล้วบอกโน้ตบุ๊ก</li>
+<li>รันในเครื่อง: <code>python server.py</code> แล้วเปิด <code>http://localhost:8000</code></li>
+<li>deploy Railway: New Project -&gt; Deploy from GitHub repo -&gt; เลือก repo นี้ (อ่าน <code>Procfile</code> ให้เอง) ดู <code>index.html</code> ส่วน Deploy</li>
+<li><code>ADVANCED_SOTA.md</code> — SOTA อัปเดต 2025-2026 + วิธีดันคะแนน (อยากได้คะแนนเพิ่มไปใช้อะไร แก้ตรงไหน)</li>
+<li><code>VERIFY.md</code> — สรุปสิ่งที่ทดสอบจริง (router 34 เคส, โค้ดรันจริง, API ตรวจกับเอกสาร)</li>
+<li>สร้างเว็บใหม่หลังแก้เนื้อหา: <code>python _build/build_site.py</code></li>
+</ul></section><section id="cv" class="section"><h1>หัวข้อใหญ่: Computer Vision (งานเกี่ยวกับรูปภาพ)</h1>
+<p>input คือ <code>รูปภาพ</code> เกร็งโจทย์ว่าออกได้แบบไหนบ้าง แล้วใช้โน้ตบุ๊กไหน</p>
+<h2>เกร็งโจทย์ — ออกได้กี่แบบ?</h2>
+<div class="tablewrap"><table><thead><tr><th>แบบโจทย์</th><th>output</th><th>metric ที่เจอบ่อย</th><th>ใช้ไฟล์</th><th>ง่ายแค่ไหน</th></tr></thead><tbody><tr><td>1. จำแนกรูป (classification)</td><td>1 คลาส/รูป</td><td>Accuracy, F1</td><td><code>image_classification.ipynb</code></td><td>⭐ ง่ายสุด</td></tr><tr><td>2. หาวัตถุ (detection)</td><td>กล่อง + คลาส</td><td>mAP</td><td><code>object_detection.ipynb</code></td><td>⭐⭐⭐ ยากกว่า</td></tr><tr><td>3. แบ่งส่วนภาพ (segmentation)</td><td>mask ระบายสีต่อพิกเซล</td><td>IoU, Dice</td><td>ใช้ detection เป็นฐาน + U-Net</td><td>⭐⭐⭐</td></tr><tr><td>4. OCR (อ่านตัวอักษรในรูป)</td><td>ข้อความ</td><td>CER, accuracy</td><td>ไปหัวข้อ 03 Multimodal</td><td>⭐⭐</td></tr></tbody></table></div>
+<p>แบบที่เจอบ่อยสุดในสอบ = <code>จำแนกรูป (classification)</code> เริ่มจากอันนี้ก่อนเสมอ</p>
+<h2>วิธีดูว่าเป็นแบบไหน (ดู output ของโจทย์)</h2>
+<ul>
+<li>ตอบว่า "รูปนี้คือคลาสอะไร" -&gt; classification</li>
+<li>ตอบว่า "วัตถุอยู่ตรงไหน (พิกัดกล่อง)" -&gt; detection</li>
+<li>ตอบว่า "พิกเซลไหนเป็นอะไร" -&gt; segmentation</li>
+<li>ตอบว่า "ในรูปเขียนว่าอะไร" -&gt; OCR</li>
+</ul>
+<h2>วิธีที่ง่ายที่สุด (มือใหม่)</h2>
+<ul>
+<li>classification: <code>AutoGluon MultiModalPredictor</code> -&gt; บอก path รูป + label เดี๋ยวมันทำให้หมด</li>
+<li>detection: <code>YOLOv8</code> (ultralytics) -&gt; สั่ง <code>model.train()</code> 2-3 บรรทัด</li>
+</ul>
+<h2>กับดักที่ต้องระวัง (สรุปสั้น ดูเต็มใน reference_cheatsheet.md)</h2>
+<ul>
+<li>ข้อมูลน้อย (~ไม่กี่พันรูป) ใช้โมเดลเล็ก-กลาง + augmentation อย่า overfit</li>
+<li>แบ่ง train/val ให้สมดุลคลาส (StratifiedKFold)</li>
+<li>รูปแบบ submission: ส่งเลขคลาส (เช่น 0/1) ไม่ใช่ความน่าจะเป็น ตรวจ header ให้ตรง sample</li>
+</ul>
+<p>ไฟล์ในโฟลเดอร์นี้:</p>
+<ul>
+<li><code>image_classification.ipynb</code> — จำแนกรูป (เริ่มที่นี่ ง่ายสุด)</li>
+<li><code>object_detection.ipynb</code> — หาวัตถุด้วย YOLOv8</li>
+<li><code>segmentation.ipynb</code> — แบ่งส่วนภาพด้วย YOLOv8-seg</li>
+<li><code>reference_cheatsheet.md</code> — ความรู้ลึก + ตาราง SOTA + keywords</li>
+</ul>
+<details class="nb"><summary>📓 image_classification.ipynb</summary><div class="nbmd"><h1>Computer Vision — โจทย์แบบ "จำแนกรูปภาพ" (Image Classification)</h1>
+<p>รูป 1 รูป -&gt; 1 ป้าย (เช่น บ้าน/ไม่ใช่บ้าน, สุนัข/แมว, ปกติ/ผิดปกติ, ชนิดสินค้า)</p>
+<p>วิธีในโน้ตบุ๊กนี้ (ทำจากบนลงล่าง):</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด แนะนำมือใหม่ทำแค่นี้) = <code>AutoGluon</code> กดรันแล้วมันเลือกโมเดล+เทรนให้เอง</li>
+<li>วิธีที่ 2 (ไม่บังคับ ทำถ้าอยากได้คะแนนสูงขึ้น) = <code>timm</code> เลือกโมเดลเอง + TTA</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ: input เป็นรูป และต้องตอบว่า "รูปนี้คือคลาสอะไร" (ตอบเป็นป้าย/ตัวเลข ไม่ใช่ข้อความยาว)</p>
+<p>ถ้าโจทย์ให้ "หากรอบวัตถุ (กล่อง)" -&gt; ไปใช้ <code>object_detection.ipynb</code></p>
+<p>ถ้าโจทย์ให้ "บรรยายรูปเป็นข้อความ" -&gt; ไปหัวข้อ 03 Multimodal</p>
+<p>ต้องแก้อะไรบ้าง (หาคำว่า <code># &lt;&lt; แก้</code>): ชื่อ competition, path โฟลเดอร์รูป, ชื่อคอลัมน์, จำนวนคลาส</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.multimodal"        # วิธีที่ 1
+!pip -q install timm torch torchvision pillow scikit-learn pandas numpy tqdm   # วิธีที่ 2</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "super-ai-engineer-season-6-individual-hackathon-house-recognition"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — ตั้งค่า path + CONFIG (ดูจาก output ด้านบนแล้วแก้ให้ตรง)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, pandas as pd, numpy as np
+
+def find(name):   # หาไฟล์ตามชื่อ
+    h = glob.glob(os.path.join(DATA_DIR, "**", name), recursive=True); return h[0] if h else None
+def img_dir(keyword):   # หาโฟลเดอร์รูปที่ชื่อมี keyword (train/test)
+    cand = [d for d,_,fs in os.walk(DATA_DIR)
+            if keyword in d.lower() and any(f.lower().endswith((".jpg",".png",".jpeg")) for f in fs)]
+    return max(cand, key=lambda d: len(os.listdir(d))) if cand else None
+
+TRAIN_CSV  = find("train.csv")               # &lt;&lt; แก้ถ้าหาไม่เจอ
+SAMPLE_SUB = find("sample_submission.csv")
+TRAIN_IMG  = img_dir("train")                # &lt;&lt; แก้ถ้าผิด (โฟลเดอร์รูป train)
+TEST_IMG   = img_dir("test")                 # &lt;&lt; แก้ถ้าผิด (โฟลเดอร์รูป test)
+
+df = pd.read_csv(TRAIN_CSV); sample = pd.read_csv(SAMPLE_SUB)
+print("train.csv คอลัมน์:", list(df.columns)); print("sample คอลัมน์:", list(sample.columns))
+print("รูป train:", TRAIN_IMG, "| รูป test:", TEST_IMG)
+display(df.head()); display(sample.head())
+
+IMG_COL    = "image_name"        # &lt;&lt; แก้: คอลัมน์ชื่อไฟล์รูปใน train.csv
+LABEL_COL  = "class"             # &lt;&lt; แก้: คอลัมน์ป้ายใน train.csv
+ID_COL     = sample.columns[0]   # คอลัมน์ id ใน sample (อัตโนมัติ)
+ANSWER_COL = sample.columns[1]   # คอลัมน์คำตอบใน sample (อัตโนมัติ)
+TEST_EXT   = ".jpg"              # &lt;&lt; แก้ถ้านามสกุลไฟล์ test ไม่ใช่ .jpg
+NUM_CLASSES = int(df[LABEL_COL].nunique())
+print("จำนวนคลาส =", NUM_CLASSES)</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — AutoGluon (ง่ายสุด มือใหม่ทำแค่นี้ก็ได้คะแนนดี)</h2>
+<p>แค่ทำตารางที่มี path รูป + ป้าย แล้วสั่ง fit เดี๋ยว AutoGluon เลือกโมเดล + เทรน + รวมโมเดลให้เอง</p>
+<p>ปรับ <code>time_limit</code> (วินาที) ตามเวลาที่มี</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from autogluon.multimodal import MultiModalPredictor
+
+train_df = df.copy()
+train_df["image"] = train_df[IMG_COL].apply(lambda n: os.path.join(TRAIN_IMG, str(n)))
+predictor = MultiModalPredictor(label=LABEL_COL, eval_metric="accuracy", path="ag_imgcls")
+predictor.fit(train_df[["image", LABEL_COL]], time_limit=900)   # &lt;&lt; แก้: 900 วิ = 15 นาที
+
+test_df = sample.copy()
+test_df["image"] = test_df[ID_COL].apply(lambda i: os.path.join(TEST_IMG, str(i)+TEST_EXT))
+out = sample.copy(); out[ANSWER_COL] = np.asarray(predictor.predict(test_df[["image"]])).astype(int)
+out.to_csv("submission.csv", index=False)
+print("บันทึก submission.csv เรียบร้อย"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — timm fine-tune + TTA (ไม่บังคับ ทำถ้าอยากได้คะแนนสูงขึ้น ต้องมี GPU)</h2>
+<p>โหลดโมเดล pretrained จาก <code>timm</code> มาเทรนต่อ + augmentation + TTA</p>
+<p>เลือกโมเดลอื่นได้ที่ <code>MODEL_NAME</code> (ดูตัวเลือกใน reference_cheatsheet.md)</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import torch, torch.nn as nn, torch.nn.functional as F, timm
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
+from sklearn.model_selection import StratifiedKFold
+from PIL import Image
+from tqdm.auto import tqdm
+
+MODEL_NAME="tf_efficientnetv2_s.in21k_ft_in1k"  # &lt;&lt; แก้โมเดลได้
+IMG_SIZE=300; EPOCHS=12; BATCH=32; LR=3e-4      # &lt;&lt; แก้ตามเวลา/GPU
+DEVICE="cuda" if torch.cuda.is_available() else "cpu"; AMP=(DEVICE=="cuda")
+MEAN,STD=[0.485,0.456,0.406],[0.229,0.224,0.225]
+tf_tr=transforms.Compose([transforms.Resize((IMG_SIZE,IMG_SIZE)),transforms.RandomHorizontalFlip(),
+    transforms.ColorJitter(.3,.3,.3,.1),transforms.RandomRotation(15),transforms.ToTensor(),
+    transforms.Normalize(MEAN,STD),transforms.RandomErasing(p=0.2)])
+tf_ev=transforms.Compose([transforms.Resize((IMG_SIZE,IMG_SIZE)),transforms.ToTensor(),transforms.Normalize(MEAN,STD)])
+tf_tta=transforms.Compose([transforms.Resize((IMG_SIZE,IMG_SIZE)),transforms.RandomHorizontalFlip(p=1.0),
+    transforms.ToTensor(),transforms.Normalize(MEAN,STD)])
+class DS(Dataset):
+    def __init__(s,frame,d,tf,test=False,idc=None): s.f=frame.reset_index(drop=True);s.d=d;s.tf=tf;s.t=test;s.idc=idc
+    def __len__(s): return len(s.f)
+    def __getitem__(s,i):
+        r=s.f.iloc[i]
+        if s.t: return s.tf(Image.open(os.path.join(s.d,str(r[s.idc])+TEST_EXT)).convert("RGB")),0
+        return s.tf(Image.open(os.path.join(s.d,str(r[IMG_COL]))).convert("RGB")),int(r[LABEL_COL])
+skf=StratifiedKFold(5,shuffle=True,random_state=42)
+tr,va=next(iter(skf.split(df,df[LABEL_COL])))
+model=timm.create_model(MODEL_NAME,pretrained=True,num_classes=NUM_CLASSES,drop_rate=0.3).to(DEVICE)
+opt=torch.optim.AdamW(model.parameters(),lr=LR,weight_decay=1e-4)
+sch=torch.optim.lr_scheduler.CosineAnnealingLR(opt,T_max=EPOCHS)
+crit=nn.CrossEntropyLoss(label_smoothing=0.1); scaler=torch.cuda.amp.GradScaler(enabled=AMP)
+dl=DataLoader(DS(df.iloc[tr],TRAIN_IMG,tf_tr),BATCH,shuffle=True,num_workers=2,drop_last=True)
+vl=DataLoader(DS(df.iloc[va],TRAIN_IMG,tf_ev),BATCH,num_workers=2)
+for ep in range(EPOCHS):
+    model.train()
+    for x,y in tqdm(dl,desc=f"ep{ep+1}/{EPOCHS}",leave=False):
+        x,y=x.to(DEVICE),y.to(DEVICE); opt.zero_grad()
+        with torch.cuda.amp.autocast(enabled=AMP): loss=crit(model(x),y)
+        scaler.scale(loss).backward(); scaler.step(opt); scaler.update()
+    sch.step()
+    model.eval(); cc=tt=0
+    with torch.no_grad():
+        for x,y in vl:
+            with torch.cuda.amp.autocast(enabled=AMP): pr=model(x.to(DEVICE)).argmax(1).cpu()
+            cc+=(pr==y).sum().item(); tt+=len(y)
+    print(f"ep{ep+1} val_acc={cc/tt:.4f}")
+probs=np.zeros((len(sample),NUM_CLASSES))
+for s_ in range(5):
+    tf=tf_ev if s_==0 else tf_tta
+    dl=DataLoader(DS(sample,TEST_IMG,tf,test=True,idc=ID_COL),BATCH,num_workers=2)
+    o=[]
+    with torch.no_grad():
+        for x,_ in tqdm(dl,desc=f"TTA{s_+1}",leave=False):
+            with torch.cuda.amp.autocast(enabled=AMP): o.append(F.softmax(model(x.to(DEVICE)),1).float().cpu().numpy())
+    probs+=np.vstack(o)
+out=sample.copy(); out[ANSWER_COL]=probs.argmax(1).astype(int)
+out.to_csv("submission_timm.csv",index=False); print("บันทึก submission_timm.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "image classification"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 object_detection.ipynb</summary><div class="nbmd"><h1>Computer Vision — โจทย์แบบ "หาวัตถุในรูป (กล่อง)" Object Detection</h1>
+<p>รูป 1 รูป -&gt; หากล่อง (bounding box) + ป้ายของวัตถุ (เช่น หาบ้าน/รถ/ป้ายทะเบียนในรูป)</p>
+<p>วิธีในโน้ตบุ๊กนี้: <code>YOLOv8</code> (ไลบรารี ultralytics) เป็นวิธีที่ง่ายและแรงสุดสำหรับมือใหม่</p>
+<p>สั่งเทรน 2-3 บรรทัดจบ</p></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ: โจทย์ให้ทำนาย "ตำแหน่งกล่อง + ชนิดวัตถุ" metric มักเป็น <code>mAP</code></p>
+<p>ถ้าโจทย์แค่ "รูปนี้คือคลาสอะไร" (ไม่มีกล่อง) -&gt; กลับไป <code>image_classification.ipynb</code> (ง่ายกว่ามาก)</p>
+<p>หมายเหตุมือใหม่: detection ยากกว่า classification เพราะข้อมูลต้องมี label เป็นกล่อง (รูปแบบ YOLO)</p>
+<p>ถ้าเวลาน้อยและโจทย์เป็น classification ได้ ให้เลือก classification ก่อน</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install ultralytics pandas pyyaml</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-detection-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — เตรียมข้อมูลแบบ YOLO</h2>
+<p>YOLO ต้องการ: โฟลเดอร์รูป + ไฟล์ label <code>.txt</code> (คลาส x_center y_center w h แบบ normalize 0-1) ต่อรูป 1 ไฟล์</p>
+<p>และไฟล์ <code>data.yaml</code> ชี้ path รูป train/val + ชื่อคลาส</p>
+<p>ถ้า competition ให้ข้อมูลเป็นรูปแบบอื่น (เช่น COCO json หรือ csv ของกล่อง) ต้องแปลงเป็นรูปแบบ YOLO ก่อน</p>
+<p>เซลล์ล่างสร้างไฟล์ <code>data.yaml</code> ให้ แก้ path/ชื่อคลาสตามจริง</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import yaml, os
+# &lt;&lt; แก้ path เหล่านี้ให้ตรงกับข้อมูลจริง (โฟลเดอร์ที่มีรูป + label .txt)
+data_cfg = {
+    "path": os.path.abspath(DATA_DIR),   # โฟลเดอร์หลัก
+    "train": "images/train",             # &lt;&lt; แก้: โฟลเดอร์รูป train (relative กับ path)
+    "val":   "images/val",               # &lt;&lt; แก้: โฟลเดอร์รูป val
+    "names": {0: "object"},              # &lt;&lt; แก้: ชื่อคลาส เช่น {0:"house",1:"car"}
+}
+with open("data.yaml","w") as f: yaml.safe_dump(data_cfg, f, allow_unicode=True)
+print(open("data.yaml").read())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — เทรน YOLOv8 (ง่ายสุด)</h2>
+<p><code>yolov8n</code> = เล็ก/เร็ว, <code>yolov8s/m</code> = ใหญ่/แม่นขึ้น ปรับ <code>epochs</code>/<code>imgsz</code> ตามเวลา/GPU</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from ultralytics import YOLO
+model = YOLO("yolov8n.pt")      # &lt;&lt; แก้เป็น yolov8s.pt ถ้าอยากแม่นขึ้น
+model.train(data="data.yaml", epochs=50, imgsz=640, batch=16)   # &lt;&lt; แก้ epochs/imgsz ตามเวลา
+metrics = model.val(); print(metrics)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — ทำนาย test + สร้าง submission</h2>
+<p>รูปแบบ submission ของ detection แตกต่างกันมากในแต่ละ comp (อ่าน sample_submission ให้ดี)</p>
+<p>ตัวอย่างล่างสร้างตาราง: id, class, confidence, x_min, y_min, x_max, y_max — แก้ให้ตรงรูปแบบจริง</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import glob, pandas as pd
+TEST_IMG_DIR = os.path.join(DATA_DIR, "images/test")   # &lt;&lt; แก้ path รูป test
+rows = []
+for p in sorted(glob.glob(os.path.join(TEST_IMG_DIR, "*"))):
+    r = model.predict(p, verbose=False)[0]
+    img_id = os.path.splitext(os.path.basename(p))[0]
+    for b in r.boxes:
+        x1,y1,x2,y2 = b.xyxy[0].tolist()
+        rows.append({"id": img_id, "class": int(b.cls[0]), "confidence": float(b.conf[0]),
+                     "x_min": x1, "y_min": y1, "x_max": x2, "y_max": y2})
+sub = pd.DataFrame(rows)            # &lt;&lt; แก้คอลัมน์ให้ตรง sample_submission.csv
+sub.to_csv("submission.csv", index=False)
+print("บันทึก submission.csv", sub.shape); display(sub.head())</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "yolov8 detection"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 segmentation.ipynb</summary><div class="nbmd"><h1>Computer Vision — โจทย์แบบ "แบ่งส่วนภาพ" (Segmentation)</h1>
+<p>ระบุว่าพิกเซลไหนเป็นวัตถุอะไร (เช่น แยกพื้นที่บ้าน/ถนน/ต้นไม้ในภาพ)</p>
+<p>วิธีในโน้ตบุ๊กนี้: <code>YOLOv8-seg</code> (ultralytics) ง่ายสุดสำหรับมือใหม่ ใช้คล้าย detection แต่ได้ mask</p></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ output เป็น "mask ต่อพิกเซล" (ระบายว่าพิกเซลไหนเป็นคลาสอะไร) metric มักเป็น <code>IoU</code>/<code>Dice</code></p>
+<p>ถ้าแค่ "รูปนี้คือคลาสอะไร" -&gt; <code>image_classification.ipynb</code> (ง่ายกว่ามาก)</p>
+<p>ถ้าแค่ "กล่องรอบวัตถุ" -&gt; <code>object_detection.ipynb</code></p>
+<p>หมายเหตุมือใหม่: segmentation ต้องมี label เป็น mask/polygon (รูปแบบ YOLO-seg) ถ้าเวลาน้อยและทำ classification ได้ ให้เลือก classification</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install ultralytics pyyaml numpy</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-segmentation-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — เตรียม data.yaml (รูปแบบ YOLO-seg)</h2>
+<p>YOLO-seg ต้องการ: โฟลเดอร์รูป + ไฟล์ label <code>.txt</code> (คลาส + พิกัด polygon แบบ normalize 0-1) ต่อรูป</p>
+<p>ถ้าข้อมูลเป็นรูปแบบอื่น (mask PNG / COCO json) ต้องแปลงเป็น YOLO-seg ก่อน</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import yaml, os
+data_cfg = {
+    "path": os.path.abspath(DATA_DIR),
+    "train": "images/train",   # &lt;&lt; แก้: โฟลเดอร์รูป train
+    "val":   "images/val",     # &lt;&lt; แก้: โฟลเดอร์รูป val
+    "names": {0: "object"},    # &lt;&lt; แก้: ชื่อคลาส เช่น {0:"building",1:"road"}
+}
+with open("data_seg.yaml","w") as f: yaml.safe_dump(data_cfg, f, allow_unicode=True)
+print(open("data_seg.yaml").read())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — เทรน YOLOv8-seg (ง่ายสุด)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from ultralytics import YOLO
+model = YOLO("yolov8n-seg.pt")    # &lt;&lt; แก้เป็น yolov8s-seg.pt ถ้าอยากแม่นขึ้น
+model.train(data="data_seg.yaml", epochs=50, imgsz=640, batch=16)   # &lt;&lt; แก้ epochs/imgsz ตามเวลา
+print(model.val())</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — ทำนาย test + สร้าง submission</h2>
+<p>รูปแบบ submission ของ segmentation มักเป็น RLE หรือ polygon (อ่าน sample_submission ให้ดี)</p>
+<p>ตัวอย่างล่างดึง mask แต่ละวัตถุออกมา แล้วให้ปรับ encode ตามรูปแบบจริง</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import glob, numpy as np, pandas as pd
+TEST_IMG_DIR = os.path.join(DATA_DIR, "images/test")   # &lt;&lt; แก้ path รูป test
+rows = []
+for p in sorted(glob.glob(os.path.join(TEST_IMG_DIR, "*"))):
+    r = model.predict(p, verbose=False)[0]
+    img_id = os.path.splitext(os.path.basename(p))[0]
+    if r.masks is None:
+        continue
+    for ci in range(len(r.masks.data)):
+        mask = r.masks.data[ci].cpu().numpy().astype(np.uint8)   # mask 0/1 ขนาด HxW
+        cls  = int(r.boxes.cls[ci]) if r.boxes is not None else 0
+        # TODO ตามรูปแบบจริง: แปลง mask -&gt; RLE หรือ polygon ที่ comp ต้องการ
+        rows.append({"id": img_id, "class": cls, "mask_area": int(mask.sum())})  # &lt;&lt; แก้คอลัมน์ให้ตรง sample
+sub = pd.DataFrame(rows); sub.to_csv("submission.csv", index=False)
+print("บันทึก submission.csv", sub.shape); display(sub.head())</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "yolov8 segmentation"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary><h1>Domain 2 — House Recognition (Computer Vision / Image Classification)</h1>
+<p>Competition: <code>super-ai-engineer-season-6-individual-hackathon-house-recognition</code></p>
+<p>Ground truth confirmed from a participant's public solution repo (<code>github.com/kullawattana/individual-hackathon-house-recognition-SuperAI-SS6</code>) since the Kaggle page is login-gated.</p>
+<h2>A. TASK SUMMARY</h2>
+<ul>
+<li>What it is: <code>binary image classification</code> of street-view residential photos into <code>class 0</code> vs <code>class 1</code>. NOT SVHN digit OCR, NOT price regression, NOT detection.</li>
+<li>Classes: 2 (<code>0</code>, <code>1</code>).</li>
+<li>Data: Train 2,953 images (cls0=1,520 / cls1=1,433 — nearly balanced). Test 1,550 images.</li>
+<li>Layout: <code>train/train/</code> images, <code>test/test/</code> images (<code>{id}.jpg</code>), <code>train.csv</code> (cols <code>image_name,class</code>), <code>sample_submission.csv</code> (cols <code>id,answer</code>).</li>
+<li>Submission: CSV header <code>id,answer</code>, one row per test image, <code>answer ∈ {0,1}</code> (integer label, not probability), 1,550 rows.</li>
+<li>Metric: <code>Accuracy</code> (reference public 0.97777 with balanced classes + integer answers is consistent with plain accuracy). If it's macro-F1, strategy barely changes (balanced classes) — just tune threshold.</li>
+<li>Reference to beat: EfficientNet-B3 @ 300px → val 95.25%, public 0.97777.</li>
+</ul>
+<h2>B. DOMAIN CATEGORIZATION</h2>
+<ul>
+<li>CV taxonomy: supervised image-level classification → binary, single-label, natural-scene, small dataset (~3k), transfer-learning regime.</li>
+<li>Simplest CV head: one image → one label. No localization, no per-pixel, no sequence.</li>
+<li>Dominant lever on ~3k images = transfer learning + augmentation + TTA, NOT architecture novelty. Gains beyond ~0.97 come from ensembling/TTA/folds.</li>
+</ul>
+<h2>C. PREDICTED EXAM VARIATIONS</h2>
+<ol>
+<li>Multi-class single-label (N styles/types). Set <code>num_classes=N</code>, keep CrossEntropy, metric macro-F1/top-1; handle imbalance with class weights / WeightedRandomSampler.</li>
+<li>Fine-grained classification. Higher res (384/448), stronger backbone (convnext/eva02/swin), lower LR, mild geometric aug; TTA helps most.</li>
+<li>Multi-label (several attributes). Head = <code>num_labels</code> logits, loss <code>BCEWithLogitsLoss</code>, sigmoid, per-label threshold, metric micro/macro-F1 or mAP.</li>
+<li>Object detection (boxes). Leave timm, use <code>YOLOv8/v11</code> (ultralytics) or <code>RT-DETR</code>. Metric mAP@0.5.</li>
+<li>Segmentation. <code>segmentation_models_pytorch</code> (U-Net/DeepLabV3+) or SAM. Metric IoU/Dice, RLE submission.</li>
+<li>House-number OCR (SVHN multi-digit). CRNN+CTC or <code>TrOCR</code>/<code>Donut</code>. Metric exact-match/edit distance.</li>
+</ol>
+<p>Default assumption: stays image classification (binary or multi-class). The pipeline handles both via one constant <code>NUM_CLASSES</code>.</p>
+<h2>E. SOTA TABLE (small-data fine-tune, ranked by acc-per-cost)</h2>
+<div class="tablewrap"><table><thead><tr><th>Rank</th><th>Model</th><th>timm id</th><th>Params</th><th>IN-1k</th><th>When to use</th></tr></thead><tbody><tr><td>1</td><td>ConvNeXt-V2 Tiny</td><td><code>convnextv2_tiny.fcmae_ft_in22k_in1k</code></td><td>29M</td><td>~83.9%</td><td>Best accuracy/cost for small data; default</td></tr><tr><td>2</td><td>EfficientNetV2-S</td><td><code>tf_efficientnetv2_s.in21k_ft_in1k</code></td><td>22M</td><td>~84.9%</td><td>Fast, light, excellent transfer</td></tr><tr><td>3</td><td>EfficientNet-B3</td><td><code>efficientnet_b3</code></td><td>12M</td><td>~81.6%</td><td>Proven on THIS comp (0.978)</td></tr><tr><td>4</td><td>Swin-V2 Tiny</td><td><code>swinv2_tiny_window16_256.ms_in1k</code></td><td>28M</td><td>~82.8%</td><td>Fine-grained variant</td></tr><tr><td>5</td><td>MaxViT Tiny</td><td><code>maxvit_tiny_tf_224.in1k</code></td><td>31M</td><td>~83.6%</td><td>Robust, strong TTA gains</td></tr><tr><td>6</td><td>ConvNeXt Small</td><td><code>convnext_small.fb_in22k_ft_in1k</code></td><td>50M</td><td>~84.6%</td><td>If Tiny underfits</td></tr><tr><td>7</td><td>EVA-02 Small</td><td><code>eva02_small_patch14_336.mim_in22k_ft_in1k</code></td><td>22M</td><td>~85.7%</td><td>Top acc at 336px, more VRAM</td></tr><tr><td>8</td><td>ResNet-50</td><td><code>resnet50.a1_in1k</code></td><td>25M</td><td>~80.4%</td><td>Sanity baseline / fastest</td></tr></tbody></table></div>
+<p>Strategy: train models 1+2+3 (diverse architectures), average softmax probs. On ~3k images, Tiny/Small beats Base (Base overfits).</p>
+<h2>F. PRACTICAL GOTCHAS</h2>
+<ul>
+<li>Overfitting ~3k images: prefer Tiny/Small, <code>drop_rate=0.3</code>, label smoothing 0.1, MixUp/CutMix, RandomErasing, wd 1e-4, early-stop on val acc, 15-25 epochs.</li>
+<li>Validation must be <code>StratifiedKFold</code> on <code>class</code>.</li>
+<li>Augmentation: avoid VerticalFlip for houses; keep rotation/perspective mild.</li>
+<li>Imbalance NOT an issue here — don't add class weights.</li>
+<li>Leakage: ImageNet mean/std (don't fit on test). Use GroupKFold if same property appears multiple times.</li>
+<li>TTA: average softmax probs (not votes); step-0 = clean transform; test loader <code>shuffle=False</code>.</li>
+<li>Submission traps: header exactly <code>id,answer</code>; integer 0/1; 1,550 rows; ids from <code>sample_submission.csv</code> (not directory listing); add <code>.jpg</code> in code (ids are bare hashes).</li>
+</ul>
+<h2>G. QUICK-WIN BASELINE (&lt;1 hour)</h2>
+<p>EfficientNet-B3 @ 256px, 12 epochs, 1 fold, 3x TTA → ~0.95-0.97 in ~20-30 min on T4/P100. Then upgrade to EfficientNetV2-S @ 300px, 20 epochs, ensemble folds 0/1/2.</p>
+<p>Mental checklist: pretrained backbone → <code>num_classes=2</code> → ImageNet norm → AdamW 3e-4 + cosine → label smoothing → val-acc early stop → 5x TTA softmax-average → write <code>id,answer</code> CSV.</p>
+<h2>H. KEYWORDS TO STUDY</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>binary image classification, transfer learning, fine-tuning pretrained CNN, timm create_model,
+EfficientNet-B3, EfficientNetV2-S, ConvNeXt-V2 FCMAE, Swin Transformer V2, MaxViT, EVA-02, ViT,
+ImageNet normalization mean std, AdamW, weight decay, CosineAnnealingLR, label smoothing,
+MixUp, CutMix, RandAugment, RandomErasing cutout, ColorJitter, test-time augmentation TTA,
+mixed precision AMP GradScaler autocast, StratifiedKFold, GroupKFold leakage, out-of-fold OOF,
+model ensembling probability averaging, WeightedRandomSampler, dropout drop_rate,
+decision threshold tuning F1, accuracy vs macro-F1, BCEWithLogitsLoss multi-label, softmax vs sigmoid,
+PyTorch Dataset DataLoader, AutoGluon MultiModalPredictor, Kaggle submission.csv,
+YOLOv8 YOLOv11 RT-DETR detection, segmentation_models_pytorch U-Net DeepLabV3+, TrOCR Donut OCR</code></pre></div></details></section><section id="nlp" class="section"><h1>หัวข้อใหญ่: NLP (งานเกี่ยวกับข้อความ)</h1>
+<p>input คือ <code>ข้อความ</code> (มักเป็นภาษาไทย ซึ่งไม่มีเว้นวรรคระหว่างคำ)</p>
+<h2>เกร็งโจทย์ — ออกได้กี่แบบ?</h2>
+<div class="tablewrap"><table><thead><tr><th>แบบโจทย์</th><th>output</th><th>metric</th><th>ใช้ไฟล์</th><th>ง่ายแค่ไหน</th></tr></thead><tbody><tr><td>1. ตัดคำ (word segmentation)</td><td>ป้ายต่อ "ตัวอักษร" (0/1)</td><td>char/word F1</td><td><code>thai_word_segmentation.ipynb</code></td><td>⭐ ง่าย (ใช้ของสำเร็จรูป)</td></tr><tr><td>2. NER (ดึงชื่อเฉพาะ)</td><td>ป้ายต่อ "คำ" (B-PER, ...)</td><td>entity F1 (seqeval)</td><td><code>thai_word_segmentation.ipynb</code> (เปลี่ยน label)</td><td>⭐⭐</td></tr><tr><td>3. POS tagging (ชนิดคำ)</td><td>ป้ายต่อ "คำ"</td><td>accuracy</td><td><code>thai_word_segmentation.ipynb</code> (เปลี่ยน label)</td><td>⭐⭐</td></tr><tr><td>4. จำแนกข้อความ (sentiment/topic)</td><td>1 ป้ายต่อ "ทั้งข้อความ"</td><td>accuracy, macro-F1</td><td><code>text_classification.ipynb</code></td><td>⭐ ง่าย</td></tr></tbody></table></div>
+<h2>วิธีดูว่าเป็นแบบไหน (ดู output)</h2>
+<ul>
+<li>ป้าย "ต่อหน่วยในลำดับ" (ทีละคำ/ตัวอักษร) -&gt; sequence labeling -&gt; <code>thai_word_segmentation.ipynb</code></li>
+<li>ป้าย "เดียวต่อทั้งข้อความ" (รีวิวบวก/ลบ, หมวดข่าว) -&gt; <code>text_classification.ipynb</code></li>
+</ul>
+<h2>วิธีที่ง่ายที่สุด (มือใหม่)</h2>
+<ul>
+<li>ตัดคำ: <code>PyThaiNLP deepcut</code> ตัดให้เลย ไม่ต้องเทรน</li>
+<li>จำแนกข้อความ: ตัดคำไทย + <code>TF-IDF</code> + <code>Logistic Regression</code> (เร็ว ไม่ต้อง GPU)</li>
+</ul>
+<h2>กับดักที่ต้องระวัง (ดูเต็มใน reference_cheatsheet.md)</h2>
+<ul>
+<li>ไทยไม่มีเว้นวรรค ต้องตัดคำก่อนเสมอ (อย่า split ด้วยช่องว่าง)</li>
+<li>งานตัดคำ: ป้ายต้องมี 1 ป้ายต่อ 1 ตัวอักษร จำนวนต้องเท่ากับความยาวข้อความเป๊ะ (พลาดบ่อยสุด)</li>
+<li>ตัวอักษรไทยที่เป็นสระ/วรรณยุกต์ ห้ามเป็นจุดขึ้นคำ</li>
+<li>รูปแบบ id ใน submission ต้องตรง sample (ตรวจให้ดี)</li>
+</ul>
+<p>ไฟล์ในโฟลเดอร์นี้:</p>
+<ul>
+<li><code>thai_word_segmentation.ipynb</code> — ตัดคำ / sequence labeling (NER/POS ก็ใช้ฐานนี้)</li>
+<li><code>text_classification.ipynb</code> — จำแนกข้อความทั้งประโยค</li>
+<li><code>text_generation.ipynb</code> — แปล/สรุป/ตอบคำถาม (seq2seq)</li>
+<li><code>reference_cheatsheet.md</code> — ความรู้ลึก + ตาราง SOTA + keywords</li>
+</ul>
+<details class="nb"><summary>📓 thai_word_segmentation.ipynb</summary><div class="nbmd"><h1>NLP — โจทย์แบบ "ตัดคำ / ป้ายต่อตัวอักษร" (Sequence Labeling)</h1>
+<p>ภาษาไทยไม่มีเว้นวรรคระหว่างคำ งานคือบอกว่า "ตรงไหนคือจุดขึ้นคำใหม่"</p>
+<p>มองเป็น: ตัวอักษรแต่ละตัว -&gt; ป้าย 1 (ขึ้นคำใหม่) หรือ 0 (อยู่ในคำเดิม)</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด มือใหม่ทำแค่นี้) = <code>PyThaiNLP deepcut</code> ตัดคำสำเร็จรูป ไม่ต้องเทรน</li>
+<li>วิธีที่ 2 (ไม่บังคับ) = <code>CRF</code> เทรนเองบน CPU ได้</li>
+<li>วิธีที่ 3 (ขั้นสูง ต้อง GPU) = <code>WangchanBERTa</code></li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ output เป็น "ป้ายต่อหน่วยในลำดับ" เช่น ตัดคำ, NER (ดึงชื่อเฉพาะ), POS (ชนิดคำ)</p>
+<p>ถ้า output เป็น "1 ป้ายต่อทั้งประโยค" (เช่น บวก/ลบ) -&gt; ไปใช้ <code>text_classification.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, ชื่อไฟล์/คอลัมน์ข้อความ, ตัวคั่นคำในไฟล์เฉลย, รูปแบบ id ใน sample</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install pythainlp deepcut tensorflow python-crfsuite scikit-learn pandas numpy
+!pip -q install transformers datasets torch   # วิธีที่ 3 เท่านั้น</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "super-ai-engineer-ss-6-word-segmentation"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ฟังก์ชันหลัก — แปลงไป-กลับระหว่าง "คำ" กับ "ป้ายต่อตัวอักษร"</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>def words_to_char_labels(words):     # ['สวัสดี','ครับ'] -&gt; ('สวัสดีครับ',[1,0,0,0,0,0,1,0,0,0])
+    text,labels=[],[]
+    for w in words:
+        for i,ch in enumerate(w): text.append(ch); labels.append(1 if i==0 else 0)
+    return "".join(text), labels
+def char_labels_to_words(text,labels):
+    words,cur=[],""
+    for ch,lab in zip(text,labels):
+        if lab==1 and cur: words.append(cur); cur=""
+        cur+=ch
+    if cur: words.append(cur)
+    return words
+from sklearn.metrics import f1_score
+def boundary_f1(yt,yp): return f1_score(yt,yp,average="binary",pos_label=1)   # ใช้วัดในเครื่อง</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd, numpy as np
+TRAIN_CSV  = os.path.join(DATA_DIR,"train.csv")   # &lt;&lt; แก้ชื่อไฟล์
+TEST_CSV   = os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB = os.path.join(DATA_DIR,"sample_submission.csv")
+TEXT_COL   = "text"     # &lt;&lt; แก้: คอลัมน์ข้อความ
+SEP        = "|"        # &lt;&lt; แก้: ตัวคั่นคำในไฟล์เฉลย (อาจเป็น "|" หรือเว้นวรรค " ")
+train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+print("train คอลัมน์:",list(train.columns)); print("sample คอลัมน์:",list(sample.columns))
+display(train.head()); display(sample.head())
+def load_segmented(df):
+    out=[]
+    for s in df[TEXT_COL].astype(str):
+        out.append(words_to_char_labels([w for w in s.split(SEP) if w!=""]))
+    return out
+train_pairs=load_segmented(train)
+print("ตัวอย่าง:", train_pairs[0][0][:30], "-&gt;", train_pairs[0][1][:30])</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — PyThaiNLP สำเร็จรูป (ง่ายสุด ไม่ต้องเทรน)</h2>
+<p>ลอง engine <code>deepcut</code> (แม่น ใกล้ SOTA) หรือ <code>newmm</code> (เร็วมาก) เก็บอันที่คะแนนดีกว่า</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from pythainlp.tokenize import word_tokenize
+def to_labels(text, engine="deepcut"):   # &lt;&lt; แก้ engine ได้: deepcut / newmm / attacut
+    words=word_tokenize(str(text), engine=engine, keep_whitespace=True)
+    _,labels=words_to_char_labels(words)
+    return labels[:len(text)] + [0]*max(0,len(text)-len(labels))
+rows=[]
+for _,r in test.iterrows():
+    labels=to_labels(str(r[TEXT_COL])); labels[0]=1   # ตัวแรกเป็นขอบคำเสมอ
+    for ci,lab in enumerate(labels):
+        rows.append({sample.columns[0]: f"{r.get('id',_)}_{ci}", sample.columns[1]: lab})  # &lt;&lt; แก้รูปแบบ id ให้ตรง sample
+sub=pd.DataFrame(rows); sub.to_csv("submission.csv",index=False)
+print("บันทึก submission.csv", sub.shape); display(sub.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — CRF เทรนเอง (ไม่บังคับ, CPU ได้, คะแนนดีในโดเมน)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import pycrfsuite
+def feats(chars,i):
+    n=len(chars); f={"bias":1.0,"c0":chars[i]}
+    for d in (1,2,3):
+        f[f"c-{d}"]=chars[i-d] if i-d&gt;=0 else "BOS"; f[f"c+{d}"]=chars[i+d] if i+d&lt;n else "EOS"
+    f["is_digit"]=chars[i].isdigit(); f["is_space"]=chars[i]==" "
+    return f
+tr=pycrfsuite.Trainer(verbose=False)
+for text,labels in train_pairs:
+    ch=list(text); tr.append([feats(ch,i) for i in range(len(ch))],[str(l) for l in labels])
+tr.set_params({"c1":0.1,"c2":0.1,"max_iterations":100,"feature.possible_transitions":True})
+tr.train("ws.crfsuite")
+tag=pycrfsuite.Tagger(); tag.open("ws.crfsuite")
+rows=[]
+for _,r in test.iterrows():
+    ch=list(str(r[TEXT_COL])); labels=[int(t) for t in tag.tag([feats(ch,i) for i in range(len(ch))])]
+    labels[0]=1
+    for ci,lab in enumerate(labels):
+        rows.append({sample.columns[0]: f"{r.get('id',_)}_{ci}", sample.columns[1]: lab})  # &lt;&lt; แก้รูปแบบ id
+pd.DataFrame(rows).to_csv("submission_crf.csv",index=False); print("บันทึก submission_crf.csv")</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 3 — WangchanBERTa (ขั้นสูง ต้อง GPU, ไม่บังคับ)</h2>
+<p>ดูโค้ดเต็มใน reference_cheatsheet.md หัวข้อ D.3 (token classification ด้วยโมเดลภาษาไทย)</p>
+<p>มือใหม่ข้ามได้ ใช้วิธีที่ 1 ก็พอแล้วสำหรับการทำคะแนน</p></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "deepcut word segmentation"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 text_classification.ipynb</summary><div class="nbmd"><h1>NLP — โจทย์แบบ "จำแนกข้อความ" (Text Classification)</h1>
+<p>ข้อความ 1 ชิ้น -&gt; 1 ป้าย (เช่น รีวิว บวก/ลบ/กลาง, หัวข้อข่าว, สแปม/ไม่สแปม)</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด มือใหม่ทำแค่นี้) = ตัดคำไทย + <code>TF-IDF</code> + <code>Logistic Regression</code> (เร็ว ไม่ต้อง GPU)</li>
+<li>วิธีที่ 2 (ไม่บังคับ ต้อง GPU) = <code>WangchanBERTa</code> คะแนนสูงกว่า</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ input เป็นข้อความ และตอบ "1 ป้ายต่อทั้งข้อความ"</p>
+<p>ถ้าต้องป้ายทีละคำ/ตัวอักษร (ตัดคำ/NER) -&gt; ใช้ <code>thai_word_segmentation.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, คอลัมน์ข้อความ <code>TEXT_COL</code>, คอลัมน์ป้าย <code>LABEL_COL</code></p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install pythainlp scikit-learn pandas numpy
+!pip -q install transformers datasets torch   # วิธีที่ 2 เท่านั้น</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-text-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd, numpy as np
+TRAIN_CSV  = os.path.join(DATA_DIR,"train.csv")   # &lt;&lt; แก้ชื่อไฟล์
+TEST_CSV   = os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB = os.path.join(DATA_DIR,"sample_submission.csv")
+TEXT_COL   = "text"      # &lt;&lt; แก้: คอลัมน์ข้อความ
+LABEL_COL  = "label"     # &lt;&lt; แก้: คอลัมน์ป้าย
+train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+ID_COL=sample.columns[0]; ANS_COL=sample.columns[1]
+print("train คอลัมน์:",list(train.columns)); display(train.head()); display(sample.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — ตัดคำ + TF-IDF + Logistic Regression (ง่ายสุด เร็ว ไม่ต้อง GPU)</h2>
+<p>หลักคิด: เปลี่ยนข้อความเป็นตัวเลข (นับคำสำคัญด้วย TF-IDF) แล้วให้โมเดลเส้นตรงเรียนรู้</p>
+<p>ตัดคำไทยก่อนด้วย PyThaiNLP เพราะไทยไม่มีเว้นวรรค</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from pythainlp.tokenize import word_tokenize
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import cross_val_score
+
+def th_tokenize(s): return word_tokenize(str(s), engine="newmm")   # ตัดคำไทย
+clf = Pipeline([
+    ("tfidf", TfidfVectorizer(tokenizer=th_tokenize, ngram_range=(1,2), min_df=2)),
+    ("lr", LogisticRegression(max_iter=1000, class_weight="balanced")),
+])
+# เช็คคะแนนในเครื่องก่อน (cross-validation)
+print("CV accuracy:", cross_val_score(clf, train[TEXT_COL].astype(str), train[LABEL_COL], cv=5).mean().round(4))
+clf.fit(train[TEXT_COL].astype(str), train[LABEL_COL])
+out = sample.copy(); out[ANS_COL] = clf.predict(test[TEXT_COL].astype(str))
+out.to_csv("submission.csv", index=False)
+print("บันทึก submission.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — WangchanBERTa (ไม่บังคับ ต้อง GPU คะแนนสูงกว่า)</h2>
+<p>ใช้โมเดลภาษาไทยแบบ fine-tune ทำ sequence classification</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import numpy as np, torch
+from datasets import Dataset
+from transformers import (AutoTokenizer, AutoModelForSequenceClassification,
+    TrainingArguments, Trainer, DataCollatorWithPadding)
+MODEL="airesearch/wangchanberta-base-att-spm-uncased"   # &lt;&lt; แก้โมเดลได้
+labels=sorted(train[LABEL_COL].unique()); l2i={l:i for i,l in enumerate(labels)}; i2l={i:l for l,i in l2i.items()}
+tok=AutoTokenizer.from_pretrained(MODEL)
+ds=Dataset.from_dict({"text":train[TEXT_COL].astype(str).tolist(),
+                      "label":[l2i[v] for v in train[LABEL_COL]]}).train_test_split(0.1,seed=42)
+def enc(b): return tok(b["text"], truncation=True, max_length=256)
+ds=ds.map(enc, batched=True)
+model=AutoModelForSequenceClassification.from_pretrained(MODEL, num_labels=len(labels))
+# หมายเหตุ: ถ้า transformers เก่า (ก่อน 4.46) เปลี่ยน eval_strategy -&gt; evaluation_strategy
+args=TrainingArguments(output_dir="out", learning_rate=2e-5, per_device_train_batch_size=16,
+    num_train_epochs=3, eval_strategy="epoch", save_strategy="no",
+    fp16=torch.cuda.is_available(), report_to="none")
+tr=Trainer(model=model, args=args, train_dataset=ds["train"], eval_dataset=ds["test"],
+           tokenizer=tok, data_collator=DataCollatorWithPadding(tok))
+tr.train()
+import torch
+preds=[]
+model.eval()
+for i in range(0,len(test),64):
+    batch=tok(test[TEXT_COL].astype(str).tolist()[i:i+64], truncation=True, max_length=256,
+              padding=True, return_tensors="pt").to(model.device)
+    with torch.no_grad(): preds+=model(**batch).logits.argmax(1).cpu().tolist()
+out=sample.copy(); out[ANS_COL]=[i2l[p] for p in preds]
+out.to_csv("submission_bert.csv",index=False); print("บันทึก submission_bert.csv")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "tfidf logreg text classification"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 text_generation.ipynb</summary><div class="nbmd"><h1>NLP — โจทย์แบบ "สร้าง/แปลงข้อความ" (Text Generation / Seq2Seq)</h1>
+<p>ข้อความเข้า -&gt; ข้อความออก เช่น แปลภาษา, สรุปความ, ตอบคำถามจากบทความ, แก้คำผิด, ถอดความ</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด) = <code>pipeline</code> ของ HuggingFace ใช้โมเดลสำเร็จรูป generate เลย ไม่ต้องเทรน</li>
+<li>วิธีที่ 2 (ไม่บังคับ ต้อง GPU) = fine-tune <code>mT5</code> ด้วย Seq2SeqTrainer</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ output เป็น "ข้อความใหม่" (ไม่ใช่ป้าย/คลาส) วัดด้วย BLEU/ROUGE/accuracy แล้วแต่งาน</p>
+<p>ถ้า output เป็นป้าย -&gt; ใช้ <code>text_classification.ipynb</code> หรือ <code>thai_word_segmentation.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, <code>SRC_COL</code> (ข้อความเข้า), <code>TGT_COL</code> (ข้อความเป้าหมาย), <code>TASK</code>/โมเดล</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U transformers sentencepiece sacremoses pandas torch
+!pip -q install datasets evaluate sacrebleu rouge_score   # วิธีที่ 2 (เทรน/วัดผล)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-textgen-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd
+TRAIN_CSV=os.path.join(DATA_DIR,"train.csv"); TEST_CSV=os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB=os.path.join(DATA_DIR,"sample_submission.csv")
+train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+SRC_COL="source"   # &lt;&lt; แก้: คอลัมน์ข้อความเข้า (เช่น ประโยคต้นทาง/บทความ)
+TGT_COL=sample.columns[1]   # &lt;&lt; แก้ถ้าผิด: คอลัมน์ข้อความเป้าหมาย
+print("train คอลัมน์:",list(train.columns)); display(train.head()); display(sample.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — pipeline สำเร็จรูป (ง่ายสุด ไม่ต้องเทรน)</h2>
+<p>เลือก TASK + โมเดลให้ตรงงาน:</p>
+<ul>
+<li>สรุปความไทย: model="csebuetnlp/mT5_multilingual_XLSum", task="summarization"</li>
+<li>แปล ไทย&lt;-&gt;อังกฤษ: model="Helsinki-NLP/opus-mt-th-en" (หรือ -en-th), task="translation"</li>
+<li>ทั่วไป seq2seq: task="text2text-generation" </li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from transformers import pipeline
+import torch
+TASK  = "summarization"                         # &lt;&lt; แก้: summarization / translation / text2text-generation
+MODEL = "csebuetnlp/mT5_multilingual_XLSum"     # &lt;&lt; แก้โมเดลให้ตรงงาน/ภาษา
+gen = pipeline(TASK, model=MODEL, device=0 if torch.cuda.is_available() else -1)
+outs=[]
+for txt in test[SRC_COL].astype(str).tolist():
+    r = gen(txt, max_length=128, truncation=True)[0]   # &lt;&lt; แก้ max_length ตามความยาวเป้าหมาย
+    outs.append(r.get("summary_text") or r.get("translation_text") or r.get("generated_text"))
+out=sample.copy(); out[TGT_COL]=outs
+out.to_csv("submission.csv",index=False,encoding="utf-8-sig")
+print("บันทึก submission.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — fine-tune mT5 (ไม่บังคับ ต้อง GPU)</h2>
+<p>เทรน seq2seq บนคู่ (source -&gt; target) ของเราเอง</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import numpy as np, torch
+from datasets import Dataset
+from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM,
+    DataCollatorForSeq2Seq, Seq2SeqTrainingArguments, Seq2SeqTrainer)
+MODEL="google/mt5-small"   # &lt;&lt; แก้: mt5-small เร็ว / mt5-base แม่นกว่า
+tok=AutoTokenizer.from_pretrained(MODEL)
+model=AutoModelForSeq2SeqLM.from_pretrained(MODEL)
+ds=Dataset.from_dict({"src":train[SRC_COL].astype(str).tolist(),
+                      "tgt":train[TGT_COL].astype(str).tolist()}).train_test_split(test_size=0.1,seed=42)
+def prep(b):
+    enc=tok(b["src"], max_length=256, truncation=True)
+    lab=tok(text_target=b["tgt"], max_length=128, truncation=True)
+    enc["labels"]=lab["input_ids"]; return enc
+ds=ds.map(prep, batched=True, remove_columns=ds["train"].column_names)
+# หมายเหตุ: ถ้า transformers เก่า (ก่อน 4.46) เปลี่ยน eval_strategy -&gt; evaluation_strategy
+args=Seq2SeqTrainingArguments(output_dir="out", learning_rate=3e-4, per_device_train_batch_size=8,
+    num_train_epochs=3, eval_strategy="epoch", save_strategy="no",
+    predict_with_generate=True, fp16=torch.cuda.is_available(), report_to="none")
+trainer=Seq2SeqTrainer(model=model, args=args, train_dataset=ds["train"], eval_dataset=ds["test"],
+    tokenizer=tok, data_collator=DataCollatorForSeq2Seq(tok, model=model))
+trainer.train()
+model.eval(); outs=[]
+for txt in test[SRC_COL].astype(str).tolist():
+    ids=tok(txt, return_tensors="pt", truncation=True, max_length=256).to(model.device)
+    with torch.no_grad(): g=model.generate(**ids, max_new_tokens=128, num_beams=4)
+    outs.append(tok.decode(g[0], skip_special_tokens=True))
+out=sample.copy(); out[TGT_COL]=outs; out.to_csv("submission_mt5.csv",index=False,encoding="utf-8-sig")
+print("บันทึก submission_mt5.csv")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "pipeline text generation"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary><h1>Domain 3 — Thai Word Segmentation (NLP / Character-Level Sequence Labeling)</h1>
+<p>Competition: <code>super-ai-engineer-ss-6-word-segmentation</code></p>
+<p>Source note: Kaggle page is login-walled. Format below follows the standard Super AI Engineer / BEST-2010 / PyThaiNLP convention. On exam day, read the actual Data + Evaluation tabs first and confirm: column names, label <code>0/1</code> vs <code>B/I</code>, char-level vs word-level F1.</p>
+<h2>A. TASK SUMMARY</h2>
+<ul>
+<li>Task: Thai has no spaces. Given raw Thai text, predict word boundaries. Framed as <code>per-character sequence labeling</code>, not whole-word classification.</li>
+<li>Two equivalent output framings (check Data tab):</li>
+</ul>
+<ol>
+<li>Per-character binary boundary: for each char index <code>i</code>, <code>1</code> if a new word starts at <code>i</code>, else <code>0</code>. First char always <code>1</code> (the PyThaiNLP "starting character" convention).</li>
+<li>BIES/BI tag per char: <code>B</code>(begin)/<code>I</code>(inside) — isomorphic to binary (<code>B==1</code>, <code>I==0</code>).</li>
+</ol>
+<ul>
+<li>Typical submission CSV: <code>id,label</code> — one row PER CHARACTER, <code>id</code> = global running char index, <code>label</code> = <code>0/1</code> (or <code>B/I</code>). Output is NOT a list of words.</li>
+<li>Metric: character-level boundary F1 (BEST-2010 / PyThaiNLP standard) on the "is this char a word-start" label.</li>
+<li><code>P=TP/(TP+FP)</code>, <code>R=TP/(TP+FN)</code>, <code>F1=2PR/(P+R)</code>. = <code>sklearn f1_score(..., average='binary', pos_label=1)</code>.</li>
+<li>Some variants use word-level F1 (a word correct only if BOTH boundaries match) — stricter. Ref: DeepCut on BEST-2010 = char F1 98.1, word F1 92.6.</li>
+<li>Dataset: BEST-2010 / InterBEST (NECTEC), ~5M words, 4 domains, <code>|</code>-annotated boundaries.</li>
+</ul>
+<h2>B. DOMAIN CATEGORIZATION</h2>
+<ul>
+<li>Top: Sequence Labeling (token/char classification) — same family as NER, POS tagging, chunking.</li>
+<li>Specific: Tokenization / Word Segmentation for scriptio-continua languages (Thai, Chinese, Japanese, Lao, Khmer).</li>
+<li>Granularity: character-level tagging (one label per char / per TCC).</li>
+<li>Adjacent (90% shared pipeline): sentence segmentation, NER, POS tagging — swap label set, reuse everything.</li>
+</ul>
+<h2>C. PREDICTED EXAM VARIATIONS</h2>
+<ol>
+<li>Thai NER. Unit = word/subword; labels = BIO over entity types. <code>AutoModelForTokenClassification</code>. Metric entity-level F1 via <code>seqeval</code>. Watch subword label alignment (<code>word_ids()</code>, <code>-100</code>).</li>
+<li>Thai POS tagging. Labels = POS tags (ORCHID/UD). PyThaiNLP <code>pos_tag(...)</code> instant baseline. Metric per-token acc/macro-F1.</li>
+<li>Thai sentence segmentation. Per-space/per-token binary boundary. LST20 corpus. Same code as WS, different positive class.</li>
+<li>Thai spelling correction. NOT pure labeling — seq2seq/candidate-ranking. PyThaiNLP <code>correct()</code>/<code>spell()</code> baseline. Needs generation.</li>
+<li>Thai text classification (sentiment/topic). Whole-sequence label. TF-IDF+LinearSVC baseline OR WangchanBERTa sequence-classification. Different head (pooled CLS).</li>
+<li>Syllable segmentation / G2P. Finer unit (<code>ssg</code> engine) or char seq2seq. Same BI skeleton.</li>
+</ol>
+<p>Decision rule: one label per position → sequence labeling (reuse pipeline). One label per text → sequence-classification head. Produce new text → seq2seq.</p>
+<h2>D. CORE CONVERSION (the spine — B=1 start, I=0 inside)</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>def words_to_char_labels(words):     # ['สวัสดี','ครับ'] -&gt; ('สวัสดีครับ',[1,0,0,0,0,0,1,0,0,0])
+    text, labels = [], []
+    for w in words:
+        for i, ch in enumerate(w):
+            text.append(ch); labels.append(1 if i == 0 else 0)
+    return "".join(text), labels
+def char_labels_to_words(text, labels):
+    words, cur = [], ""
+    for ch, lab in zip(text, labels):
+        if lab == 1 and cur: words.append(cur); cur = ""
+        cur += ch
+    if cur: words.append(cur)
+    return words</code></pre></div>
+<h2>E. SOTA TABLE (Thai word segmentation, BEST-2010)</h2>
+<div class="tablewrap"><table><thead><tr><th>Engine / Model</th><th>Approach</th><th>Char F1</th><th>Word F1</th><th>When to use</th></tr></thead><tbody><tr><td><code>newmm</code> (PyThaiNLP)</td><td>dict + maximal matching + TCC</td><td>good in-domain</td><td>0.67</td><td>Fastest baseline, no GPU</td></tr><tr><td><code>attacut</code></td><td>char+syllable dilated CNN</td><td>97.2</td><td>0.91</td><td>Best speed/quality NN</td></tr><tr><td><code>deepcut</code></td><td>char-level CNN (13 conv)</td><td>98.1</td><td>0.93</td><td>Strong off-the-shelf, near-SOTA</td></tr><tr><td><code>nercut</code></td><td>newmm + NER merge</td><td>~newmm+</td><td>—</td><td>Keep entities whole</td></tr><tr><td>char CRF (pycrfsuite)</td><td>CRF on char window</td><td>~96-98</td><td>~0.90</td><td>Trainable, CPU, in-domain wins</td></tr><tr><td><code>sefr_cut</code></td><td>DeepCut + CRF stacked</td><td>98.1</td><td>0.925</td><td>SOTA / domain adaptation</td></tr><tr><td>WangchanBERTa token-cls</td><td>RoBERTa-Thai tagging</td><td>~98+</td><td>highest</td><td>Max accuracy, needs GPU</td></tr></tbody></table></div>
+<p>Practical ranking under time pressure: <code>deepcut</code> (zero-train near-SOTA) → char CRF (CPU, trainable) → WangchanBERTa (GPU + time) → <code>sefr_cut</code>.</p>
+<h2>F. THAI-SPECIFIC GOTCHAS</h2>
+<ul>
+<li>Thai Character Clusters (TCC): combining vowels/tone marks (<code>ิ ี ึ ื ุ ู ่ ้ ๊ ๋ ์ ั ํ</code>) and pre-vowels (<code>เ แ โ ใ ไ</code>) can NEVER start a word — a boundary must not fall inside a TCC. Restrict predicted boundaries to legal TCC cut positions (<code>pythainlp.tcc</code>) to raise precision instantly.</li>
+<li>Count by codepoint; do NOT apply NFC that merges/reorders (desyncs char indices).</li>
+<li>Char-level F1 (lenient ~98) vs word-level F1 (strict ~93) differ a lot — confirm which the LB uses.</li>
+<li>Whitespace: in BEST, spaces are usually their own token. <code>keep_whitespace=True</code>.</li>
+<li>Submission alignment is the #1 killer: <code>len(labels) == len(text)</code>, same order. Assert it every row. First char always <code>1</code>.</li>
+</ul>
+<h2>G. QUICK-WIN BASELINE (&lt;30 min)</h2>
+<p><code>pip install pythainlp deepcut</code>. Read Data+Evaluation tabs. Run <code>newmm</code> → words → per-char labels → match sample columns/ids → submit. Re-run with <code>deepcut</code> (≈ char F1 98), keep better. Highest-ROI next step: restrict boundaries to legal TCC positions.</p>
+<h2>H. KEYWORDS TO STUDY</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>Thai word segmentation, scriptio continua, character-level sequence labeling, BIES BIO tagging,
+word boundary detection, boundary F1, character-level F1, word-level F1, CTW correctly tokenized words,
+BEST-2010 InterBEST NECTEC, LST20, ORCHID, Wisesight sentiment,
+PyThaiNLP word_tokenize, newmm, maximal matching, deepcut, attacut, nercut, sefr_cut SEFR-CUT,
+Thai Character Cluster TCC, pythainlp.tcc, combining marks, leading vowels,
+CRF python-crfsuite pycrfsuite conditional random field feature template, BiLSTM-CRF, character CNN,
+WangchanBERTa airesearch wangchanberta-base-att-spm-uncased, AutoModelForTokenClassification,
+token classification, word_ids label alignment, subword sentencepiece, -100 masking, seqeval,
+sklearn f1_score average binary, transformers Trainer, Thai NER POS sentence segmentation,
+mT5 seq2seq segmentation, domain adaptation, out-of-domain robustness</code></pre></div></details></section><section id="mm" class="section"><h1>หัวข้อใหญ่: Multimodal / Vision-Language (รูป + ข้อความ)</h1>
+<p>input มี <code>รูป</code> (อาจมีข้อความด้วย) และ output เป็น <code>ข้อความ</code></p>
+<h2>เกร็งโจทย์ — ออกได้กี่แบบ?</h2>
+<div class="tablewrap"><table><thead><tr><th>แบบโจทย์</th><th>input -&gt; output</th><th>metric</th><th>ใช้ไฟล์</th><th>ง่ายแค่ไหน</th></tr></thead><tbody><tr><td>1. บรรยายรูป (image captioning)</td><td>รูป -&gt; ประโยค</td><td>BLEU (ตัดคำ newmm)</td><td><code>thai_image_captioning.ipynb</code></td><td>⭐⭐</td></tr><tr><td>2. VQA (ตอบคำถามจากรูป)</td><td>รูป+คำถาม -&gt; คำตอบ</td><td>accuracy/exact-match</td><td><code>thai_image_captioning.ipynb</code> (ใส่คำถามใน prompt)</td><td>⭐⭐⭐</td></tr><tr><td>3. OCR captioning (อ่านตัวอักษรในรูป)</td><td>รูป -&gt; ข้อความ</td><td>CER/WER</td><td>ใช้ caption + โมเดล OCR</td><td>⭐⭐⭐</td></tr></tbody></table></div>
+<h2>วิธีดูว่าเป็นแบบไหน</h2>
+<ul>
+<li>มีแค่รูป -&gt; ตอบประโยคบรรยาย = captioning</li>
+<li>มีรูป + คำถาม -&gt; ตอบตามคำถาม = VQA (เปลี่ยนเป็นโมเดล instruction เช่น Qwen2.5-VL)</li>
+<li>เน้นอ่านตัวอักษรในรูป = OCR (ใช้โมเดลที่เก่ง OCR เช่น PaliGemma2)</li>
+</ul>
+<h2>วิธีที่ง่ายที่สุด (มือใหม่)</h2>
+<p>ใช้โมเดลที่เทรนกับ Thai-COCO มาแล้ว (เช่น <code>Natthaphon/thaicapgen-convnext-phayathai</code>) generate ได้เลย ไม่ต้องเทรน</p>
+<h2>กับดักที่ต้องระวัง (สำคัญมาก ดูเต็มใน reference_cheatsheet.md)</h2>
+<ul>
+<li>metric เป็น BLEU ที่ต้อง <code>ตัดคำไทยด้วย newmm ก่อน</code> -&gt; ใช้ <code>thai_bleu()</code> วัดในเครื่องก่อนส่งทุกครั้ง</li>
+<li>decode แบบ greedy/beam อย่า sample (คะแนน BLEU จะตก)</li>
+<li>ความยาวประโยคพอดี ๆ (สั้นไป/ยาวไป BLEU ตก)</li>
+<li>เขียนไฟล์ submission ด้วย <code>utf-8-sig</code> (กันภาษาไทยเพี้ยน)</li>
+</ul>
+<p>ไฟล์ในโฟลเดอร์นี้:</p>
+<ul>
+<li><code>thai_image_captioning.ipynb</code> — บรรยายรูปเป็นไทย (3 วิธี ง่าย -&gt; ขั้นสูง)</li>
+<li><code>visual_qa.ipynb</code> — ตอบคำถามจากรูป / OCR (BLIP-VQA / Qwen2.5-VL)</li>
+<li><code>reference_cheatsheet.md</code> — ความรู้ลึก + ตาราง SOTA (PaliGemma2/Qwen2.5-VL/BLIP) + keywords</li>
+</ul>
+<details class="nb"><summary>📓 thai_image_captioning.ipynb</summary><div class="nbmd"><h1>Multimodal (Vision-Language) — โจทย์แบบ "รูป -&gt; ข้อความ"</h1>
+<p>เช่น บรรยายรูปเป็นภาษาไทย (image captioning), ตอบคำถามจากรูป (VQA), อ่านตัวอักษรในรูป (OCR)</p>
+<p>วิธีในโน้ตบุ๊กนี้ (สำหรับ image captioning ไทย):</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด มือใหม่ทำแค่นี้) = ใช้โมเดลที่เทรนกับ Thai-COCO มาแล้ว generate ได้เลย ไม่ต้องเทรน</li>
+<li>วิธีที่ 2 (ไม่บังคับ) = <code>BLIP</code> fine-tune (เบา)</li>
+<li>วิธีที่ 3 (ขั้นสูง ต้อง GPU 16GB) = <code>PaliGemma2</code> + LoRA คะแนนดีสุด</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ input มีรูป และ output เป็น "ข้อความ" (ประโยค/คำตอบ)</p>
+<p>ถ้า output เป็น "1 คลาส" -&gt; ไปหัวข้อ 01 Computer Vision</p>
+<p>สำคัญมาก: metric คือ <code>BLEU</code> ที่ต้องตัดคำไทยด้วย <code>newmm</code> ก่อน</p>
+<p>ใช้ฟังก์ชัน <code>thai_bleu()</code> ในโน้ตบุ๊กวัดคะแนนในเครื่องก่อนส่งทุกครั้ง</p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, path โฟลเดอร์รูป/ไฟล์ JSON</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U transformers accelerate datasets pillow pandas torch sentencepiece
+!pip -q install pythainlp nltk          # ใช้วัด Thai BLEU
+!pip -q install peft bitsandbytes       # วิธีที่ 3 เท่านั้น</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "super-ai-engineer-ss-6-thai-language-image-captioning"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — path + ตัววัด Thai BLEU (นี่คือ metric จริง)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, json, pandas as pd, torch
+from PIL import Image
+TRAIN_IMG  = os.path.join(DATA_DIR,"train")     # &lt;&lt; แก้ path ให้ตรง
+TEST_IMG   = os.path.join(DATA_DIR,"test")
+SAMPLE_SUB = os.path.join(DATA_DIR,"sample_submission.csv")
+js = glob.glob(os.path.join(DATA_DIR,"*train*.json")); TRAIN_JSON = js[0] if js else None
+sample = pd.read_csv(SAMPLE_SUB); ID_COL, CAP_COL = sample.columns[0], sample.columns[1]
+print("รูป test:", TEST_IMG, "| sample คอลัมน์:", list(sample.columns)); display(sample.head())
+
+from pythainlp.tokenize import word_tokenize
+from nltk.translate.bleu_score import corpus_bleu, SmoothingFunction
+def th_tok(s): return [w for w in word_tokenize(str(s),engine="newmm",keep_whitespace=False) if w.strip()]
+def thai_bleu(list_of_refs, hyps):
+    refs=[[th_tok(r) for r in rs] for rs in list_of_refs]; hyp=[th_tok(h) for h in hyps]
+    return corpus_bleu(refs,hyp,weights=(0.25,0.25,0.25,0.25),smoothing_function=SmoothingFunction().method4)
+def write_submission(pred_dict, out="submission.csv"):
+    def look(idv):
+        s=str(idv)
+        for k in (s, s+".jpg", os.path.basename(s)):
+            if k in pred_dict: return pred_dict[k]
+        return "ภาพ"   # fallback ไทยสั้น ๆ กัน BLEU=0
+    o=sample.copy(); o[CAP_COL]=o[ID_COL].map(look)
+    o.to_csv(out,index=False,encoding="utf-8-sig"); print("บันทึก",out,o.shape); return o</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — โมเดล Thai-COCO สำเร็จรูป (ง่ายสุด ไม่ต้องเทรน)</h2>
+<p>ใช้โมเดลที่เคยเทรนกับคลังข้อมูลเดียวกัน generate คำบรรยายได้เลยใน &lt;1 ชม.</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from transformers import AutoModel, AutoImageProcessor, AutoTokenizer
+M="Natthaphon/thaicapgen-convnext-phayathai"   # &lt;&lt; แก้โมเดลได้
+dev="cuda" if torch.cuda.is_available() else "cpu"
+fe=AutoImageProcessor.from_pretrained(M); tk=AutoTokenizer.from_pretrained(M)
+model=AutoModel.from_pretrained(M,trust_remote_code=True).to(dev).eval()
+pred={}
+for p in sorted(glob.glob(os.path.join(TEST_IMG,"*"))):
+    px=fe(images=[Image.open(p).convert("RGB")],return_tensors="pt").pixel_values.to(dev)
+    with torch.no_grad(): ids=model.generate(px,max_length=120,num_beams=4)
+    pred[os.path.basename(p)]=tk.batch_decode(ids,skip_special_tokens=True)[0].strip()
+write_submission(pred,"submission.csv")</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — BLIP fine-tune (ไม่บังคับ)</h2>
+<p>โค้ดเต็มอยู่ใน reference_cheatsheet.md (โหลดคู่รูป-คำบรรยายจาก JSON มาเทรนต่อ)</p>
+<p>มือใหม่ข้ามได้ ใช้วิธีที่ 1 ก็ได้คะแนนแล้ว</p></div>
+<div class="nbmd"><h2>วิธีที่ 3 — PaliGemma2 + LoRA (ขั้นสูง ต้อง GPU 16GB คะแนนดีสุด)</h2>
+<p>โค้ดเต็มอยู่ใน reference_cheatsheet.md หัวข้อ D (prompt <code>caption th</code> + LoRA 4-bit)</p></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "thai coco pretrained captioning"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 visual_qa.ipynb</summary><div class="nbmd"><h1>Multimodal — โจทย์แบบ "ตอบคำถามจากรูป / อ่านข้อความในรูป" (VQA / OCR)</h1>
+<p>รูป (+ คำถาม) -&gt; คำตอบสั้น ๆ เช่น "ในรูปมีกี่คน", "ป้ายเขียนว่าอะไร"</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด) = VLM สำเร็จรูปแบบ zero-shot (BLIP-VQA / Qwen2.5-VL) ไม่ต้องเทรน</li>
+<li>วิธีที่ 2 (ขั้นสูง) = fine-tune VLM (ดู reference_cheatsheet.md)</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อมี "รูป + คำถาม" -&gt; ตอบ หรือ "อ่านตัวอักษรในรูป (OCR)"</p>
+<p>ถ้าแค่บรรยายรูป (ไม่มีคำถาม) -&gt; <code>thai_image_captioning.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, path โฟลเดอร์รูป, คอลัมน์คำถาม <code>Q_COL</code>, คอลัมน์ id รูป</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U transformers pillow pandas torch
+!pip -q install pythainlp   # เผื่อวัด/ตัดคำไทย</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-vqa-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — path + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, pandas as pd, torch
+from PIL import Image
+TEST_IMG = os.path.join(DATA_DIR,"test")            # &lt;&lt; แก้ path รูป
+SAMPLE_SUB = os.path.join(DATA_DIR,"sample_submission.csv")
+test = pd.read_csv(os.path.join(DATA_DIR,"test.csv"))   # &lt;&lt; แก้: ไฟล์ที่มี id รูป + คำถาม
+sample = pd.read_csv(SAMPLE_SUB)
+IMG_ID_COL = "image"     # &lt;&lt; แก้: คอลัมน์ชื่อไฟล์รูปใน test
+Q_COL      = "question"  # &lt;&lt; แก้: คอลัมน์คำถาม (ถ้าเป็น OCR ล้วน ไม่มีคำถาม ตั้งเป็น None)
+ANS_COL    = sample.columns[1]
+print("test คอลัมน์:",list(test.columns)); display(test.head()); display(sample.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — BLIP-VQA สำเร็จรูป (ง่ายสุด ไม่ต้องเทรน)</h2>
+<p>ตอบคำถามจากรูปแบบ zero-shot สำหรับภาษาไทยที่ซับซ้อนแนะนำเปลี่ยนเป็น Qwen2.5-VL (ดูคอมเมนต์)</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from transformers import pipeline
+dev = 0 if torch.cuda.is_available() else -1
+# BLIP-VQA (อังกฤษเป็นหลัก). ภาษาไทย/OCR แนะนำใช้ Qwen2.5-VL (โค้ดด้านล่าง)
+vqa = pipeline("visual-question-answering", model="Salesforce/blip-vqa-base", device=dev)
+ans=[]
+for _,r in test.iterrows():
+    img = Image.open(os.path.join(TEST_IMG, str(r[IMG_ID_COL]))).convert("RGB")
+    q = str(r[Q_COL]) if Q_COL else "What is in the image?"
+    ans.append(vqa(image=img, question=q, top_k=1)[0]["answer"])
+out=sample.copy(); out[ANS_COL]=ans
+out.to_csv("submission.csv",index=False,encoding="utf-8-sig")
+print("บันทึก submission.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>ทางเลือก — Qwen2.5-VL (รองรับไทย + OCR ดีกว่า, ต้อง GPU)</h2>
+<p>ปลดคอมเมนต์ถ้าต้องการคำตอบภาษาไทยหรืออ่านตัวอักษรในรูป</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code># from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
+# mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained("Qwen/Qwen2.5-VL-3B-Instruct",
+#         torch_dtype="auto", device_map="auto")
+# proc = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-3B-Instruct")
+# def ask(img_path, question):
+#     msgs=[{"role":"user","content":[{"type":"image","image":img_path},{"type":"text","text":question}]}]
+#     text=proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+#     inputs=proc(text=[text], images=[Image.open(img_path).convert("RGB")], return_tensors="pt").to(mdl.device)
+#     out=mdl.generate(**inputs, max_new_tokens=64)
+#     return proc.batch_decode(out[:, inputs.input_ids.shape[1]:], skip_special_tokens=True)[0].strip()
+print("ปลดคอมเมนต์เซลล์นี้ถ้าจะใช้ Qwen2.5-VL (ภาษาไทย/OCR)")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "blip vqa zero-shot"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary><h1>Domain 1 — Thai Language Image Captioning (Multimodal / Vision→Thai Text)</h1>
+<p>Competition: <code>super-ai-engineer-ss-6-thai-language-image-captioning</code></p>
+<p>Source note: the SS6 Kaggle page is login-gated. Task/metric/format below come from the public predecessor (<code>image-processing-thai-language-image-captioning</code>, SS5) + the dataset cards (COCO-Thai + NECTEC IPU24) + PyThaiNLP docs. Verify the exact <code>sample_submission.csv</code> columns and JSON field names the moment you get dataset access.</p>
+<h2>A. TASK SUMMARY</h2>
+<ul>
+<li>Task: given one image, generate one Thai sentence describing it. Single image in, single string out.</li>
+<li>Dataset: COCO (2014/2017) captions machine-translated EN→TH (VISTEC-depa NMT) + native-Thai IPU24. Layout: <code>train/ val/ test/</code> image folders + <code>capgen_v1.0_train.json</code>, <code>capgen_v1.0_val.json</code>, <code>sample_submission.csv</code>. SS5 scale ~34k files / ~1.95 GB.</li>
+<li>JSON shape: COCO-caption style — list/dict keyed by image filename/id → one or more Thai caption strings.</li>
+<li>Metric: <code>BLEU</code>. Critical — Thai has no spaces, so BLEU is computed on <code>PyThaiNLP newmm</code>-tokenized text, cumulative BLEU-4 (weights 0.25 each) with smoothing. Public models on this dataset report BLEU via <code>newmm</code>. Expect corpus-level cumulative BLEU-4 in [0,1]. Public/Private = 50/50.</li>
+<li><code>BLEU = BP * exp(sum_{n=1..4} 0.25*log p_n)</code>, <code>BP = 1 if c&gt;r else exp(1-r/c)</code>. Tokens = <code>newmm</code> words.</li>
+<li>Submission: CSV, 2 cols <code>id,caption</code>. One row per test image; <code>id</code> = filename/numeric id matching the sample; <code>caption</code> = Thai string.</li>
+</ul>
+<h2>B. DOMAIN CATEGORIZATION</h2>
+<ul>
+<li>Field: Multimodal ML / Vision-Language (VL).</li>
+<li>Task type: Image-to-Text generation (conditional sequence generation) = image captioning.</li>
+<li>Sub-area: low-resource / non-English (Thai) generative captioning. CV image encoder (ViT/CLIP/SigLIP/ConvNeXt) + NLG autoregressive decoder.</li>
+<li>Adjacent: VQA, OCR/scene-text, dense/region captioning, video captioning, image-text retrieval, multimodal translation.</li>
+<li>Eval family: n-gram overlap (BLEU/ROUGE/METEOR/CIDEr/SPICE) — this comp uses BLEU + Thai segmentation.</li>
+</ul>
+<h2>C. PREDICTED EXAM VARIATIONS</h2>
+<ol>
+<li>Thai VQA (image + Thai question → Thai answer). Switch to instruction VLM (Qwen2.5-VL, PaliGemma2-mix); question goes into the prompt. Metric likely exact-match/accuracy.</li>
+<li>OCR / scene-text captioning (read Thai text in image). Use OCR-strong backbone (PaliGemma2, Qwen2.5-VL) or OCR engine (EasyOCR/Typhoon-OCR) + captioner. Metric maybe CER/WER.</li>
+<li>Multilingual / EN+TH dual captioning. Use mBLIP / PaliGemma2 / Qwen2.5-VL with language-tag prompting.</li>
+<li>Video captioning. Sample N frames, use Qwen2.5-VL / LLaVA-OneVision; temporal pooling.</li>
+<li>Dense / grounded captioning (caption + boxes). Use Florence-2 / Qwen2.5-VL / Kosmos-2; structured output.</li>
+<li>Domain-specific Thai captioning (food/tourism/medical). Same pipeline + heavy LoRA fine-tune + domain <code>custom_dict</code> for newmm.</li>
+</ol>
+<p>Common thread: same encoder-decoder VLM. What changes = input modality/prompt, target string, metric + its tokenizer.</p>
+<h2>D. THAI BLEU EVALUATOR (this IS the leaderboard — validate locally first)</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from pythainlp.tokenize import word_tokenize
+from nltk.translate.bleu_score import corpus_bleu, SmoothingFunction
+def th_tok(s):
+    return [w for w in word_tokenize(str(s), engine="newmm", keep_whitespace=False) if w.strip()]
+def thai_bleu(list_of_refs, hyps):   # refs: list[list[str]], hyps: list[str]
+    refs = [[th_tok(r) for r in rs] for rs in list_of_refs]
+    hyp  = [th_tok(h) for h in hyps]
+    return corpus_bleu(refs, hyp, weights=(0.25,0.25,0.25,0.25),
+                       smoothing_function=SmoothingFunction().method4)</code></pre></div>
+<h2>E. SOTA TABLE (ranked for THIS task)</h2>
+<div class="tablewrap"><table><thead><tr><th>Rank</th><th>Model</th><th>HF id</th><th>Params</th><th>When to use</th></tr></thead><tbody><tr><td>1</td><td>PaliGemma2-3B</td><td><code>google/paligemma2-3b-pt-224</code> (or <code>-448</code>)</td><td>3B</td><td>Primary submission. Multilingual + OCR-pretrained. Best public score on this Thai-COCO data. LoRA 4-bit fits 16GB</td></tr><tr><td>2</td><td>Qwen2.5-VL 3B/7B</td><td><code>Qwen/Qwen2.5-VL-3B-Instruct</code></td><td>4B/8B</td><td>Strong zero/few-shot Thai, great for VQA/OCR variants</td></tr><tr><td>3</td><td>Pretrained Thai PaliGemma2</td><td><code>MagiBoss/PaliGemma2-3b-224-COCO</code></td><td>3B</td><td>Warm start / fast strong baseline</td></tr><tr><td>4</td><td>Thai ConvNeXt/CLIP captioner</td><td><code>Natthaphon/thaicapgen-convnext-phayathai</code></td><td>0.3-0.6B</td><td>Sub-1h baseline, no training, trained on THIS corpus</td></tr><tr><td>5</td><td>BLIP-2 + Typhoon</td><td><code>MagiBoss/Blip2-Typhoon1.5-COCO</code></td><td>~3B</td><td>Alt baseline</td></tr><tr><td>6</td><td>BLIP base</td><td><code>Salesforce/blip-image-captioning-base</code></td><td>0.25B</td><td>Fastest from-scratch fine-tune, fits anywhere</td></tr><tr><td>7</td><td>GIT</td><td><code>microsoft/git-base</code></td><td>0.2B</td><td>Lightweight alt</td></tr><tr><td>8</td><td>mBLIP</td><td><code>Gregor/mblip-mt0-xl</code></td><td>~4B</td><td>Multilingual fallback</td></tr><tr><td>9</td><td>Florence-2</td><td><code>microsoft/Florence-2-large</code></td><td>0.77B</td><td>OCR/grounded variant (English-centric)</td></tr></tbody></table></div>
+<p>Reality check: best public BLEU-4 on Thai-COCO is low absolute (~4.8 BLEU-4 / ~12 cumulative). The leaderboard is relative — beat the median with a 3B VLM + correct tokenization + length calibration.</p>
+<h2>F. THAI-SPECIFIC GOTCHAS</h2>
+<ul>
+<li>No spaces between Thai words — never whitespace-split. BLEU MUST use <code>newmm</code> tokens.</li>
+<li>Match the host tokenizer (<code>newmm</code>). Other engines shift BLEU.</li>
+<li>Don't emit stray spaces inside Thai runs (extra spurious tokens).</li>
+<li>Brevity penalty bites — captions ~10-25 newmm tokens; calibrate <code>max_new_tokens</code> to median ref length.</li>
+<li>Decode greedy/beam (<code>num_beams=3-5</code>, <code>do_sample=False</code>). Sampling lowers BLEU.</li>
+<li>Multi-reference: pass ALL captions per image to <code>corpus_bleu</code>.</li>
+<li>Always UTF-8; write submission <code>utf-8-sig</code>. Preserve Thai combining marks (tone/vowel).</li>
+</ul>
+<h2>G. QUICK-WIN BASELINE (&lt;1 hour, zero training)</h2>
+<p>Use a model already trained on this exact corpus: <code>Natthaphon/thaicapgen-convnext-phayathai</code> (<code>trust_remote_code=True</code>) → generate captions for <code>test/</code> → map to <code>sample_submission.csv</code> → write <code>utf-8-sig</code>. Fallback: <code>MagiBoss/PaliGemma2-3b-224-COCO</code> with prompt <code>"caption th"</code>.</p>
+<h2>H. KEYWORDS TO STUDY</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>Thai image captioning, image-to-text, vision-language model VLM, PaliGemma2 caption-th prefix,
+SigLIP encoder, Qwen2.5-VL, BLIP, BLIP-2, GIT, Florence-2, mBLIP, LLaVA-OneVision,
+encoder-decoder captioning, ViT, CLIP, ConvNeXt-V2, PhayathaiBERT, WangchanBERTa,
+PEFT, LoRA, QLoRA, bitsandbytes 4-bit nf4, gradient accumulation, SFTTrainer TRL,
+BLEU cumulative BLEU-4, brevity penalty, n-gram precision, smoothing function,
+PyThaiNLP word_tokenize newmm, Thai Character Cluster TCC, nltk corpus_bleu, CIDEr METEOR SPICE,
+multi-reference BLEU, beam search vs sampling, max_new_tokens, low-resource NLP,
+COCO captions, IPU24, VISTEC-depa NMT, Typhoon LLM, EasyOCR Thai, utf-8-sig, VQA, OCR captioning</code></pre></div></details></section><section id="tab" class="section"><h1>หัวข้อใหญ่: Tabular (ข้อมูลตาราง / สเปรดชีต)</h1>
+<p>input คือ <code>ตาราง</code> (แต่ละแถว = 1 ตัวอย่าง, คอลัมน์ = ฟีเจอร์) เป็นหัวข้อที่ <code>ง่ายที่สุด</code> สำหรับมือใหม่</p>
+<h2>เกร็งโจทย์ — ออกได้กี่แบบ?</h2>
+<div class="tablewrap"><table><thead><tr><th>แบบโจทย์</th><th>output</th><th>metric</th><th>ใช้ไฟล์</th><th>ง่ายแค่ไหน</th></tr></thead><tbody><tr><td>1. จำแนก 2 คลาส (binary)</td><td>0/1</td><td>Accuracy, AUC, F1</td><td><code>classification.ipynb</code></td><td>⭐ ง่ายสุด</td></tr><tr><td>2. จำแนกหลายคลาส (multiclass)</td><td>1 ใน N คลาส</td><td>macro-F1, log-loss</td><td><code>classification.ipynb</code> (เปลี่ยน metric)</td><td>⭐</td></tr><tr><td>3. ทำนายตัวเลข (regression)</td><td>ตัวเลขต่อเนื่อง</td><td>RMSE, MAE</td><td><code>regression.ipynb</code></td><td>⭐</td></tr><tr><td>4. ข้อมูลไม่สมดุล (imbalanced)</td><td>0/1 (คลาสน้อยมาก)</td><td>AUC-PR, F1</td><td><code>classification.ipynb</code> + class_weight</td><td>⭐⭐</td></tr></tbody></table></div>
+<h2>วิธีดูว่าเป็นแบบไหน (ดูคอลัมน์เป้าหมาย)</h2>
+<ul>
+<li>เป้าหมายเป็นหมวด/ป้าย -&gt; classification</li>
+<li>เป้าหมายเป็นตัวเลขต่อเนื่อง (ราคา/คะแนน) -&gt; regression</li>
+<li>เป้าหมายมี 2 ค่า แต่ค่านึงน้อยมาก (เช่น 2%) -&gt; imbalanced (ใช้ AUC/F1 + ถ่วงน้ำหนัก)</li>
+</ul>
+<h2>วิธีที่ง่ายที่สุด (มือใหม่ ทำแค่นี้พอ)</h2>
+<p><code>AutoGluon TabularPredictor</code> -&gt; บอก label + metric + time_limit เดี๋ยวมันลองหลายโมเดล + รวมให้เอง</p>
+<p>จัดการ missing/categorical ให้หมด ไม่ต้องเตรียมข้อมูลเอง</p>
+<h2>กับดักที่ต้องระวัง (ดูเต็มใน reference_cheatsheet.md)</h2>
+<ul>
+<li>อย่าลืม drop คอลัมน์ <code>id</code> ออกจากฟีเจอร์</li>
+<li>เลือก metric ให้ตรงโจทย์: AUC -&gt; ส่งความน่าจะเป็น, Accuracy/F1 -&gt; ส่งป้าย 0/1</li>
+<li>เชื่อคะแนน cross-validation ของเราเอง มากกว่า public leaderboard (ข้อมูลน้อย LB หลอกได้)</li>
+<li>ข้อมูลการแพทย์มักไม่สมดุล -&gt; ดู F1/recall ไม่ใช่ accuracy อย่างเดียว</li>
+</ul>
+<p>ไฟล์ในโฟลเดอร์นี้:</p>
+<ul>
+<li><code>classification.ipynb</code> — ทำนายคลาส (เริ่มที่นี่)</li>
+<li><code>regression.ipynb</code> — ทำนายตัวเลข</li>
+<li><code>reference_cheatsheet.md</code> — ความรู้ลึก + LightGBM/CatBoost/TabPFN + keywords</li>
+</ul>
+<details class="nb"><summary>📓 classification.ipynb</summary><div class="nbmd"><h1>Tabular — โจทย์แบบ "ทำนายคลาสจากตาราง" (Classification)</h1>
+<p>ข้อมูลเป็นตาราง (แต่ละแถว = 1 ตัวอย่าง, คอลัมน์ = ฟีเจอร์) -&gt; ทำนายป้าย (เช่น ป่วย/ไม่ป่วย, ซื้อ/ไม่ซื้อ)</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด มือใหม่ทำแค่นี้) = <code>AutoGluon</code> กดรันแล้วมันลองหลายโมเดล + รวมให้เอง</li>
+<li>วิธีที่ 2 (ไม่บังคับ) = <code>LightGBM</code> + cross-validation คุมเอง</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ: ข้อมูลเป็นตาราง และทำนาย "ป้าย/หมวด" (มีกี่หมวดก็ได้)</p>
+<p>ถ้าทำนาย "ตัวเลขต่อเนื่อง" (ราคา/คะแนน) -&gt; ไปใช้ <code>regression.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, ชื่อไฟล์ csv, <code>TARGET</code> (คอลัมน์ที่ทำนาย), <code>METRIC</code></p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.tabular[all]"      # วิธีที่ 1
+!pip -q install lightgbm scikit-learn pandas numpy   # วิธีที่ 2</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "super-ai-engineer-ss-6-heart-disease-prediction"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd, numpy as np
+TRAIN_CSV  = os.path.join(DATA_DIR,"train.csv")   # &lt;&lt; แก้ชื่อไฟล์
+TEST_CSV   = os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB = os.path.join(DATA_DIR,"sample_submission.csv")
+train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+ID_COL = sample.columns[0]    # คอลัมน์ id (อัตโนมัติ)
+TARGET = sample.columns[1]    # &lt;&lt; แก้ถ้าผิด: คอลัมน์ที่ต้องทำนาย
+# METRIC: 'accuracy' | 'roc_auc' | 'f1'  -&gt; ดูจาก tab Evaluation บน Kaggle
+METRIC = "accuracy"           # &lt;&lt; แก้ให้ตรงโจทย์
+print("คอลัมน์ train:", list(train.columns)); display(train.head()); display(sample.head())
+print("เป้าหมาย =", TARGET, "| metric =", METRIC)</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — AutoGluon (ง่ายสุด มือใหม่ทำแค่นี้พอ)</h2>
+<p>AutoGluon จัดการ missing/categorical ให้เอง + ลองหลายโมเดล + รวมเป็น ensemble แค่บอก label กับ metric</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from autogluon.tabular import TabularPredictor
+AG_METRIC = {"accuracy":"accuracy","roc_auc":"roc_auc","auc":"roc_auc","f1":"f1"}[METRIC]
+train_ag = train.drop(columns=[c for c in [ID_COL] if c in train.columns])
+test_ag  = test.drop(columns=[c for c in [ID_COL] if c in test.columns])
+predictor = TabularPredictor(label=TARGET, eval_metric=AG_METRIC, path="ag_tab").fit(
+    train_ag, presets="best_quality", time_limit=600)   # &lt;&lt; แก้ time_limit ตามเวลา
+out = sample.copy()
+if AG_METRIC == "roc_auc":
+    out[TARGET] = predictor.predict_proba(test_ag).iloc[:,1].values   # AUC ส่งความน่าจะเป็น
+else:
+    out[TARGET] = predictor.predict(test_ag).values                  # acc/f1 ส่งป้าย
+out.to_csv("submission.csv", index=False)
+print("บันทึก submission.csv"); display(out.head())
+print(predictor.leaderboard().head())   # AutoGluon รุ่นใหม่เอา silent= ออกแล้ว</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — LightGBM + cross-validation (ไม่บังคับ)</h2>
+<p>คุมเองได้ละเอียด ใช้ StratifiedKFold กัน overfit</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import lightgbm as lgb
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import roc_auc_score
+y = train[TARGET].values
+X = train.drop(columns=[c for c in [ID_COL,TARGET] if c in train.columns])
+Xte = test.drop(columns=[c for c in [ID_COL] if c in test.columns])
+for df in (X,Xte):
+    for col in df.columns:
+        if df[col].dtype=="object": df[col]=df[col].astype("category")
+oof=np.zeros(len(y)); pred=np.zeros(len(Xte))
+for tr,va in StratifiedKFold(5,shuffle=True,random_state=42).split(X,y):
+    m=lgb.LGBMClassifier(n_estimators=1500,learning_rate=0.02,num_leaves=31,random_state=42,verbose=-1)
+    m.fit(X.iloc[tr],y[tr],eval_set=[(X.iloc[va],y[va])],callbacks=[lgb.early_stopping(80,verbose=False)])
+    oof[va]=m.predict_proba(X.iloc[va])[:,1]; pred+=m.predict_proba(Xte)[:,1]/5
+print("OOF AUC =", round(roc_auc_score(y,oof),4))
+out=sample.copy(); out[TARGET]=(pred&gt;=0.5).astype(int)   # &lt;&lt; ถ้า metric เป็น AUC ใช้ out[TARGET]=pred
+out.to_csv("submission_lgbm.csv",index=False); print("บันทึก submission_lgbm.csv")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "autogluon tabular classification"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 regression.ipynb</summary><div class="nbmd"><h1>Tabular — โจทย์แบบ "ทำนายตัวเลขจากตาราง" (Regression)</h1>
+<p>ข้อมูลตาราง -&gt; ทำนายตัวเลขต่อเนื่อง (เช่น ราคาบ้าน, คะแนนความเสี่ยง, ยอดขาย)</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด) = <code>AutoGluon</code> แค่บอก problem_type='regression'</li>
+<li>วิธีที่ 2 (ไม่บังคับ) = <code>LightGBM</code> regressor + cross-validation</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อคำตอบเป็น "ตัวเลขต่อเนื่อง" ไม่ใช่หมวด metric มักเป็น <code>RMSE</code> หรือ <code>MAE</code></p>
+<p>ถ้าคำตอบเป็น "หมวด/ป้าย" -&gt; ไปใช้ <code>classification.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, ไฟล์ csv, <code>TARGET</code>, <code>METRIC</code></p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install -U "autogluon.tabular[all]"
+!pip -q install lightgbm scikit-learn pandas numpy</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-regression-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd, numpy as np
+TRAIN_CSV=os.path.join(DATA_DIR,"train.csv"); TEST_CSV=os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB=os.path.join(DATA_DIR,"sample_submission.csv")
+train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+ID_COL=sample.columns[0]; TARGET=sample.columns[1]   # &lt;&lt; แก้ TARGET ถ้าผิด
+METRIC="root_mean_squared_error"   # &lt;&lt; แก้: 'root_mean_squared_error' | 'mean_absolute_error' | 'r2'
+print("คอลัมน์:",list(train.columns)); display(train.head()); display(sample.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — AutoGluon Regression (ง่ายสุด)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from autogluon.tabular import TabularPredictor
+train_ag=train.drop(columns=[c for c in [ID_COL] if c in train.columns])
+test_ag =test.drop(columns=[c for c in [ID_COL] if c in test.columns])
+predictor=TabularPredictor(label=TARGET, problem_type="regression", eval_metric=METRIC, path="ag_reg").fit(
+    train_ag, presets="best_quality", time_limit=600)   # &lt;&lt; แก้ time_limit
+out=sample.copy(); out[TARGET]=predictor.predict(test_ag).values
+out.to_csv("submission.csv",index=False); print("บันทึก submission.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — LightGBM Regressor + CV (ไม่บังคับ)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import lightgbm as lgb
+from sklearn.model_selection import KFold
+from sklearn.metrics import mean_squared_error
+y=train[TARGET].values
+X=train.drop(columns=[c for c in [ID_COL,TARGET] if c in train.columns])
+Xte=test.drop(columns=[c for c in [ID_COL] if c in test.columns])
+for df in (X,Xte):
+    for col in df.columns:
+        if df[col].dtype=="object": df[col]=df[col].astype("category")
+oof=np.zeros(len(y)); pred=np.zeros(len(Xte))
+for tr,va in KFold(5,shuffle=True,random_state=42).split(X):
+    m=lgb.LGBMRegressor(n_estimators=2000,learning_rate=0.02,num_leaves=31,random_state=42,verbose=-1)
+    m.fit(X.iloc[tr],y[tr],eval_set=[(X.iloc[va],y[va])],callbacks=[lgb.early_stopping(80,verbose=False)])
+    oof[va]=m.predict(X.iloc[va]); pred+=m.predict(Xte)/5
+print("OOF RMSE =", round(np.sqrt(mean_squared_error(y,oof)),4))   # sklearn 1.6 เอา squared=False ออกแล้ว ใช้ np.sqrt แทน
+out=sample.copy(); out[TARGET]=pred; out.to_csv("submission_lgbm.csv",index=False)
+print("บันทึก submission_lgbm.csv")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "autogluon regression"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary><h1>Domain 4 — Heart Disease Prediction (Tabular ML / Classification)</h1>
+<p>Competition: <code>super-ai-engineer-ss-6-heart-disease-prediction</code></p>
+<p>Source note: Kaggle page is invitation-only / login-walled. Reconstructed from the UCI Heart Disease schema (canonical source), SS5 precedent, and sibling Kaggle heart comps. Confirm the metric on the Evaluation tab before optimizing.</p>
+<h2>A. TASK SUMMARY</h2>
+<ul>
+<li>Task: binary classification — predict presence (<code>1</code>) vs absence (<code>0</code>) of heart disease. (UCI raw <code>num</code> 0-4; standard binarize <code>&gt;0 -&gt; 1</code>.)</li>
+<li>Features (~13 UCI columns, mixed types):</li>
+<li>Numerical: <code>age</code>, <code>trestbps</code> (resting BP), <code>chol</code>, <code>thalach</code> (max HR), <code>oldpeak</code> (ST depression).</li>
+<li>Categorical/ordinal: <code>sex</code>, <code>cp</code> (chest pain, 4), <code>fbs</code>, <code>restecg</code> (3), <code>exang</code>, <code>slope</code> (3), <code>ca</code> (0-3 vessels), <code>thal</code> (normal/fixed/reversible).</li>
+<li>Size: small — Cleveland ~303 rows, full UCI ~920. This is TabPFN territory (≤10k rows). Missing values common in <code>ca</code>, <code>thal</code> (raw <code>?</code>).</li>
+<li>Target: <code>target</code>/<code>num</code> (0/1 after binarize).</li>
+<li>Metric (verify): one of <code>Accuracy</code>, <code>AUC-ROC</code>, <code>F1</code>. <code>P=TP/(TP+FP)</code>, <code>R=TP/(TP+FN)</code>, <code>F1=2PR/(P+R)</code>, <code>AUC=P(score(pos)&gt;score(neg))</code>.</li>
+<li>Submission: <code>id,target</code> CSV. AUC → submit probabilities; Accuracy/F1 → submit hard 0/1.</li>
+</ul>
+<h2>B. DOMAIN CATEGORIZATION</h2>
+<ul>
+<li>Supervised → tabular → binary classification.</li>
+<li>Medical/clinical ML: small-n, mixed cat+continuous, informative missing values, interpretability matters, imbalance common, false negatives costly → recall/F1 often weighted over accuracy.</li>
+<li>Best family for n&lt;10k: gradient-boosted trees (LightGBM/XGBoost/CatBoost) + TabPFN v2. Deep tabular nets usually don't beat GBDTs here.</li>
+</ul>
+<h2>C. PREDICTED EXAM VARIATIONS</h2>
+<ol>
+<li>Multiclass severity (<code>num</code> 0-4). <code>objective=multiclass</code>, metric macro-F1 / multiclass log-loss / QWK. StratifiedKFold on 5 classes, argmax (no threshold). CatBoost clean.</li>
+<li>Regression risk score. <code>objective=regression</code>/RMSE, metric RMSE/R². Drop threshold tuning; clip range.</li>
+<li>Imbalanced / fraud-style. Metric AUC-PR / F1 / MCC. <code>scale_pos_weight = n_neg/n_pos</code>, threshold on PR curve, SMOTE only inside folds.</li>
+<li>Survival / time-to-event. Cox PH / <code>lifelines</code> / <code>scikit-survival</code> <code>cox</code>/<code>aft</code>. Metric C-index. Classification doesn't apply.</li>
+<li>Calibration / cost-sensitive. Metric log-loss / Brier. <code>CalibratedClassifierCV</code> (isotonic/sigmoid).</li>
+<li>Large synthetic tabular (100k+). TabPFN slow → LightGBM/CatBoost heavier tuning. Usually AUC.</li>
+</ol>
+<p>Decision rule: probability metric (AUC/log-loss/Brier) → submit <code>predict_proba</code>. Hard-label metric (Acc/F1/MCC) → thresholded labels, tune threshold on OOF.</p>
+<h2>E. SOTA TABLE (small medical tabular, n&lt;10k)</h2>
+<div class="tablewrap"><table><thead><tr><th>Rank</th><th>Model</th><th>Library</th><th>When to use</th><th>Key knobs</th></tr></thead><tbody><tr><td>1</td><td>TabPFN v2 / v2.5</td><td><code>tabpfn</code></td><td>n≤10k, ≤500 feats</td><td>~zero tuning, auto NaN/cat/scale, <code>AutoTabPFNClassifier</code>, <code>device</code></td></tr><tr><td>2</td><td>CatBoost</td><td><code>catboost</code></td><td>many categoricals, missing</td><td><code>depth</code>(4-8), <code>learning_rate</code>, <code>l2_leaf_reg</code>, early stop</td></tr><tr><td>3</td><td>LightGBM</td><td><code>lightgbm</code></td><td>speed, baseline</td><td><code>num_leaves</code>, <code>min_child_samples</code>, <code>scale_pos_weight</code></td></tr><tr><td>4</td><td>XGBoost</td><td><code>xgboost</code></td><td>strong baseline, ensemble diversity</td><td><code>max_depth</code>(3-6), <code>eta</code>, <code>reg_lambda</code></td></tr><tr><td>5</td><td>Logistic Regression</td><td><code>sklearn</code></td><td>linear sanity baseline</td><td><code>C</code>, <code>penalty</code>, <code>class_weight</code></td></tr><tr><td>6</td><td>AutoGluon Tabular</td><td><code>autogluon</code></td><td>EASIEST — auto-ensembles all above</td><td><code>presets='best_quality'</code>, <code>time_limit</code></td></tr><tr><td>7</td><td>FT-Transformer / SAINT</td><td><code>rtdl</code></td><td>larger tabular, research</td><td>depth, lr, dropout</td></tr><tr><td>8</td><td>RandomForest/ExtraTrees</td><td><code>sklearn</code></td><td>quick robust (won SS5)</td><td><code>n_estimators</code>, <code>class_weight</code></td></tr></tbody></table></div>
+<p>Best single move under time pressure: AutoGluon <code>best_quality</code> (one call), or TabPFN for n&lt;10k, then blend with CatBoost.</p>
+<h2>F. PRACTICAL GOTCHAS</h2>
+<ul>
+<li>Leakage: fit Imputer/Scaler/Encoder/SMOTE inside each fold only. Drop <code>id</code>. Watch target-derived columns.</li>
+<li>SMOTE only on training fold, never before split. On tiny data <code>scale_pos_weight</code>/<code>class_weight</code> often beats SMOTE.</li>
+<li>Always <code>StratifiedKFold(shuffle=True, random_state=...)</code> on 300 rows.</li>
+<li>Don't scale one-hot meaningfully; don't label-encode nominal as ordinal for linear/NN. Let CatBoost/TabPFN ingest cats natively.</li>
+<li>Missing values informative (<code>ca</code>,<code>thal</code>): GBDTs/TabPFN handle NaN natively; consider a missing-indicator column.</li>
+<li>Pick final submission by CV OOF, not noisy public LB.</li>
+<li>Threshold/metric mismatch: tune threshold on OOF for F1/Acc; submit raw probs for AUC/log-loss; calibrate for Brier.</li>
+</ul>
+<h2>G. QUICK-WIN BASELINE (&lt;30 min)</h2>
+<p>LightGBM + StratifiedKFold(5) + <code>scale_pos_weight</code> + early stopping, OOF + averaged test preds. LightGBM eats NaN + raw ints (skip ColumnTransformer). F1/Acc → tune threshold on OOF; AUC → submit probs. Then add CatBoost + TabPFN and average (+0.5-2 pts). Or just run AutoGluon <code>best_quality</code> for a hands-off strong baseline.</p>
+<h2>H. KEYWORDS TO STUDY</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>UCI Heart Disease, Cleveland Hungary Switzerland VA, binary vs multiclass num target,
+StratifiedKFold, out-of-fold OOF, cross-validation leakage,
+LightGBM XGBoost CatBoost, gradient boosting hyperparameters, early stopping,
+scale_pos_weight, class_weight, SMOTE, imbalanced-learn, class imbalance,
+sklearn ColumnTransformer Pipeline SimpleImputer OneHotEncoder StandardScaler,
+missing value imputation, missing indicator, native NaN handling in GBDT,
+TabPFN v2 TabPFN-2.5 AutoTabPFNClassifier, tabular foundation model, in-context learning,
+AutoGluon TabularPredictor best_quality, FT-Transformer SAINT TabNet,
+threshold tuning, F1 optimization, precision recall tradeoff, AUC-ROC AUC-PR MCC,
+probability calibration CalibratedClassifierCV isotonic Brier log-loss,
+model ensembling stacking blending weighted average, trust your CV,
+SHAP feature importance permutation importance, survival analysis Cox concordance index,
+quadratic weighted kappa, macro-F1, multiclass log-loss</code></pre></div></details></section><section id="ts" class="section"><h1>หัวข้อใหญ่: Time-Series / Signal (สัญญาณ/ข้อมูลตามเวลา)</h1>
+<p>input คือ <code>ค่าตามเวลา</code> หรือ <code>สัญญาณ</code> (EEG, ECG, เซนเซอร์, ยอดขายรายวัน ฯลฯ)</p>
+<h2>เกร็งโจทย์ — ออกได้กี่แบบ?</h2>
+<div class="tablewrap"><table><thead><tr><th>แบบโจทย์</th><th>output</th><th>metric</th><th>ใช้ไฟล์</th><th>ง่ายแค่ไหน</th></tr></thead><tbody><tr><td>1. จำแนกหน้าต่างสัญญาณ (classification)</td><td>1 คลาส/หน้าต่าง</td><td>macro-F1, kappa, accuracy</td><td><code>signal_classification.ipynb</code></td><td>⭐⭐</td></tr><tr><td>2. ทำนายค่าในอนาคต (forecasting)</td><td>ตัวเลขในอนาคต</td><td>RMSE, MAE, SMAPE</td><td><code>forecasting.ipynb</code></td><td>⭐⭐</td></tr><tr><td>3. ตรวจจับความผิดปกติ (anomaly)</td><td>ปกติ/ผิดปกติ</td><td>F1, AUPRC</td><td><code>signal_classification.ipynb</code> (binary)</td><td>⭐⭐</td></tr></tbody></table></div>
+<p>ตัวอย่างหน้าต่างสัญญาณ -&gt; คลาส: EEG -&gt; ระยะการนอน, ECG -&gt; ชนิดการเต้น, เซนเซอร์มือถือ -&gt; ท่าทาง (HAR)</p>
+<h2>วิธีดูว่าเป็นแบบไหน</h2>
+<ul>
+<li>ตอบ "หน้าต่างนี้คือคลาสอะไร" -&gt; classification -&gt; <code>signal_classification.ipynb</code></li>
+<li>ตอบ "ค่าถัดไป/อนาคตเป็นเท่าไหร่" -&gt; forecasting -&gt; <code>forecasting.ipynb</code></li>
+</ul>
+<h2>วิธีที่ง่ายที่สุด (มือใหม่)</h2>
+<ul>
+<li>classification: <code>สกัดฟีเจอร์</code> (พลังงานในแต่ละความถี่ + สถิติ) แล้วโยนเข้า <code>AutoGluon</code> เหมือนตารางธรรมดา</li>
+<li>forecasting: ทำ <code>ฟีเจอร์วันที่ + ค่าย้อนหลัง (lag)</code> แล้วใช้ <code>LightGBM</code> ทำนายเหมือน regression</li>
+</ul>
+<h2>กับดักที่ต้องระวัง (สำคัญมาก ดูเต็มใน reference_cheatsheet.md)</h2>
+<ul>
+<li>แบ่ง train/val ตาม <code>subject/recording</code> ไม่ใช่สุ่ม (ไม่งั้นคะแนนหลอกสูงมาก) -- พลาดบ่อยสุด</li>
+<li>คลาสมักไม่สมดุล -&gt; วัด macro-F1 / kappa ไม่ใช่ accuracy</li>
+<li>normalize สัญญาณต่อ recording (อย่า normalize รวมทั้งชุด)</li>
+<li>forecasting: ค่าย้อนหลัง (lag) ของ test ต้องต่อจาก history จริง ระวังข้อมูลรั่ว</li>
+</ul>
+<p>ไฟล์ในโฟลเดอร์นี้:</p>
+<ul>
+<li><code>signal_classification.ipynb</code> — จำแนกหน้าต่างสัญญาณ (เริ่มที่นี่)</li>
+<li><code>forecasting.ipynb</code> — ทำนายค่าในอนาคต</li>
+<li><code>reference_cheatsheet.md</code> — ความรู้ลึก + 1D-CNN/TinySleepNet + keywords</li>
+</ul>
+<details class="nb"><summary>📓 signal_classification.ipynb</summary><div class="nbmd"><h1>Time-Series / Signal — โจทย์แบบ "สัญญาณ -&gt; คลาส" (Classification)</h1>
+<p>หน้าต่างสัญญาณ 1 ช่วง -&gt; 1 คลาส (เช่น EEG -&gt; ระยะการนอน, ECG -&gt; ชนิดการเต้นหัวใจ, เซนเซอร์ -&gt; ท่าทาง)</p>
+<p>วิธีในโน้ตบุ๊กนี้:</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด มือใหม่ทำแค่นี้) = สกัดฟีเจอร์ (พลังงานในแต่ละความถี่/สถิติ) + <code>AutoGluon</code></li>
+<li>วิธีที่ 2 (ไม่บังคับ) = ฟีเจอร์เดิม + <code>LightGBM</code> แบ่ง CV ตาม subject (กันข้อมูลรั่ว)</li>
+<li>วิธีที่ 3 (ขั้นสูง ต้อง GPU) = <code>1D-CNN</code> บนสัญญาณดิบ (ดู reference_cheatsheet.md)</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อ input เป็นสัญญาณตามเวลา (มี sampling rate) แบ่งเป็นหน้าต่าง แล้วทำนาย 1 คลาสต่อหน้าต่าง</p>
+<p>ถ้าต้อง "ทำนายค่าตัวเลขในอนาคต" -&gt; ไปใช้ <code>forecasting.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, <code>FS</code> (sampling rate), <code>LABEL_COL</code>, <code>GROUP_COL</code> (คอลัมน์ subject)</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install scipy lightgbm scikit-learn pandas numpy
+!pip -q install -U "autogluon.tabular[all]"   # วิธีที่ 1</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "super-ai-engineer-ss-6-sleep-stage-classification"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2>
+<p>รองรับ CSV ที่แต่ละแถว = 1 หน้าต่าง คอลัมน์เป็นค่าสัญญาณ (เช่น s0..s2999) + คอลัมน์ label</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd, numpy as np
+FS        = 100      # &lt;&lt; แก้: sampling rate (Hz) เช่น EEG=100
+LABEL_COL = "label"  # &lt;&lt; แก้: คอลัมน์คลาส
+GROUP_COL = None     # &lt;&lt; แก้: คอลัมน์ subject เช่น "subject" ถ้าไม่มีใส่ None
+TRAIN_CSV = os.path.join(DATA_DIR,"train.csv"); TEST_CSV=os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB= os.path.join(DATA_DIR,"sample_submission.csv")
+tr=pd.read_csv(TRAIN_CSV); te=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+ID_COL=sample.columns[0]; ANS_COL=sample.columns[1]
+print("คอลัมน์ train:",list(tr.columns)[:8],"..."); display(tr.head())
+drop=[c for c in [LABEL_COL,ID_COL,GROUP_COL] if c and c in tr.columns]
+sig_cols=[c for c in tr.columns if c not in drop and pd.api.types.is_numeric_dtype(tr[c])]
+Xtr_raw=tr[sig_cols].values; y_raw=tr[LABEL_COL].values
+groups=tr[GROUP_COL].values if (GROUP_COL and GROUP_COL in tr.columns) else np.zeros(len(tr))
+Xte_raw=te[[c for c in sig_cols if c in te.columns]].values
+test_ids=te[ID_COL].values if ID_COL in te.columns else sample[ID_COL].values
+classes=sorted(pd.unique(y_raw)); c2i={c:i for i,c in enumerate(classes)}; i2c={i:c for c,i in c2i.items()}
+y=np.array([c2i[v] for v in y_raw]); N_CLASSES=len(classes)
+print("จำนวนคลาส =",N_CLASSES,"| สัญญาณยาว",len(sig_cols),"ค่า/หน้าต่าง")</code></pre></div>
+<div class="nbmd"><h2>สกัดฟีเจอร์ต่อหน้าต่าง (ใช้ทั้งวิธีที่ 1 และ 2)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from scipy.signal import welch
+from scipy.stats import skew, kurtosis
+BANDS={"delta":(0.5,4),"theta":(4,8),"alpha":(8,13),"sigma":(11,16),"beta":(16,30),"gamma":(30,49)}
+_trap=getattr(np,"trapezoid",np.trapz)   # numpy 2.0 เปลี่ยนชื่อ np.trapz -&gt; np.trapezoid (รองรับทั้งสองเวอร์ชัน)
+def feat(sig):
+    sig=np.asarray(sig,dtype=np.float64)
+    f={"mean":sig.mean(),"std":sig.std(),"min":sig.min(),"max":sig.max(),"ptp":np.ptp(sig),
+       "skew":skew(sig),"kurt":kurtosis(sig),"rms":np.sqrt(np.mean(sig**2)),
+       "zcr":np.mean(np.abs(np.diff(np.sign(sig))))/2}
+    d1=np.diff(sig); d2=np.diff(d1); v0=sig.var()+1e-12; v1=d1.var()+1e-12; v2=d2.var()+1e-12
+    f["hj_mob"]=np.sqrt(v1/v0); f["hj_comp"]=np.sqrt(v2/v1)/(np.sqrt(v1/v0)+1e-12)
+    fr,psd=welch(sig,fs=FS,nperseg=min(len(sig),FS*2)); tot=_trap(psd,fr)+1e-12
+    for nm,(lo,hi) in BANDS.items():
+        idx=(fr&gt;=lo)&amp;(fr&lt;hi); bp=_trap(psd[idx],fr[idx]) if idx.any() else 0.0
+        f["bp_"+nm]=bp; f["rbp_"+nm]=bp/tot
+    f["spec_ent"]=-np.sum((psd/tot)*np.log(psd/tot+1e-12)); return f
+Xtr=pd.DataFrame([feat(w) for w in Xtr_raw]); Xte=pd.DataFrame([feat(w) for w in Xte_raw])
+print("ฟีเจอร์:",Xtr.shape[1],"ตัว")</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — ฟีเจอร์ + AutoGluon (ง่ายสุด)</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>from autogluon.tabular import TabularPredictor
+ag=Xtr.copy(); ag[LABEL_COL]=y
+pred=TabularPredictor(label=LABEL_COL,eval_metric="f1_macro",path="ag_sig").fit(
+    ag, presets="best_quality", time_limit=600)   # &lt;&lt; แก้ time_limit
+yhat=pred.predict(Xte).values
+out=sample.copy(); out[ANS_COL]=[i2c[int(v)] for v in yhat]
+out.to_csv("submission.csv",index=False); print("บันทึก submission.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — ฟีเจอร์ + LightGBM แบ่ง CV ตาม subject (ไม่บังคับ แต่สำคัญถ้ามี subject)</h2>
+<p>แบ่ง CV ตาม subject เพื่อไม่ให้หน้าต่างจากคนเดียวกันอยู่ทั้ง train และ val (กันคะแนนหลอก)</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import lightgbm as lgb
+from sklearn.model_selection import StratifiedGroupKFold
+from sklearn.metrics import f1_score
+cls,cnt=np.unique(y,return_counts=True); cw={c:len(y)/(len(cls)*n) for c,n in zip(cls,cnt)}
+sw=np.array([cw[v] for v in y])
+params=dict(objective="multiclass",num_class=N_CLASSES,learning_rate=0.03,num_leaves=64,
+            min_child_samples=40,n_jobs=-1,verbosity=-1)
+oof=np.zeros((len(y),N_CLASSES)); tp=np.zeros((len(Xte),N_CLASSES))
+for tr_i,va_i in StratifiedGroupKFold(5,shuffle=True,random_state=42).split(Xtr,y,groups):
+    d=lgb.Dataset(Xtr.iloc[tr_i],y[tr_i],weight=sw[tr_i]); dv=lgb.Dataset(Xtr.iloc[va_i],y[va_i])
+    m=lgb.train(params,d,2000,valid_sets=[dv],callbacks=[lgb.early_stopping(100),lgb.log_evaluation(0)])
+    oof[va_i]=m.predict(Xtr.iloc[va_i]); tp+=m.predict(Xte)/5
+print("OOF macro-F1 =", round(f1_score(y,oof.argmax(1),average="macro"),4))
+out=sample.copy(); out[ANS_COL]=[i2c[int(v)] for v in tp.argmax(1)]
+out.to_csv("submission_lgbm.csv",index=False); print("บันทึก submission_lgbm.csv")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "features autogluon signal"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📓 forecasting.ipynb</summary><div class="nbmd"><h1>Time-Series — โจทย์แบบ "ทำนายค่าในอนาคต" (Forecasting)</h1>
+<p>มีค่าตามเวลาในอดีต -&gt; ทำนายค่าในอนาคต (เช่น ยอดขายพรุ่งนี้, ราคาสัปดาห์หน้า)</p>
+<p>วิธีในโน้ตบุ๊กนี้ (มือใหม่):</p>
+<ul>
+<li>วิธีที่ 1 (ง่ายสุด) = สร้างฟีเจอร์จากวันที่ + ค่าย้อนหลัง (lag) แล้วใช้ <code>LightGBM</code> ทำนายเหมือน regression</li>
+<li>วิธีที่ 2 (ไม่บังคับ) = <code>AutoGluon TimeSeries</code> (เฉพาะทาง forecasting)</li>
+</ul></div>
+<div class="nbmd"><h2>เมื่อไหร่ใช้โน้ตบุ๊กนี้</h2>
+<p>ใช้เมื่อต้องทำนาย "ค่าตัวเลขในอนาคต" จากประวัติตามเวลา (มีคอลัมน์วันที่/เวลา)</p>
+<p>ถ้าทำนาย "คลาสจากหน้าต่างสัญญาณ" -&gt; ไปใช้ <code>signal_classification.ipynb</code></p>
+<p>ต้องแก้ (<code># &lt;&lt; แก้</code>): ชื่อ competition, <code>TIME_COL</code> (คอลัมน์วันที่), <code>TARGET</code>, <code>SERIES_COL</code> (ถ้ามีหลายซีรีส์)</p></div>
+<div class="nbmd"><h2>ขั้นที่ 1 — ติดตั้ง</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>!pip -q install lightgbm scikit-learn pandas numpy
+!pip -q install -U "autogluon.timeseries"   # วิธีที่ 2 เท่านั้น</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 2 — ตั้งค่า Kaggle แล้วดาวน์โหลดข้อมูล</h2>
+<p>ต้องมีไฟล์ <code>kaggle.json</code> ก่อน วิธีได้มา: เข้า kaggle.com -&gt; กดรูปโปรไฟล์ -&gt; Settings -&gt; Account -&gt; Create New Token</p>
+<p>จะได้ไฟล์ <code>kaggle.json</code> หน้าตา <code>{"username":"...","key":"..."}</code></p>
+<ul>
+<li>ถ้ารันบน <code>Kaggle Notebook</code>: ข้อมูลอยู่ที่ <code>/kaggle/input/...</code> แล้ว ไม่ต้องทำอะไร รันผ่านได้เลย</li>
+<li>ถ้ารันบน <code>Google Colab / เครื่องตัวเอง</code>: เอา username กับ key ใส่ในเซลล์ข้างล่าง (จุด <code># &lt;&lt; แก้</code>)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, glob, subprocess
+
+COMP = "ใส่-slug-ของ-competition-forecasting-ตรงนี้"      # &lt;&lt; แก้ตรงนี้: slug ของ competition (คือส่วนท้าย URL หลังคำว่า /competitions/)
+KAGGLE_USERNAME = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) เช่น "peetwan1"
+KAGGLE_KEY      = ""   # &lt;&lt; แก้ (เฉพาะ Colab/เครื่องตัวเอง) คีย์ยาว ๆ จาก kaggle.json
+
+def get_data(comp):
+    # ถ้าอยู่บน Kaggle ข้อมูลถูกต่อไว้ให้แล้ว
+    kpath = f"/kaggle/input/{comp}"
+    if os.path.isdir(kpath):
+        print("อยู่บน Kaggle แล้ว ข้อมูลอยู่ที่", kpath); return kpath
+    # ถ้าไม่ใช่ Kaggle: เขียน token แล้วโหลดด้วย kaggle CLI
+    if KAGGLE_USERNAME and KAGGLE_KEY:
+        os.makedirs(os.path.expanduser("~/.kaggle"), exist_ok=True)
+        open(os.path.expanduser("~/.kaggle/kaggle.json"), "w").write(
+            '{"username":"%s","key":"%s"}' % (KAGGLE_USERNAME, KAGGLE_KEY))
+        os.chmod(os.path.expanduser("~/.kaggle/kaggle.json"), 0o600)
+    os.makedirs("data", exist_ok=True)
+    subprocess.run(["kaggle","competitions","download","-c",comp,"-p","data"], check=True)
+    for z in glob.glob("data/*.zip"):
+        subprocess.run(["unzip","-o","-q",z,"-d","data"], check=True)
+    return "data"
+
+DATA_DIR = get_data(COMP)
+print("ไฟล์ที่ดาวน์โหลดมา (ดูชื่อไฟล์/โฟลเดอร์ แล้วเอาไปแก้ในเซลล์ถัดไป):")
+for p in sorted(glob.glob(os.path.join(DATA_DIR, "**"), recursive=True))[:40]:
+    print("  ", p)</code></pre></div>
+<div class="nbmd"><h2>ขั้นที่ 3 — โหลดข้อมูล + CONFIG</h2></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import os, pandas as pd, numpy as np
+TRAIN_CSV=os.path.join(DATA_DIR,"train.csv"); TEST_CSV=os.path.join(DATA_DIR,"test.csv")
+SAMPLE_SUB=os.path.join(DATA_DIR,"sample_submission.csv")
+train=pd.read_csv(TRAIN_CSV); test=pd.read_csv(TEST_CSV); sample=pd.read_csv(SAMPLE_SUB)
+TIME_COL  = "date"      # &lt;&lt; แก้: คอลัมน์วันที่/เวลา
+TARGET    = sample.columns[1]   # &lt;&lt; แก้ถ้าผิด: คอลัมน์ค่าที่ทำนาย
+SERIES_COL= None        # &lt;&lt; แก้: ถ้ามีหลายซีรีส์ (เช่น "store_id") ใส่ชื่อ, ถ้าซีรีส์เดียวใส่ None
+ID_COL=sample.columns[0]
+print("คอลัมน์:",list(train.columns)); display(train.head()); display(sample.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 1 — ฟีเจอร์วันที่ + lag + LightGBM (ง่ายสุด ใช้ได้จริง)</h2>
+<p>หลักคิด: เปลี่ยนปัญหา forecasting ให้เป็น regression ธรรมดา โดยทำฟีเจอร์จากวันที่ (ปี/เดือน/วัน/วันในสัปดาห์)</p>
+<p>+ ค่าย้อนหลัง (lag) แล้วให้ LightGBM เรียนรู้</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>import lightgbm as lgb
+def add_time_features(df):
+    df=df.copy(); df[TIME_COL]=pd.to_datetime(df[TIME_COL])
+    df["year"]=df[TIME_COL].dt.year; df["month"]=df[TIME_COL].dt.month
+    df["day"]=df[TIME_COL].dt.day; df["dow"]=df[TIME_COL].dt.dayofweek
+    df["doy"]=df[TIME_COL].dt.dayofyear
+    return df
+def add_lags(df, lags=(1,7,14,28)):   # &lt;&lt; แก้ค่า lag ตามความถี่ข้อมูล (รายวัน/รายชั่วโมง)
+    df=df.sort_values(TIME_COL).copy()
+    g=df.groupby(SERIES_COL)[TARGET] if SERIES_COL else df[TARGET]
+    for L in lags:
+        df[f"lag_{L}"]= (g.shift(L) if SERIES_COL else df[TARGET].shift(L))
+    return df
+tr=add_lags(add_time_features(train)).dropna()
+feat_cols=[c for c in tr.columns if c not in [TARGET,TIME_COL,ID_COL] and pd.api.types.is_numeric_dtype(tr[c])]
+m=lgb.LGBMRegressor(n_estimators=2000,learning_rate=0.02,num_leaves=63,random_state=42,verbose=-1)
+m.fit(tr[feat_cols], tr[TARGET])
+# เตรียม test: ต้องมีฟีเจอร์เดียวกัน (ถ้า test ไม่มี lag ต้องต่อ history จาก train ก่อน) -- ปรับตามรูปแบบจริง
+te=add_time_features(test)
+for col in feat_cols:
+    if col not in te.columns: te[col]=np.nan   # &lt;&lt; แก้: เติม lag ของ test จาก history จริงถ้าจำเป็น
+out=sample.copy(); out[TARGET]=m.predict(te[feat_cols])
+out.to_csv("submission.csv",index=False); print("บันทึก submission.csv"); display(out.head())</code></pre></div>
+<div class="nbmd"><h2>วิธีที่ 2 — AutoGluon TimeSeries (ไม่บังคับ เฉพาะทาง forecasting)</h2>
+<p>เหมาะเมื่อข้อมูลเป็นรูปแบบ long (item_id, timestamp, target) ชัดเจน</p></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code># from autogluon.timeseries import TimeSeriesDataFrame, TimeSeriesPredictor
+# tsdf = TimeSeriesDataFrame.from_data_frame(train, id_column=SERIES_COL, timestamp_column=TIME_COL)
+# predictor = TimeSeriesPredictor(target=TARGET, prediction_length=28).fit(tsdf, time_limit=600)
+# pred = predictor.predict(tsdf)   # แล้วแมปกลับเข้า sample_submission ตามรูปแบบจริง
+print("ปลดคอมเมนต์เซลล์นี้ถ้าข้อมูลเป็นรูปแบบ long ชัดเจน")</code></pre></div>
+<div class="nbmd"><h2>ขั้นสุดท้าย — ส่ง submission ขึ้น Kaggle</h2>
+<p>เช็คก่อนส่งทุกครั้ง: ไฟล์ submission ต้องมีชื่อคอลัมน์ + จำนวนแถว ตรงกับ <code>sample_submission.csv</code> เป๊ะ ๆ</p>
+<ul>
+<li>บน Kaggle Notebook: กดปุ่ม <code>Submit</code> ที่แถบขวา (ง่ายสุด) หรือใช้คำสั่งข้างล่าง</li>
+<li>บน Colab/เครื่อง: รันเซลล์ข้างล่าง (ต้องตั้ง token แล้ว)</li>
+</ul></div>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>FILE = "submission.csv"   # &lt;&lt; แก้เป็นชื่อไฟล์ที่คะแนนดีสุด
+!kaggle competitions submit -c {COMP} -f {FILE} -m "lightgbm forecasting"
+!kaggle competitions submissions -c {COMP} | head</code></pre></div></details>
+<details class="nb"><summary>📚 reference_cheatsheet.md (ความรู้ลึก)</summary><h1>Domain 5 — Sleep Stage Classification (Time-Series / Biosignal / EEG)</h1>
+<p>Competition: <code>super-ai-engineer-ss-6-sleep-stage-classification</code></p>
+<p>Source note: Kaggle page gated (redirects to login). Reconstructed from the Super AI franchise pattern (SS5 ran "IoT Sleep Stage Classification") + Sleep-EDF / AASM literature. Two data formats covered (raw EEG, wearable IoT) so you're robust either way. Confirm metric/label-set/FS/#channels on the live page first.</p>
+<h2>A. TASK SUMMARY</h2>
+<ul>
+<li>Task: multiclass — assign one sleep stage to each <code>30-second epoch</code>. Per-epoch classification, not forecasting.</li>
+<li>Classes — AASM 5-class (memorize): <code>W</code> Wake, <code>N1</code> light (rare ~5-8%), <code>N2</code> dominant (~40-50%), <code>N3</code> deep, <code>REM</code>. Variants: +<code>Unknown/Movement</code> (6th), or collapsed 3-class <code>W/N/R</code> (SS5 IoT). Check label set in <code>train.csv</code> first.</li>
+<li>Signal formats:</li>
+<li>Format-1 (raw EEG, Sleep-EDF): single-channel EEG (<code>Fpz-Cz</code>/<code>Pz-Oz</code>), <code>100 Hz</code>, 30s = <code>3000</code> samples/epoch. <code>.edf</code> (read with <code>mne</code>) or pre-cut <code>.npz</code>/<code>.parquet</code>.</li>
+<li>Format-2 (wearable IoT): <code>BVP, HR, IBI, EDA, TEMP, ACC_X/Y/Z</code> at ~16-64 Hz over 30s windows. CSV of features or raw blocks.</li>
+<li>Metric: likely <code>Accuracy</code>, <code>Macro-F1</code>, or <code>Cohen's kappa</code>. N1 rare + N2 dominant → accuracy misleading; optimize macro-F1 / kappa regardless.</li>
+<li>Submission: <code>id,label</code> CSV. Labels integer (<code>0=W..4=REM</code>) or string — match <code>sample_submission.csv</code>.</li>
+</ul>
+<h2>B. DOMAIN CATEGORIZATION</h2>
+<ul>
+<li>Primary: time-series / sequence classification (fixed window → discrete label).</li>
+<li>Sub-domain: biosignal / EEG / polysomnography (PSG); broader = BCI + wearable health.</li>
+<li>Identical structure to: HAR (accelerometer), ECG beat typing, EMG gesture — same toolbox (spectral features + GBDT, or 1D-CNN / CNN-RNN / transformer).</li>
+<li>Key property: epochs are temporally correlated (sleep follows transition rules) — context-aware models beat per-epoch models.</li>
+</ul>
+<h2>C. PREDICTED EXAM VARIATIONS</h2>
+<ol>
+<li>ECG arrhythmia (MIT-BIH). Window = one heartbeat (around R-peak), add QRS detection + RR features. Imbalanced → macro-F1. Same 1D-CNN.</li>
+<li>EEG seizure detection (CHB-MIT/TUH). Multi-channel, higher-band power, split by patient, focal loss.</li>
+<li>HAR / accelerometer. Lower FS (20-50Hz), time-domain stats dominate, window ~2.5s. Split by subject.</li>
+<li>Anomaly / apnea detection. Autoencoder reconstruction error / imbalanced binary. Metric AUPRC.</li>
+<li>Time-series forecasting (regression!). Lag features + LightGBM or N-BEATS/PatchTST. Metric RMSE/MAE/SMAPE. Detect from the metric.</li>
+<li>Audio / vibration event. Feature = log-mel spectrogram / MFCC (<code>librosa</code>) → 2D-CNN.</li>
+</ol>
+<p>General rule: identify (window length, FS, #channels, #classes, metric) in first 10 min, then drop into the reusable pipeline.</p>
+<h2>E. SOTA TABLE (Sleep-EDF, AASM 5-class, single-channel EEG)</h2>
+<div class="tablewrap"><table><thead><tr><th>Model</th><th>Architecture</th><th>ACC / MF1 / kappa</th><th>When to use</th></tr></thead><tbody><tr><td>SleePyCo (2022)</td><td>feature-pyramid CNN + supervised contrastive</td><td>86.8 / 81.2 / 0.82</td><td>Current top single-channel</td></tr><tr><td>XSleepNet (2020)</td><td>multi-view raw + spectrogram, seq</td><td>86.4 / 80.9 / 0.81</td><td>Both raw + time-freq</td></tr><tr><td>1D-ResNet-SE-LSTM (2023)</td><td>ResNet+SE → BiLSTM</td><td>86.4 / 82.0 / 0.81</td><td>Great N1 recall, easy to reimplement</td></tr><tr><td>AttnSleep (2021)</td><td>multi-res CNN + self-attention</td><td>84.4 / 78.1 / 0.79</td><td>Good attention baseline</td></tr><tr><td>U-Sleep / U-Time</td><td>fully-conv U-Net, whole-night</td><td>~80-87 MF1</td><td>Best cross-dataset generalization</td></tr><tr><td>SeqSleepNet (2019)</td><td>hierarchical RNN</td><td>85.2 / 79.6 / 0.79</td><td>Classic seq2seq</td></tr><tr><td>DeepSleepNet (2017)</td><td>2-branch CNN → BiLSTM</td><td>82.0 / 76.9 / 0.76</td><td>Canonical reference (= our CNN)</td></tr><tr><td>TinySleepNet (2020)</td><td>light CNN → 1 LSTM</td><td>85.4 / 80.5 / 0.80</td><td>Best perf-per-param ← recommended deep</td></tr><tr><td>spectral features + LightGBM</td><td>hand-crafted band-power/Hjorth</td><td>~78-82 / ~73-76</td><td>Fastest baseline ← &lt;1h submission</td></tr><tr><td>LaBraM / BIOT (2024)</td><td>EEG foundation transformer</td><td>SOTA-competitive</td><td>Only if pretrained weights + GPU</td></tr></tbody></table></div>
+<p>Hard truth: N1 F1 caps ~0.45-0.59 for everyone — the macro-F1 bottleneck. CNN → CNN+sequence (LSTM/attention) = +3-5 macro-F1, the single best upgrade.</p>
+<h2>F. PRACTICAL GOTCHAS</h2>
+<ol>
+<li>Class imbalance (N1 rare). Optimize macro-F1/kappa, never raw accuracy. Use inverse-frequency class weights / oversample / focal loss.</li>
+<li>Subject-wise splitting (the #1 mistake). Epochs from same recording are correlated; random split inflates CV 5-15 pts. Always <code>StratifiedGroupKFold</code> by <code>subject</code>. No subject col → split by contiguous time blocks.</li>
+<li>Epoch context. Feed ±1-2 epochs or add LSTM/attention over per-epoch embeddings. Cheap, high-impact.</li>
+<li>Per-recording normalization. z-score per recording/epoch; don't fit a global scaler then apply (leaks scale).</li>
+<li>Filtering/resampling. Band-pass 0.3-35 Hz, resample to common FS (100 Hz) before windowing.</li>
+<li>Wake-trimming (Sleep-EDF). Trim long W stretches before/after sleep or W dominates.</li>
+<li>Label alignment. Verify signal/hypnogram line up (off-by-one destroys accuracy).</li>
+<li>Metric mismatch. Early-stop / model-select on the actual competition metric (macro-F1), not log-loss/accuracy.</li>
+</ol>
+<h2>G. QUICK-WIN BASELINE (&lt;1 hour)</h2>
+<p>Feature LightGBM (band-power + Hjorth + stats per epoch) with class weights + subject-wise CV. CPU-only, minutes, leak-free. Expect ~0.73-0.78 macro-F1. Upgrade to 1D-CNN, then ensemble (average probs). Feature+LGBM first because zero GPU, fast, almost impossible to leak with GroupKFold.</p>
+<h2>H. KEYWORDS TO STUDY</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>sleep stage classification, AASM 5-class W N1 N2 N3 REM, polysomnography PSG, hypnogram,
+Sleep-EDF Sleep-EDFX PhysioNet, ISRUC MASS, single-channel EEG Fpz-Cz Pz-Oz, 30-second epoch,
+100 Hz resampling, band-pass filter 0.3-35 Hz, Welch PSD power spectral density,
+delta theta alpha sigma beta gamma bands, relative band power, Hjorth parameters mobility complexity,
+spectral entropy, sleep spindles K-complex, EEG EOG EMG, MNE-Python read_raw_edf,
+DeepSleepNet TinySleepNet U-Time U-Sleep SeqSleepNet XSleepNet AttnSleep SleepTransformer,
+SleePyCo contrastive, 1D-ResNet-SE-LSTM, LaBraM BIOT EEG foundation model,
+1D-CNN time-series, CNN-BiLSTM, epoch context window, sequence-to-sequence sleep scoring,
+class imbalance N1, weighted cross-entropy, focal loss, oversampling, macro-F1, Cohen kappa,
+StratifiedGroupKFold, subject-wise split, data leakage biosignal, per-recording normalization,
+LightGBM multiclass, Welch periodogram scipy.signal, wearable Empatica E4 BVP HR EDA ACC IBI,
+AutoGluon, ECG arrhythmia MIT-BIH, HAR accelerometer, seizure detection CHB-MIT,
+log-mel spectrogram MFCC, CWT STFT time-frequency, transfer learning EEG</code></pre></div></details></section><section id="sota" class="section"><h1>SOTA อัปเดต + วิธีดันคะแนน (2025–2026)</h1>
+<p>ไฟล์นี้รวม "ท่ายาก / ของใหม่" สำหรับแต่ละหัวข้อใหญ่ ถ้าทำ <code>วิธีที่ 1 (ง่ายสุด)</code> ในโน้ตบุ๊กได้ submission แล้ว และอยากดันคะแนนต่อ ให้มาดูตรงนี้</p>
+<p>ทุกหัวข้อบอกชัดว่า: ใช้โมเดล/เทคนิคอะไร, id ไหน, ช่วยยังไง, เหนื่อยแค่ไหน, และ <code>แก้ไฟล์ไหน ตัวแปรไหน</code></p>
+<p>วิธีใช้: หาหัวข้อใหญ่ของคุณ -&gt; ดู "ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้" ท้ายแต่ละหัวข้อ -&gt; ทำจากบนลงล่าง (ผลตอบแทนต่อแรงมากสุดอยู่บน)</p>
+<blockquote>หมายเหตุ: id ทั้งหมดตรวจกับ HuggingFace/เอกสารทางการแล้ว แต่ของหนัก (VLM/foundation model) ต้องรันบน Colab/Kaggle ที่มี GPU เสมอ</blockquote>
+<hr>
+<h2>Computer Vision — Advanced / SOTA (อัปเดต)</h2>
+<p>หมายเหตุ: ทุกอย่างด้านล่างคือ "ของจริงที่ใช้ได้ปี 2025–2026" และเลือกเฉพาะที่ plug เข้ากับ notebook เดิมได้เร็ว ตัวเลข top-1 อ้างอิงจาก timm/HF model cards และ COCO benchmark ของผู้พัฒนา</p>
+<h3>(a) Image Classification — <code>image_classification.ipynb</code></h3>
+<p>จุดที่แก้ง่ายสุดคือ <code>วิธีที่ 2</code> (timm) แค่เปลี่ยน <code>MODEL_NAME</code> (ปัจจุบัน <code>"tf_efficientnetv2_s.in21k_ft_in1k"</code>) + ปรับ <code>IMG_SIZE</code> ให้ตรงกับโมเดล timm จะ auto-download น้ำหนักให้เอง</p>
+<div class="tablewrap"><table><thead><tr><th>เทคนิค/โมเดล</th><th>id (ใส่ใน <code>MODEL_NAME</code>)</th><th>ทำไมช่วย</th><th>effort</th><th>แก้ตรงไหน</th></tr></thead><tbody><tr><td><code>ConvNeXt-V2-Large</code></td><td><code>convnextv2_large.fcmae_ft_in22k_in1k</code> (ใช้ <code>_384</code> ถ้า GPU ไหว → top-1 88.2%)</td><td>อัปจาก EfficientNetV2-S ทันที, top-1 ~87–88% สาย CNN เทรนง่าย เสถียร</td><td>ต่ำ</td><td><code>MODEL_NAME</code> ใน <code>วิธีที่ 2</code>; ถ้าใช้ <code>_384</code> ตั้ง <code>IMG_SIZE = 384</code></td></tr><tr><td><code>EVA-02-Large @448</code> (แชมป์ accuracy)</td><td><code>eva02_large_patch14_448.mim_m38m_ft_in22k_in1k</code> (top-1 90.05%)</td><td>จุดสูงสุด accuracy ที่ใช้ได้จริงบน timm</td><td>กลาง (กิน VRAM, <code>IMG_SIZE=448</code>, batch เล็ก)</td><td><code>MODEL_NAME</code> + <code>IMG_SIZE = 448</code></td></tr><tr><td><code>DINOv3</code> backbone (ใหม่สุด ส.ค. 2025)</td><td><code>vit_large_patch16_dinov3.lvd1689m</code> (ต้อง <code>timm&gt;=1.0.20</code>)</td><td>ฟีเจอร์ self-supervised เทพ; เก่งมากตอน data น้อย/โดเมนแปลก (frozen + linear head ก็ได้)</td><td>ต่ำ–กลาง</td><td><code>MODEL_NAME</code> ใน <code>วิธีที่ 2</code></td></tr><tr><td><code>SigLIP2</code> (zero-shot ไม่ต้องเทรน)</td><td><code>google/siglip2-so400m-patch14-384</code> (zero-shot ImageNet 84.1%)</td><td>ได้ baseline แบบ 0 epoch ด้วย text labels; ดีตอนเวลาน้อย/label น้อย</td><td>ต่ำ</td><td>เพิ่ม cell ใช้ <code>pipeline("zero-shot-image-classification", model=...)</code></td></tr></tbody></table></div>
+<p>เทคนิคเทรน (เปิดใน <code>วิธีที่ 2</code> ได้): <code>MixUp + CutMix</code> (timm.data.Mixup) กัน overfit +0.5–1.5%, <code>EMA</code> (timm.utils.ModelEmaV3) +0.3–0.8%, <code>TTA</code> ตอน inference +0.3–1%, <code>label smoothing 0.1</code> + cosine LR</p>
+<h3>(b) Object Detection — <code>object_detection.ipynb</code></h3>
+<p>ของเดิม <code>YOLO("yolov8n.pt")</code>. ลำดับอัป: เปลี่ยนรุ่น YOLO (effort เกือบ 0) → ขยายไซซ์ → RF-DETR ถ้าต้องการ accuracy สูงสุด</p>
+<div class="tablewrap"><table><thead><tr><th>เทคนิค/โมเดล</th><th>id</th><th>ทำไมช่วย</th><th>effort</th><th>แก้ตรงไหน</th></tr></thead><tbody><tr><td><code>YOLO11</code></td><td><code>model = YOLO("yolo11n.pt")</code> (n/s/m/l/x)</td><td>ใหม่กว่า v8, mAP สูงขึ้นที่พารามิเตอร์ใกล้กัน, API เหมือนเป๊ะ</td><td>แทบ 0</td><td>เปลี่ยน <code>YOLO("yolov8n.pt")</code> → <code>YOLO("yolo11n.pt")</code></td></tr><tr><td><code>YOLO12</code> (attention-centric)</td><td><code>model = YOLO("yolo12n.pt")</code></td><td>เพิ่ม attention ดัน accuracy ต่อ</td><td>แทบ 0</td><td>เปลี่ยนชื่อรุ่นใน <code>YOLO(...)</code></td></tr><tr><td>ขยาย scale + <code>imgsz</code></td><td><code>YOLO("yolo11m.pt")</code> + <code>train(imgsz=1024)</code></td><td>ขยับ <code>n→s→m</code> + เพิ่ม <code>imgsz</code> คือวิธีดันคะแนนที่ชัวร์สุด</td><td>ต่ำ</td><td>args ใน <code>model.train(...)</code></td></tr><tr><td><code>RF-DETR</code> (SOTA บน COCO, real-time)</td><td><code>pip install rfdetr</code> → <code>from rfdetr import RFDETRNano</code></td><td>transformer detector ชนะ YOLO ด้าน accuracy; รับ dataset YOLO/COCO; Apache-2.0</td><td>กลาง</td><td>สร้าง cell ใหม่แทน block ultralytics</td></tr><tr><td><code>RT-DETRv2</code></td><td><code>from ultralytics import RTDETR; RTDETR("rtdetr-l.pt")</code></td><td>NMS-free, แม่นกว่าที่ฉากซับซ้อน, API เดิม</td><td>ต่ำ–กลาง</td><td>ใช้ <code>RTDETR</code> แทน <code>YOLO</code></td></tr></tbody></table></div>
+<p>ทริค: เทรนยาว + <code>imgsz</code> ใหญ่, เปิด <code>augment=True</code> ตอน predict (TTA), ensemble หลาย scale รวมกล่องด้วย <code>WBF</code> (<code>pip install ensemble-boxes</code>)</p>
+<h3>(c) Segmentation — <code>segmentation.ipynb</code></h3>
+<div class="tablewrap"><table><thead><tr><th>เทคนิค/โมเดล</th><th>id</th><th>ทำไมช่วย</th><th>effort</th><th>แก้ตรงไหน</th></tr></thead><tbody><tr><td><code>YOLO11-seg</code> / <code>YOLO12-seg</code></td><td><code>YOLO("yolo11n-seg.pt")</code></td><td>drop-in แทน v8-seg, mask แม่นขึ้น</td><td>แทบ 0</td><td>เปลี่ยน <code>YOLO("yolov8n-seg.pt")</code> → <code>YOLO("yolo11n-seg.pt")</code></td></tr><tr><td>ขยาย scale + imgsz</td><td><code>YOLO("yolo11m-seg.pt")</code> + <code>imgsz=1024</code></td><td>ดัน mask mAP ตรง ๆ</td><td>ต่ำ</td><td>args <code>model.train(...)</code></td></tr><tr><td><code>SAM2</code> (promptable, zero-shot)</td><td><code>from ultralytics import SAM; SAM("sam2.1_b.pt")</code></td><td>mask คุณภาพสูงสุดไม่ต้องเทรน; ใช้ box จาก detector เป็น prompt</td><td>ต่ำ–กลาง</td><td>เพิ่ม cell: box จาก YOLO → prompt ให้ SAM2</td></tr></tbody></table></div>
+<p>ทริค: TTA flip/multi-scale, <code>copy_paste=0.3</code> ใน ultralytics, pipeline <code>detector → SAM2 refine mask</code></p>
+<h3>ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (CV)</h3>
+<ol>
+<li>เปลี่ยนรุ่นฟรี ๆ ก่อน: detection/seg <code>yolov8*</code> → <code>yolo11*</code>/<code>yolo12*</code>; classification <code>MODEL_NAME</code> → <code>convnextv2_large.fcmae_ft_in22k_in1k</code></li>
+<li>ขยาย scale + เพิ่ม <code>IMG_SIZE</code>/<code>imgsz</code> เท่าที่ GPU ไหว</li>
+<li>เปิดทริคเทรน: <code>MixUp/CutMix + EMA + label smoothing</code> (cls); <code>augment/copy_paste</code> (det/seg)</li>
+<li><code>TTA</code> ตอน inference ทุก task</li>
+<li>อัปตัวสุด: cls → <code>eva02_large_patch14_448...</code> (90%) หรือ frozen <code>DINOv3</code>; det → <code>RF-DETR</code>; seg → <code>detector → SAM2</code></li>
+<li><code>Ensemble</code> ปิดท้าย: cls เฉลี่ย logits หลายโมเดล; det รวมกล่องด้วย <code>WBF</code></li>
+</ol>
+<hr>
+<h2>NLP — Advanced / SOTA (อัปเดต)</h2>
+<p>หมายเหตุ: ทุก id ตรวจบน HuggingFace แล้ว (2025–2026) วางทับของเดิมได้ แก้แค่ตัวแปรตามที่ระบุ</p>
+<h3>(a) ตัดคำ / NER / POS — <code>thai_word_segmentation.ipynb</code></h3>
+<p>ตัดคำ:</p>
+<ul>
+<li><code>nlpo3</code> engine (<code>pip install nlpo3</code>) — newmm เขียนใหม่ด้วย Rust เร็วกว่า ~2.5x ผลตัดเหมือน newmm — แก้ที่ <code>to_labels(text, engine="deepcut")</code> วิธีที่ 1 เปลี่ยนเป็น <code>engine="nlpo3"</code> (ถ้าต้องการแม่นสุดคง <code>deepcut</code>)</li>
+<li>ensemble ง่าย: รัน <code>deepcut</code> + <code>attacut</code> + CRF แล้ว vote ขอบคำต่อตัวอักษร</li>
+</ul>
+<p>NER/POS (token classification, วิธีที่ 3):</p>
+<ul>
+<li><code>clicknext/phayathaibert</code> — WangchanBERTa ที่ขยาย vocab + เทรนต่อ ชนะเกือบทุกงาน โดยเฉพาะข้อความปนอังกฤษ (drop-in แทนได้ สถาปัตยกรรม camembert เหมือนกัน) — แก้ที่ค่า <code>MODEL</code> วิธีที่ 3</li>
+<li>NER สำเร็จรูป: <code>Pavarissy/phayathaibert-thainer</code>; POS สำเร็จรูป: <code>lunarlist/pos_thai_phayathai</code> (zero-train predict ได้เลย)</li>
+<li>multilingual: <code>microsoft/mdeberta-v3-base</code> (Thai XNLI 76.4 &gt; xlm-roberta-base 74.6) หรือ <code>FacebookAI/xlm-roberta-large</code></li>
+</ul>
+<h3>(b) จำแนกข้อความ — <code>text_classification.ipynb</code></h3>
+<p>วิธีที่ 2 ของเดิม <code>MODEL="airesearch/wangchanberta-base-att-spm-uncased"</code> → level-up:</p>
+<ul>
+<li><code>clicknext/phayathaibert</code> — monolingual ไทยที่แรงสุดสำหรับ fine-tune ตอนนี้ — <code>เปลี่ยน MODEL = "clicknext/phayathaibert"</code></li>
+<li><code>microsoft/mdeberta-v3-base</code> — ถ้าข้อความปนอังกฤษ/เป็นข้อความแปลเยอะ</li>
+<li><code>FacebookAI/xlm-roberta-large</code> — พารามิเตอร์เยอะ มักดันคะแนนสุด (ลด batch=8 กัน OOM)</li>
+<li>LLM zero/few-shot (เพิ่มวิธีที่ 3): prompt <code>typhoon-ai/typhoon2.1-gemma3-12b</code> / <code>Qwen/Qwen2.5-7B-Instruct</code> / <code>aisingapore/Gemma-SEA-LION-v3-9B-IT</code> ให้แปะ label — ดีตอน train เล็ก</li>
+<li>ฟรีคะแนน (วิธีที่ 1): เปลี่ยน <code>engine="newmm"</code> → <code>"nlpo3"</code> ใน <code>th_tokenize</code>, ลอง <code>LinearSVC</code> แทน LogReg</li>
+<li>งานจับคู่ประโยค/semantic: <code>kornwtp/SCT-model-phayathaibert</code> หรือ <code>BAAI/bge-m3</code> (multilingual, ไทยดีมาก)</li>
+</ul>
+<h3>(c) สร้าง/แปลงข้อความ Seq2Seq — <code>text_generation.ipynb</code></h3>
+<p>วิธีที่ 1 (pipeline) เปลี่ยน <code>MODEL</code> ตามงาน:</p>
+<ul>
+<li>แปลภาษา: <code>facebook/nllb-200-distilled-600M</code> (เบา) / <code>facebook/nllb-200-3.3B</code> (แม่นสุด) — SOTA แปล low-resource รวมไทย ต้องตั้ง <code>src_lang="tha_Thai"</code>, <code>tgt_lang="eng_Latn"</code></li>
+<li>สรุปไทย: <code>thanathorn/mt5-cpe-kmutt-thai-sentence-sum</code> (fine-tune ไทยแล้ว) หรือ <code>csebuetnlp/mT5_multilingual_XLSum</code> (เดิม)</li>
+<li>prompt LLM (มักได้สูงสุดถ้าวัด generative): <code>typhoon-ai/typhoon2.1-gemma3-12b</code> / <code>aisingapore/Gemma-SEA-LION-v3-9B-IT</code> / <code>Qwen/Qwen2.5-7B-Instruct</code></li>
+</ul>
+<p>วิธีที่ 2 (fine-tune) <code>MODEL="google/mt5-small"</code> → <code>google/mt5-base</code> (แม่นกว่า); งานแปลใช้ <code>facebook/nllb-200-distilled-600M</code> (ใส่ <code>forced_bos_token_id</code>); ภาษาไม่มีเว้นวรรค/สะกดผิด ลอง <code>google/byt5-small</code></p>
+<h3>ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (NLP)</h3>
+<ol>
+<li>เปลี่ยน backbone เป็น <code>clicknext/phayathaibert</code> ทุกที่ที่ใช้ WangchanBERTa (text_classification วิธีที่ 2, word_segmentation วิธีที่ 3)</li>
+<li>งานแปล: pipeline <code>facebook/nllb-200-distilled-600M</code> + ตั้ง <code>src_lang/tgt_lang</code></li>
+<li>งานสรุป: <code>thanathorn/mt5-cpe-kmutt-thai-sentence-sum</code></li>
+<li>จูน: <code>num_train_epochs</code> 3→4–5, <code>learning_rate</code> 1e-5/2e-5/3e-5, <code>max_length</code> 256→384</li>
+<li>GPU ใหญ่: ดันเป็น <code>mt5-base</code> / <code>xlm-roberta-large</code> (ลด batch)</li>
+<li>LLM zero/few-shot (Typhoon 2.1 / SEA-LION v3 / Qwen2.5) เป็นตัวเทียบเพดาน + ใช้จริงงาน generative</li>
+<li>Ensemble: เฉลี่ย/โหวต 2–3 โมเดล (phayathaibert + mdeberta-v3; deepcut + nlpo3 + CRF)</li>
+</ol>
+<hr>
+<h2>Multimodal (Vision-Language) — Advanced / SOTA (อัปเดต)</h2>
+<p>กฎเหล็กการวัด: BLEU ไทยต้องตัดคำ <code>newmm</code> ก่อนเสมอ (<code>thai_bleu()</code> ในโน้ตบุ๊กทำถูกแล้ว) cross-check ด้วย <code>pythainlp.benchmarks.bleu_score(refs, hyps, tokenize="newmm")</code> วัดในเครื่องก่อนส่งทุกครั้ง</p>
+<h3>A. Image Captioning ไทย — <code>thai_image_captioning.ipynb</code></h3>
+<p>ลำดับความแรง: วิธีที่ 1 (pretrained) &lt; BLIP &lt; PaliGemma2+LoRA &lt; <code>Qwen2.5-VL / Qwen3-VL</code> fine-tune</p>
+<ol>
+<li><code>Qwen/Qwen2.5-VL-7B-Instruct</code> (เบา <code>-3B-</code>) — VLM แรง รองรับไทย OCR ดี สั่งเป็นไทยได้ "อธิบายภาพนี้เป็นไทยสั้น ๆ 1 ประโยค" zero-shot แข็งกว่าวิธีที่ 1 — แก้ที่ วิธีที่ 1 เปลี่ยนเป็น chat template แบบ Qwen ใน <code>visual_qa.ipynb</code> แล้วเก็บผลใส่ <code>pred[...]</code> → <code>write_submission(pred)</code></li>
+<li><code>Qwen/Qwen3-VL-4B-Instruct</code> (มี <code>-2B-</code>/<code>-8B-</code>) — ใหม่สุดปลายปี 2025 ดีขึ้นทุกด้าน <code>2B</code> รัน free-tier ได้ — โหลดด้วย <code>Qwen3VLForConditionalGeneration</code></li>
+<li>PaliGemma2 (วิธีที่ 3): ใช้ <code>google/paligemma2-3b-mix-448</code> (instruction-tuned แล้ว zero-shot ได้) หรือ <code>-pt-448</code> (คมขึ้น) prompt <code>"caption th\n"</code></li>
+<li>QLoRA 4-bit fine-tune (<code>peft</code> + <code>bitsandbytes</code>, <code>r=8-16, alpha=16-32</code>) — ปรับ VLM 3B-8B บน GPU 16GB, เทรน &lt;1% params ได้ BLEU ขยับ</li>
+<li>เสริม: <code>florence-community/Florence-2-large</code> (ไม่ต้อง trust_remote_code, caption อังกฤษ แปลทีหลัง), vision encoder <code>google/siglip2-so400m-patch14-384</code></li>
+</ol>
+<h3>B. Visual QA / OCR ไทย — <code>visual_qa.ipynb</code></h3>
+<ol>
+<li>เลื่อน <code>Qwen2.5-VL</code> เป็นวิธีหลัก: ปลดคอมเมนต์บล็อก Qwen (ทางเลือก) เปลี่ยนเป็น <code>-7B-</code> ถ้าไหว — BLIP-VQA ตอบไทยไม่ได้/OCR อ่อน, Qwen ตอบไทย + อ่านตัวอักษรได้</li>
+<li><code>Qwen/Qwen3-VL-4B-Instruct</code> (<code>-2B-</code>) — DocVQA/ChartVQA ไทยดีขึ้น</li>
+<li>OCR ไทยเฉพาะทาง:</li>
+</ol>
+<ul>
+<li><code>scb10x/typhoon-ocr-7b</code> (<code>pip install typhoon-ocr</code>) — document parsing ไทย-อังกฤษ ออก Markdown/HTML รักษาเลย์เอาต์ ตัวท็อปสำหรับเอกสารไทย</li>
+<li><code>stepfun-ai/GOT-OCR-2.0-hf</code> — OCR generalist เล็ก เร็ว (716M) ไม่ต้อง trust_remote_code</li>
+<li><code>scb10x/typhoon2-qwen2vl-7b-vision-instruct</code> — VQA ไทยที่ต้องเข้าใจบริบท</li>
+<li><code>EasyOCR</code> (<code>['th','en']</code>) / <code>PaddleOCR</code> — baseline CPU เร็ว</li>
+</ul>
+<ol>
+<li>VLM open อื่น: <code>OpenGVLab/InternVL3-8B</code>, <code>meta-llama/Llama-3.2-11B-Vision-Instruct</code> (รองรับ th), <code>allenai/Molmo-7B-D-0924</code></li>
+</ol>
+<h3>ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (Multimodal)</h3>
+<ol>
+<li>วัดให้ถูก: ยืนยัน <code>thai_bleu()</code> (newmm) cross-check <code>pythainlp.benchmarks.bleu_score(..., tokenize="newmm")</code></li>
+<li>รัน วิธีที่ 1 เดิมให้ได้ baseline 1 ไฟล์</li>
+<li>Captioning อัปง่าย: <code>Qwen/Qwen2.5-VL-3B-Instruct</code> zero-shot สั่งเป็นไทย วัด BLEU เทียบ</li>
+<li>VQA/OCR อัปง่าย: ปลดคอมเมนต์ Qwen ใน <code>visual_qa.ipynb</code> ใช้แทน BLIP-VQA</li>
+<li>OCR เอกสารไทย: เสียบ <code>scb10x/typhoon-ocr-7b</code> (จุดที่คะแนนกระโดดเยอะสุด)</li>
+<li>ดันสุด (GPU 16GB + train JSON): QLoRA fine-tune <code>Qwen2.5-VL-7B</code> / <code>PaliGemma2-3b-pt-448</code></li>
+<li>ของใหม่สุด: <code>Qwen/Qwen3-VL-4B-Instruct</code> (<code>2B</code> บนเครื่องเล็ก)</li>
+<li>รีดท้าย: ensemble (Typhoon OCR + Qwen3-VL) หรือ few-shot แล้วเลือกไฟล์ <code>thai_bleu()</code> สูงสุด</li>
+</ol>
+<hr>
+<h2>Tabular — Advanced / SOTA (อัปเดต)</h2>
+<p>ภาพรวม 2025-2026 (TabArena, NeurIPS 2025): tabular foundation models (in-context learning) มาแรงสุดสำหรับข้อมูลเล็ก-กลาง — <code>TabPFNv2</code>, <code>TabPFN-2.5</code> (~50k แถว), <code>TabICL</code> (classification, ~500k), <code>Mitra</code>; GBDT (<code>CatBoost</code> นำ) ยังเป็นกระดูกสันหลัง; และ <code>weighted ensemble</code> ของหลายตระกูลชนะโมเดลเดี่ยวเสมอ</p>
+<h3>Level-up 1 — AutoGluon preset <code>extreme</code> (ฟรีเกือบทุกอย่างในคำสั่งเดียว)</h3>
+<p>AutoGluon 1.4+ preset <code>extreme</code> รวม <code>TabPFNv2 + TabICL + Mitra + TabM + RealMLP + CatBoost/LightGBM/XGBoost</code> แล้ว ensemble ให้ (1.5 เพิ่ม <code>TabPFN-2.5</code> + <code>TabDPT</code>) — <code>pip install -U "autogluon.tabular[all]"</code> — แก้ที่ cell-9 ทั้ง classification/regression เปลี่ยน <code>presets="best_quality"</code> → <code>presets="extreme"</code> (ถ้าเวอร์ชันเก่าไม่รู้จัก ให้อัปก่อน หรือ fallback <code>"best_quality"</code>)</p>
+<h3>Level-up 2 — เพิ่ม <code>TabPFN v2</code> แล้ว blend (จุดทองสำหรับ heart disease n&lt;10k)</h3>
+<p><code>pip install tabpfn</code> (รีดเพิ่ม <code>pip install "tabpfn-extensions[post_hoc_ensembles]"</code>) — SOTA ตารางเล็ก (≤10k แถว, ≤500 ฟีเจอร์) มักเก่งคนละทางกับ GBDT blend แล้ว +0.5-2 จุด — เพิ่มเป็นเซลล์ใหม่ต่อท้ายวิธีที่ 2 ใน <code>classification.ipynb</code>:</p>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code># === เซลล์ใหม่: TabPFN v2 (OOF) + blend ===  (classification.ipynb วิธีที่ 2)
+# !pip -q install tabpfn
+import numpy as np
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import roc_auc_score
+from tabpfn import TabPFNClassifier
+Xn  = X.apply(lambda c: c.cat.codes if str(c.dtype)=="category" else c).astype("float32")
+Xten= Xte.apply(lambda c: c.cat.codes if str(c.dtype)=="category" else c).astype("float32")
+oof_tp=np.zeros(len(y)); pred_tp=np.zeros(len(Xten))
+for tr,va in StratifiedKFold(5,shuffle=True,random_state=42).split(Xn,y):
+    clf=TabPFNClassifier(device="cuda" if __import__("torch").cuda.is_available() else "cpu")
+    clf.fit(Xn.iloc[tr],y[tr])
+    oof_tp[va]=clf.predict_proba(Xn.iloc[va])[:,1]; pred_tp+=clf.predict_proba(Xten)[:,1]/5
+print("TabPFN OOF AUC =", round(roc_auc_score(y,oof_tp),4))
+best_w,best=0.5,0
+for w in np.linspace(0,1,21):
+    s=roc_auc_score(y, w*oof_tp+(1-w)*oof)   # oof = LightGBM OOF (หรือ predictor.predict_proba_oof() ของ AutoGluon)
+    if s&gt;best: best,best_w=s,w
+print(f"best blend w(TabPFN)={best_w:.2f} OOF AUC={best:.4f}")
+out=sample.copy(); out[TARGET]=best_w*pred_tp+(1-best_w)*pred   # AUC ส่ง prob
+out.to_csv("submission_blend.csv",index=False)</code></pre></div>
+<p>blend กับ AutoGluon ตรง ๆ: ดึง OOF ด้วย <code>predictor.predict_proba_oof()</code> (ต้อง fit ด้วย preset ที่ทำ bagging) แล้วใช้แทน <code>oof</code></p>
+<h3>Level-up 3 — <code>TabICL</code> (classification ตารางใหญ่ n หลายหมื่น-แสน)</h3>
+<p><code>pip install tabicl</code> — foundation model classification สเกล ~500k แถว เร็วกว่า TabPFNv2 ~10x และชนะบนชุด &gt;10k — drop-in แทน <code>TabPFNClassifier</code> (<code>from tabicl import TabICLClassifier</code>) (regression ใช้ไม่ได้)</p>
+<h3>Level-up 4 — <code>RealMLP</code> / <code>TabM</code> (deep tabular เพิ่ม diversity)</h3>
+<p><code>pip install pytabkit</code> (<code>RealMLP_TD_Classifier</code>/<code>Regressor</code>) — ต่างทางจาก GBDT/TabPFN, blend แล้วช่วย, ใช้ได้ทั้ง cls/reg — หรือได้มาฟรีใน AutoGluon <code>extreme</code></p>
+<h3>Level-up 5 — เพิ่ม <code>CatBoost</code> + <code>XGBoost</code> แล้ว blend</h3>
+<p><code>pip install catboost xgboost</code> — CatBoost เก่งสุดกลุ่ม default จัดการ categorical native; 3 ตระกูล GBDT error คนละทาง blend แล้วได้เพิ่ม — ก็อปลูป KFold เดิม เก็บ <code>oof_cat/oof_xgb</code> ไป blend</p>
+<h3>Level-up 6 — จูน GBDT ด้วย <code>Optuna</code> (50+ trials)</h3>
+<p><code>pip install optuna</code> — ครอบ <code>LGBMClassifier</code> ด้วย study หา <code>num_leaves, learning_rate, min_child_samples, reg_lambda, feature_fraction</code> โดยใช้ OOF เป็น objective</p>
+<h3>Level-up 7 — <code>Hill climbing</code> / <code>Stacking</code> (เทคนิคชนะ Kaggle 2025)</h3>
+<p>รวบ OOF ทุกตัว (<code>oof, oof_tp, oof_cat, oof_ag</code>) → (ก) hill climbing เติมโมเดลทีละตัวพร้อม weight เก็บเฉพาะที่ทำ OOF ดีขึ้น, หรือ (ข) <code>Ridge().fit(oof_matrix, y)</code> เป็น meta-model</p>
+<p>ข้อควรระวัง: blend/stacking ต้องทำบน OOF เดียวกัน (fold/seed เดียว) ไม่งั้น leak; fit Imputer/Scaler/SMOTE ในแต่ละ fold; เลือก submission จาก CV OOF ไม่ใช่ public LB; TabPFNv2 จำกัด ≤10k แถว (เกินใช้ TabPFN-2.5 / TabICL)</p>
+<h3>ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (Tabular)</h3>
+<ol>
+<li><code>presets="best_quality"</code> → <code>presets="extreme"</code> (cell-9 ทั้งสองไฟล์) — ผลตอบแทนต่อแรงสูงสุด</li>
+<li>เพิ่ม <code>TabPFN v2</code> blend OOF (heart disease n&lt;10k คือจุดแข็ง)</li>
+<li>เพิ่ม <code>CatBoost</code> (+ <code>XGBoost</code>) เพื่อ diversity</li>
+<li>เปลี่ยนเฉลี่ยตรง ๆ เป็น <code>hill climbing</code> / <code>Ridge stacking</code> บน OOF</li>
+<li>จูน GBDT ด้วย <code>Optuna</code> 50+ trials</li>
+<li>ข้อมูลใหญ่ (&gt;10k): TabPFN → <code>TabICL</code>; เพิ่ม <code>RealMLP</code></li>
+<li>regression/imbalanced: ตรวจ metric, multi-seed averaging ก่อน stacking หลายชั้น</li>
+</ol>
+<hr>
+<h2>Time-Series / Signal — Advanced / SOTA (อัปเดต)</h2>
+<h3>A) Signal / Time-Series Classification</h3>
+<p><code>MiniRocket</code> — easy big win</p>
+<ul>
+<li><code>pip install sktime</code> — <code>from sktime.classification.kernel_based import RocketClassifier</code> (หรือ <code>MiniRocket</code> transformer)</li>
+<li>แปลง raw window เป็นฟีเจอร์ด้วย convolution สุ่มตายตัว เร็วมาก (CPU ไหว) แล้วต่อ <code>RidgeClassifierCV</code> แม่นระดับ near-SOTA บน UCR ดีกว่าฟีเจอร์ spectral เดิมเกือบทุกครั้ง</li>
+<li>แก้ที่ <code>signal_classification.ipynb</code> cell <code>[9]</code>: ป้อน raw window เข้า <code>MiniRocket().fit_transform(X)</code> แล้วเสียบเป็น <code>Xtr</code> ของ cell <code>[11]</code> (AutoGluon) หรือ <code>[13]</code> (LightGBM + GroupKFold) — โครง CV เดิมไม่ต้องแก้</li>
+<li>ตัวพี่: <code>MultiRocket</code>, <code>HYDRA</code></li>
+</ul>
+<p><code>Catch22 / tsfresh</code> (feature-based เสริม): <code>pip install pycatch22</code> (22 ฟีเจอร์เด็ด เร็ว) หรือ <code>tsfresh</code> (+<code>select_features</code>) — เติมต่อท้ายฟีเจอร์ spectral ใน cell <code>[9]</code></p>
+<p><code>Mantis-8M</code> (TS classification foundation model): <code>pip install mantis-tsfm</code> / HF <code>paris-noah/Mantis-8M</code> — ViT-based 8M เบา ดึง embedding zero-shot หรือ fine-tune — เพิ่ม "วิธีที่ 4" ใต้ cell <code>[13]</code></p>
+<p><code>MOMENT</code> (general TS foundation model): <code>pip install momentfm</code> / HF <code>AutonLab/MOMENT-1-large</code> — embedding zero-shot/linear-probe (univariate, กิน VRAM)</p>
+<p>EEG เฉพาะทาง (ถ้าโจทย์ EEG/sleep): <code>LaBraM</code> (HF <code>braindecode/labram-pretrained</code>), <code>EEGPT</code>, <code>BIOT</code>, และทางลัด <code>YASA</code> (<code>pip install yasa</code>, sleep staging สำเร็จรูป ~87% ไม่ต้องเทรน) — ใช้แทน 1D-CNN (วิธีที่ 3)</p>
+<p>baseline academic: <code>HIVECOTEV2</code> (sktime) แม่นสุด UCR แต่ช้า; backbone สมัยใหม่ <code>InceptionTime</code>, <code>PatchTST</code></p>
+<h3>B) Forecasting</h3>
+<p><code>Chronos-Bolt</code> / <code>Chronos-2</code> — zero-shot upgrade (แนะนำสุด)</p>
+<ul>
+<li>ผ่าน AutoGluon: <code>pip install -U "autogluon.timeseries&gt;=1.5"</code> / HF <code>amazon/chronos-bolt-base</code>, <code>amazon/chronos-2</code></li>
+<li>Chronos-Bolt zero-shot แม่น เร็วกว่า Chronos ~250x (CPU ได้); Chronos-2 (Dec 2025) รองรับ covariates นำ leaderboard</li>
+<li>แก้ที่ <code>forecasting.ipynb</code> cell <code>[11]</code>: <code>TimeSeriesPredictor(...).fit(tsdf, presets="chronos2")</code> (หรือ <code>"bolt_base"</code>) + อัป AG <code>&gt;=1.5</code> ที่ cell <code>[3]</code></li>
+</ul>
+<p><code>TimesFM 2.5</code> (Google): <code>pip install timesfm</code> / HF <code>google/timesfm-2.5-200m-transformers</code> — decoder-only forecasting zero-shot แข็ง long-horizon — เพิ่ม "วิธีที่ 3" ใต้ cell <code>[11]</code>, ensemble กับ LightGBM</p>
+<p><code>TabPFN-TS</code> (ซีรีส์สั้น/น้อย): <code>pip install tabpfn-time-series</code> — แปลง forecasting เป็น tabular regression + TabPFN-v2 zero-shot</p>
+<p><code>AutoGluon-TimeSeries 1.5</code> (ตัวรวมร่าง): รวม Chronos-2/Toto/stack ensembling/covariate regressor — เปลี่ยน preset อย่างเดียวได้คะแนนเพิ่ม</p>
+<h3>ถ้าอยากได้คะแนนเพิ่ม ทำตามลำดับนี้ (Time-Series)</h3>
+<ol>
+<li><code>MiniRocket</code> แทนฟีเจอร์ spectral ใน <code>signal_classification.ipynb</code> cell <code>[9]</code> → ต่อ <code>[11]</code>/<code>[13]</code> (classification คะแนนเด้งสุด)</li>
+<li><code>Chronos-Bolt</code>/<code>Chronos-2</code> ใน <code>forecasting.ipynb</code> cell <code>[11]</code> ผ่าน AutoGluon <code>presets="chronos2"</code> (อัป AG <code>&gt;=1.5</code>)</li>
+<li>เติม <code>pycatch22</code> + <code>tsfresh</code> เข้าฟีเจอร์ cell <code>[9]</code> รวมกับ MiniRocket</li>
+<li>sleep โดยตรง: ลอง <code>YASA</code> zero-shot เทียบก่อน</li>
+<li><code>Mantis-8M</code> / <code>MOMENT</code> เป็นวิธีที่ 4 (embedding + classifier เดิม, มี GPU)</li>
+<li>Forecasting เสริม: <code>TimesFM 2.5</code> / <code>TabPFN-TS</code> แล้ว ensemble กับ LightGBM + Chronos</li>
+<li>ensemble หลายโมเดลปิดท้ายทั้งสอง notebook (มักได้อีก 1-2%)</li>
+<li>EEG ที่มี GPU/เวลา: fine-tune <code>LaBraM</code>/<code>EEGPT</code>/<code>BIOT</code> แทน 1D-CNN</li>
+</ol></section><section id="verify" class="section"><h1>สิ่งที่ทดสอบแล้วจริง (Verification)</h1>
+<p>อัปเดต: 2026-06-05 | ทดสอบบน numpy 2.0.2 / scikit-learn 1.6.1 / lightgbm 4.6.0 / scipy 1.13.1</p>
+<p>(เวอร์ชันใกล้เคียง Google Colab / Kaggle ปัจจุบัน)</p>
+<h2>1. Master Router ทำงานจริง (ไทย + อังกฤษ)</h2>
+<ul>
+<li>ทดสอบ <code>34 โจทย์</code> (ทั้งไทยและอังกฤษ) -&gt; route ถูกหมด <code>34/34</code></li>
+<li>รันโค้ด router ที่ฝังในโน้ตบุ๊ก <code>00_MASTER_ROUTER.ipynb</code> จริง -&gt; ชี้ไฟล์ถูกทุกตัวอย่าง</li>
+<li>แก้ปัญหา false match เช่น <code>ner</code> ไปโดน <code>ge-ner-ate</code> แล้ว (อังกฤษ match แบบมีขอบคำ, ไทย match แบบ substring)</li>
+<li>รันซ้ำได้: <code>python3 _build/verify_router.py</code></li>
+</ul>
+<h2>2. โค้ดส่วนที่รันได้จริง — ทดสอบด้วยข้อมูลจำลอง (ผ่านหมด)</h2>
+<p>รันจริงด้วย <code>python3 _build/verify_logic.py</code> ครอบคลุม:</p>
+<ul>
+<li>helper ตัดคำ (words_to_char_labels / char_labels_to_words / boundary_f1)</li>
+<li>สกัดฟีเจอร์สัญญาณ (Welch PSD, Hjorth, band power) — ใช้ <code>np.trapezoid</code> รองรับ numpy 2.0</li>
+<li>LightGBM multiclass + <code>StratifiedGroupKFold</code> (แบ่งตาม subject)</li>
+<li>LightGBM classification + <code>early_stopping</code> + <code>StratifiedKFold</code></li>
+<li>LightGBM regression + RMSE แบบ version-safe (<code>np.sqrt(mean_squared_error)</code> เพราะ sklearn 1.6 เอา <code>squared=False</code> ออก)</li>
+<li>forecasting lag/date features</li>
+<li>TF-IDF + Logistic Regression pipeline + cross-validation</li>
+</ul>
+<h2>3. API ไลบรารีหนัก — ตรวจกับเอกสารจริง (Context7)</h2>
+<p>รันเองในเครื่องนี้ไม่ได้ (ต้อง GPU/ดาวน์โหลดโมเดลใหญ่) แต่ตรวจ API กับเอกสารทางการแล้ว:</p>
+<ul>
+<li><code>AutoGluon</code> TabularPredictor(label, problem_type, eval_metric).fit(..., time_limit) + MultiModalPredictor(label, path).fit + TimeSeriesPredictor — ตรงเอกสาร</li>
+<li><code>Ultralytics</code> YOLO("yolov8n.pt"/"yolov8n-seg.pt").train(data=yaml, epochs, imgsz) + predict -&gt; boxes.xyxy/conf/cls, masks — ตรงเอกสาร</li>
+<li><code>transformers</code> Trainer / Seq2SeqTrainer / pipeline(visual-question-answering, summarization, translation) — ตรง API ปัจจุบัน</li>
+</ul>
+<h2>4. ทุกโน้ตบุ๊ก compile ผ่าน</h2>
+<ul>
+<li>13/13 notebooks เป็น JSON ถูกต้อง + ทุก code cell <code>compile()</code> ผ่าน 0 error</li>
+<li>รันซ้ำ: ดู <code>_build/</code> แล้วรัน generator ใหม่</li>
+</ul>
+<h2>ข้อควรรู้ (ตรงไปตรงมา)</h2>
+<ul>
+<li>โน้ตบุ๊กที่ใช้ของหนัก (AutoGluon, timm, YOLO, transformers, VLM) ควรรันบน <code>Colab/Kaggle</code> ที่มี GPU</li>
+</ul>
+<p>  ในเครื่องนี้ไม่มี GPU/ไม่ได้ลงโมเดลใหญ่ จึงตรวจระดับ API + รันตรรกะหลักด้วยข้อมูลจำลองแทน</p>
+<ul>
+<li>โจทย์ <code>detection / segmentation / forecasting</code> รูปแบบ submission หลากหลายมาก</li>
+</ul>
+<p>  โค้ดเตรียมโครงให้ + คอมเมนต์จุดที่ต้องปรับ (<code># &lt;&lt; แก้</code>, <code># TODO</code>) ตามรูปแบบจริงของ comp</p>
+<ul>
+<li><code>transformers</code> ถ้าเวอร์ชันเก่ากว่า 4.46 ให้เปลี่ยน <code>eval_strategy</code> -&gt; <code>evaluation_strategy</code> (มีคอมเมนต์เตือนในเซลล์แล้ว)</li>
+</ul>
+<h2>รันการตรวจทั้งหมดอีกครั้ง</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>cd 5Domains
+python3 _build/verify_router.py     # router 34 เคส ไทย+อังกฤษ
+python3 _build/verify_logic.py      # ตรรกะหลักด้วยข้อมูลจำลอง
+bash   _build/run_checks.sh         # รันทั้งหมด + syntax check</code></pre></div></section><section id="deploy" class="section"><h1>🚂 Deploy บน Railway + GitHub</h1>
+<h2>GitHub</h2>
+<p>โค้ดทั้งหมดอยู่ที่ <code>https://github.com/peetwan/5DomainsHackathon_Pangpuriye</code></p>
+<p>clone แล้วใช้ได้เลย: <code>git clone https://github.com/peetwan/5DomainsHackathon_Pangpuriye</code></p>
+<h2>รันเว็บนี้บนเครื่อง</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>python server.py          # แล้วเปิด http://localhost:8000</code></pre></div>
+<h2>Deploy ขึ้น Railway (ให้เพื่อนในทีมเปิดดูได้)</h2>
+<ol>
+<li>ไปที่ railway.app -&gt; New Project -&gt; Deploy from GitHub repo -&gt; เลือก repo นี้</li>
+<li>Railway จะอ่าน <code>Procfile</code> (<code>web: python server.py</code>) แล้วรันให้เอง</li>
+<li>กด Generate Domain จะได้ลิงก์เว็บสาธารณะ ส่งให้เพื่อนได้เลย</li>
+</ol>
+<p>ไฟล์ที่เกี่ยวกับ deploy: <code>server.py</code>, <code>Procfile</code>, <code>requirements.txt</code></p>
+<h2>รันเว็บใหม่หลังแก้เนื้อหา</h2>
+<div class="codewrap"><button class="copy" onclick="cp(this)">copy</button><pre><code>python _build/build_site.py    # สร้าง index.html ใหม่จากไฟล์ .md และ .ipynb</code></pre></div></section><div class="foot">สร้างโดยทีม Pangpuriye · ข้อมูล SOTA อัปเดต 2025–2026 · เปิด Router แล้วพิมพ์โจทย์เพื่อหาโน้ตบุ๊ก</div></main></div><script>
+const CATS={"cv_classification": {"label": "Computer Vision — จำแนกรูป (Image Classification)", "path": "01_Computer_Vision/image_classification.ipynb", "first": "วิธีที่ 1 = AutoGluon MultiModal (ตั้ง NUM_CLASSES ให้ตรง)", "kw": ["classify image", "image classification", "image recognition", "จำแนกรูป", "จำแนกภาพ", "รูปบ้าน", "ชนิดรูป", "ป้ายรูป", "cat dog", "สุนัขแมว", "label the image", "what class is this image", "photo classification", "ภาพนี้คือ", "categorize image", "ประเภทของรูป", "photo", "photos", "categories", "category", "image into", "ประเภทไหน", "หมวดของรูป", "classify each"]}, "cv_detection": {"label": "Computer Vision — หาวัตถุ (Object Detection)", "path": "01_Computer_Vision/object_detection.ipynb", "first": "วิธีที่ 1 = YOLOv8 (เตรียมข้อมูลรูปแบบ YOLO + data.yaml)", "kw": ["object detection", "detection", "detect", "detects", "ตรวจจับวัตถุ", "ตรวจจับ", "bounding box", "bounding", "กล่อง", "หากล่อง", "locate", "locate object", "หาตำแหน่งวัตถุ", "map", "นับวัตถุ", "count objects", "count", "นับ", "object", "objects", "ป้ายทะเบียน", "หาวัตถุในรูป", "draw box", "yolo"]}, "cv_segmentation": {"label": "Computer Vision — แบ่งส่วนภาพ (Segmentation)", "path": "01_Computer_Vision/segmentation.ipynb", "first": "วิธีที่ 1 = YOLOv8-seg (ง่ายสุด) หรือ U-Net", "kw": ["segmentation", "แบ่งส่วนภาพ", "แบ่งพื้นที่", "mask", "ระบายพิกเซล", "semantic segmentation", "instance segmentation", "pixel level", "ต่อพิกเซล", "iou", "dice", "แยกพื้นที่ในรูป", "ระบายสีตามพื้นที่"]}, "nlp_sequence_labeling": {"label": "NLP — ตัดคำ / ป้ายต่อ token (Sequence Labeling)", "path": "02_NLP/thai_word_segmentation.ipynb", "first": "วิธีที่ 1 = PyThaiNLP deepcut", "kw": ["word segmentation", "ตัดคำ", "tokenize", "tokenization", "ner", "named entity", "entity", "ดึงชื่อเฉพาะ", "pos tagging", "part of speech", "ชนิดคำ", "sequence labeling", "ป้ายต่อคำ", "ป้ายต่อตัวอักษร", "ขอบเขตคำ", "แท็กต่อคำ", "tag each", "each token", "token", "tokens", "tagging", "แท็ก"]}, "nlp_text_classification": {"label": "NLP — จำแนกข้อความ (Text Classification)", "path": "02_NLP/text_classification.ipynb", "first": "วิธีที่ 1 = ตัดคำ + TF-IDF + Logistic Regression", "kw": ["text classification", "จำแนกข้อความ", "sentiment", "ความรู้สึก", "อารมณ์", "รีวิว", "review", "บวกลบ", "positive negative", "topic classification", "หมวดข่าว", "หมวดหมู่ข้อความ", "spam", "สแปม", "intent", "เจตนา", "จัดประเภทข้อความ", "topic", "topics", "headline", "headlines", "news", "ข่าว", "label text", "classify text", "classify the text", "classify review", "emotion", "spam detection", "detect spam", "email", "อีเมล"]}, "nlp_text_generation": {"label": "NLP — สร้าง/แปลง ข้อความ (Text Generation / Seq2Seq)", "path": "02_NLP/text_generation.ipynb", "first": "วิธีที่ 1 = HuggingFace pipeline หรือ mT5 fine-tune", "kw": ["translation", "translate", "แปลภาษา", "แปลข้อความ", "แปล", "summarization", "summarize", "สรุปความ", "สรุปข้อความ", "สรุป", "generate text", "สร้างข้อความ", "seq2seq", "question answering", "ตอบคำถามจากบทความ", "paraphrase", "ถอดความ", "spelling correction", "แก้คำผิด", "grammar", "เขียนใหม่", "machine translation", "article", "บทความ", "rewrite", "สรุปบทความ"]}, "mm_captioning": {"label": "Multimodal — บรรยายรูป (Image Captioning)", "path": "03_Multimodal_VisionLanguage/thai_image_captioning.ipynb", "first": "วิธีที่ 1 = โมเดล Thai-COCO สำเร็จรูป + วัด thai_bleu()", "kw": ["image captioning", "caption", "captioning", "image caption", "บรรยายรูป", "บรรยายภาพ", "describe image", "อธิบายรูป", "คำบรรยาย", "image to text", "รูปเป็นข้อความ", "เขียนคำบรรยายรูป", "bleu", "generate caption"]}, "mm_vqa": {"label": "Multimodal — ตอบคำถามจากรูป / OCR (Visual QA)", "path": "03_Multimodal_VisionLanguage/visual_qa.ipynb", "first": "วิธีที่ 1 = VLM สำเร็จรูป (Qwen2.5-VL / BLIP-VQA) แบบ zero-shot", "kw": ["vqa", "visual question answering", "ตอบคำถามจากรูป", "ถามรูป", "ถามจากภาพ", "question about image", "ocr", "อ่านข้อความในรูป", "read text in image", "อ่านตัวอักษรในภาพ", "text in image", "extract text from image"]}, "tab_classification": {"label": "Tabular — ทำนายคลาส (Classification)", "path": "04_Tabular/classification.ipynb", "first": "วิธีที่ 1 = AutoGluon Tabular (ตั้ง METRIC ให้ตรง)", "kw": ["tabular classification", "จำแนกจากตาราง", "ทำนายโรค", "predict disease", "ป่วย", "churn", "ลูกค้าเลิกใช้", "fraud", "ทุจริต", "predict class", "จำแนกข้อมูลตาราง", "binary classification", "หลายคลาส", "multiclass", "default", "อนุมัติสินเชื่อ", "credit"]}, "tab_regression": {"label": "Tabular — ทำนายตัวเลข (Regression)", "path": "04_Tabular/regression.ipynb", "first": "วิธีที่ 1 = AutoGluon problem_type=regression", "kw": ["regression", "ทำนายราคา", "predict price", "house price", "ราคาบ้าน", "คะแนน", "score", "ยอดขาย", "sales amount", "predict value", "ตัวเลขต่อเนื่อง", "continuous value", "rmse", "mae", "ประมาณค่า", "estimate value"]}, "ts_signal_classification": {"label": "Time-Series / Signal — จำแนกสัญญาณ (Classification)", "path": "05_TimeSeries_Signal/signal_classification.ipynb", "first": "วิธีที่ 1 = สกัดฟีเจอร์ + AutoGluon (แบ่ง CV ตาม subject)", "kw": ["eeg", "ecg", "emg", "sleep stage", "ระยะการนอน", "การนอน", "biosignal", "สัญญาณชีวภาพ", "signal classification", "จำแนกสัญญาณ", "accelerometer", "เซนเซอร์", "sensor", "human activity", "har", "ท่าทาง", "arrhythmia", "seizure", "sampling rate", "หน้าต่างเวลา", "epoch 30", "classify window"]}, "ts_forecasting": {"label": "Time-Series — พยากรณ์ค่าอนาคต (Forecasting)", "path": "05_TimeSeries_Signal/forecasting.ipynb", "first": "วิธีที่ 1 = ฟีเจอร์วันที่ + lag + LightGBM", "kw": ["forecast", "forecasting", "พยากรณ์", "พยากรณ์ยอดขาย", "ทำนายอนาคต", "predict future", "future value", "demand forecast", "demand", "ยอดขายพรุ่งนี้", "ราคาล่วงหน้า", "next day", "next week", "time series prediction", "ทำนายยอดขาย", "predict next", "แนวโน้ม", "trend prediction", "ย้อนหลัง", "ข้อมูลย้อนหลัง", "historical"]}};
+function hit(kw,p){kw=kw.toLowerCase();const a=/^[\x00-\x7F]*$/.test(kw);if(a){const e=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return new RegExp("(^|[^a-z])"+e+"($|[^a-z])").test(p);}return p.indexOf(kw)>=0;}
+function route(p){p=(p||'').toLowerCase();let sc=[];for(const k in CATS){let s=0;for(const w of CATS[k].kw){if(hit(w,p))s++;}sc.push([s,k]);}sc.sort((a,b)=>b[0]-a[0]);return sc;}
+function gotoSec(id){document.querySelector('.navlink[data-t="'+id+'"]')?.click();}
+function doRoute(){const p=document.getElementById('q').value;const sc=route(p);const box=document.getElementById('rout');if(!p.trim()){box.innerHTML='';return;}if(sc[0][0]===0){box.innerHTML='<div class="hit">เดาไม่ออกจากคำนี้ ลองดูตารางด้านล่าง (input เป็นอะไร -> output เป็นอะไร)</div>';return;}const best=CATS[sc[0][1]];let topic=sc[0][1].split('_')[0];const map={cv:'cv',nlp:'nlp',mm:'mm',tab:'tab',ts:'ts'};let h='<div class="hit">📂 เปิด: <b>'+best.path+'</b><br>หมวด: '+best.label+'<br>เริ่มจาก: '+best.first+'<br><button class="chip" style="margin-top:8px" onclick="gotoSec(\''+(map[topic]||'router')+'\')">ไปที่หัวข้อนี้ →</button></div>';h+='<div class="scorebar">คะแนนแมตช์: ';h+=sc.filter(x=>x[0]>0).map(x=>CATS[x[1]].path.split('/').pop()+' ('+x[0]+')').join(' · ');h+='</div>';box.innerHTML=h;}
+const EX=["ทำนายระยะการนอนจาก EEG","classify movie reviews sentiment","ตรวจจับวัตถุในรูป","บรรยายรูปเป็นภาษาไทย","predict house price","ตัดคำภาษาไทย","forecast next week sales","อ่านตัวอักษรในรูป OCR"];
+window.addEventListener('DOMContentLoaded',function(){
+ const ch=document.getElementById('chips');if(ch){EX.forEach(function(e){const b=document.createElement('span');b.className='chip';b.textContent=e;b.onclick=function(){document.getElementById('q').value=e;doRoute();};ch.appendChild(b);});}
+ const links=document.querySelectorAll('.navlink');const secs=document.querySelectorAll('.section');
+ const sb=document.getElementById('sidebar');const scr=document.getElementById('scrim');
+ function show(id){secs.forEach(s=>s.classList.toggle('active',s.id===id));links.forEach(l=>l.classList.toggle('active',l.dataset.t===id));sb.classList.remove('open');if(scr)scr.classList.remove('open');window.scrollTo(0,0);}
+ links.forEach(l=>l.addEventListener('click',e=>{show(l.dataset.t);}));
+ const init=(location.hash||'#start').slice(1);show(document.getElementById(init)?init:'start');
+ document.getElementById('burger').onclick=()=>{sb.classList.toggle('open');if(scr)scr.classList.toggle('open');};
+ if(scr)scr.onclick=()=>{sb.classList.remove('open');scr.classList.remove('open');};
+});
+function cp(b){const c=b.parentElement.querySelector('code');navigator.clipboard.writeText(c.innerText).then(()=>{const o=b.textContent;b.textContent='copied!';setTimeout(()=>b.textContent=o,1200);});}
+</script></body></html>

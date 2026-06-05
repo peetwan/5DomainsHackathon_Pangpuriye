@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+# ผลลัพธ์ตอนรันโน้ตบุ๊กจริง (ไม่ต้อง commit)
+data/
+*.zip
+ag_*/
+AutogluonModels/
+out/
+runs/
+*.crfsuite
+*.pth
+submission*.csv
+kaggle.json
+_build/_jstest.js
